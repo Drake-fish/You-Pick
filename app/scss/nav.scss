@@ -1,0 +1,19 @@
+.nav-container{
+  display:inline-block;
+  float:right;
+  margin-right:2rem;
+}
+
+nav{
+  padding-top:.3rem;
+  padding-left:2rem;
+  a{
+    text-decoration:none;
+    margin-right:1rem;
+    color:#022835;
+    font-size:1.4rem;
+    &:hover{
+      color:#6C929F;
+    }
+  }
+}

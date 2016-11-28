@@ -21,20 +21,31 @@ Did your significant other, family member, friend, co-worker just tell you to pi
 
 ## Data Modeling
   ### Models:
-  - Places Model: what data an individual place should contain.
+  - Place Model: what data an individual place should contain.
   - Session Model: used to keep track of user details such as user-name, email ,password, favorite things.
   - Weather Model: used to get local weather report. data used to vary search results.
-  - Saved Searches Model: information saved for later use.
+  - Saved Search Model: information saved for later use.
   ### Collections:
   - Places Collection: used to get search results from Yelp to display to user.
   - Saved Searches Collection: All searches that have been saved by the user.
 
 ## Routes
-- Landing Page
+- (HOME) YOU PICK Page
 - Login
 - Register
-- profile
-- (HOME) YOU PICK Page
+- Settings
 - Saved Searches Page
+
 ## Libraries/special Features
 - geolocation (geoPlugin)
+
+# MVP
+ - Features:
+    - Login/Register
+    - get random idea based on weather location and type
+      - hot vs cold weather
+      - sunny vs raining
+      - geolocation vs specified location
+      - Food, Events, You Pick!
+    - Logged in users can modify settings
+    - logged in users get more specific suggestions based on settings
