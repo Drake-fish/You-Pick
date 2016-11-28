@@ -35,6 +35,10 @@ Did your significant other, family member, friend, co-worker just tell you to pi
 - Register
 - Settings
 - Saved Searches Page
+## Wire Frames
+![Alt text](./app/assets/images/wireframe1.jpg?raw=true)
+![Alt text](./app/assets/images/wireframe2.jpg?raw=true)
+![Alt text](./app/assets/images/wireframe3.jpg?raw=true)
 
 ## Libraries/special Features
 - geolocation (geoPlugin)
