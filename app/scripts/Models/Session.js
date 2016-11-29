@@ -11,7 +11,7 @@ export default Backbone.Model.extend({
   },
   idAttribute:'objectId',
   defaults:{
-    foodPreferences:['italian','french','pasta'],
+    foodPreferences:['american', 'bbq', 'burgers', 'cafes', 'chicken','mexican','chinese','pizza','italian','confortfood','delis','diners','french','german','greek','asian','indian','tacos','salad','soup','spanish','tex-mex','steakhouse','foodtrucks' ],
     eventPreferences:['movies'],
     weather:''
   },
@@ -44,7 +44,6 @@ export default Backbone.Model.extend({
         password
       }),
       success:(response)=>{
-        this.set(response);
         window.localStorage.setItem('user-token',response['user-token']);
         window.localStorage.setItem('name',response.name);
         browserHistory.push('/preferences');
@@ -56,8 +55,8 @@ export default Backbone.Model.extend({
       contentType:'application/json',
       url:'https://api.backendless.com/v1/users/logout',
       success:()=>{
-        this.clear();
-        window.localStorage.clear();
+        window.localStorage.removeItem('user-token');
+        window.localStorage.removeItem('name');
         browserHistory.push('/');
       },
     });

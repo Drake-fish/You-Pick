@@ -1,11 +1,16 @@
 import React from 'react';
+import _ from 'underscore';
 import store from '../store';
+import { browserHistory } from 'react-router';
 
+
+import Results from '../components/containers/Results';
 import Weather from './weather';
 export default React.createClass({
   getInitialState(){
     return{
-      session: store.session.toJSON()
+      session: store.session.toJSON(),
+      places: store.places.toJSON()
     }
   },
   componentWillMount(){
@@ -16,6 +21,7 @@ export default React.createClass({
     });
 
     store.session.on('change update', this.updateSession );
+    store.places.on('change update', this.updatePlaces);
 
   },
   updateSession(){
@@ -23,6 +29,12 @@ export default React.createClass({
     this.setState({
       session: store.session.toJSON()
     });
+  },
+  updatePlaces(){
+    this.setState({
+      places:store.places.toJSON()
+    });
+      console.log('places updated')
   },
   componentWillUnMount(){
     store.session.off('change update', this.updateSession);
@@ -53,13 +65,15 @@ export default React.createClass({
     );
   },
   handleEvents(){
-    let latitude=window.localStorage.getItem('latitude');
-    let longitude=window.localStorage.getItem('longitude');
-    console.log('events');
-    store.places.searchEvents('food',longitude,latitude);
+
   },
   handleFood(){
-    console.log('food');
+    let coordinates=[window.localStorage.getItem('latitude'),window.localStorage.getItem('longitude')];
+    let food=this.state.session.foodPreferences;
+    let mixedFood=_.shuffle(food);
+    let selection=_.first(mixedFood);
+    console.log(selection);
+    store.places.searchFood(selection ,coordinates);
   },
   handleRandom(){
     console.log('random');

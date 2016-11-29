@@ -1,0 +1,43 @@
+.searchList{
+  ul{
+    text-align:center;
+  }
+}
+.business-info{
+  display:inline-block;
+  width:39%;
+}
+.business-name{
+  text-align: center;
+}
+.result{
+text-align:left;
+margin-left:1rem;
+width: 43%;
+display: inline-block;
+border: 2px solid black;
+border-radius: 11px;
+margin-right: 3rem;
+margin-bottom: 2rem;
+}
+
+.search-title{
+  text-align:center;
+  font-size:3rem;
+}
+.result{
+  text-align:left;
+  margin-left:1rem;
+}
+.picture{
+  width:85%;
+  display:block;
+  margin-left:2rem;
+}
+.stars{
+      vertical-align: bottom;
+  display: inline-block;
+    margin-left: 2.5rem;
+    width: 31%;
+    margin-top: 1rem;
+}

@@ -9,7 +9,7 @@ render(){
     let temp=Math.round(window.localStorage.getItem('temp'));
     let location=window.localStorage.getItem('location');
     let weatherPic;
-if(weather===null || weather.includes('sun')){
+if(weather===null || weather.includes('sun') || weather.includes('clear')){
   weatherPic=(
 <div className="icon sunny">
   <div className="sun">
@@ -25,14 +25,14 @@ else if(weather.includes('rain') || weather.includes('mist')){
       <div className="rain"></div>
 </div>
   );
-}else if(weather.includes('cloud')){
+}else if(weather.includes('cloud') || weather.includes('haze')){
   weatherPic=(
 <div className="icon cloudy">
       <div className="cloud"></div>
       <div className="cloud"></div>
 </div>
   );
-}else if(weather.includes('thunder') || weather.includes('storm')){
+}else if(weather.includes('thunder') || weather.includes('storm') || weather.includes('lightning')){
   weatherPic=(
 <div className="icon thunder-storm">
       <div className="cloud"></div>
@@ -49,13 +49,9 @@ else if(weather.includes('rain') || weather.includes('mist')){
 
     return(
       <div className="weather">
-      <h3>Current Weather</h3>
-      <h4>{location}</h4>
+        <h3>Weather Now</h3>
         {weatherPic}
-      <div className="weather-info">
-        <p className="temp">Temp: {temp}&deg;F</p>
-        <p className="weather-description">{weather}</p>
-      </div>
+        <span>{weather}</span>
       </div>
     );
   }
