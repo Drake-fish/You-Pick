@@ -1,20 +1,15 @@
-.home{
-  text-align:center;
-  margin-top:2rem;
-}
+
 .overlay{
-  display:inline-block;
-  width:28%;
+    background-image: repeating-linear-gradient(to top,rgb(0, 0, 0) 0%,rgba(0, 0, 0, 0) 100%);
+    display:inline-block;
+  width:33%;
   height:23rem;
-  background:#69969C;
-  margin-right:1rem;
-  position:relative;
+  cursor:pointer;
 }
 .search{
-  opacity:.3;
+  opacity:.7;
   width:100%;
   height:23rem;
-  margin-right:.3rem;
   transition:opacity .6s;
   display:inline-block;
   &:hover{
@@ -29,17 +24,64 @@
 .title{
     text-align:center;
     color:white;
-    font-size:3rem;
-    position:absolute;
-    top:0;
-    left:1rem;
+    font-size:4rem;
+}
+.food-clicked{
+  vertical-align:top;
+  display:inline-block;
+  width:33%;
+  position:relative;
+  .type{
+    text-align:center;
+    color:white;
+    font-size:4rem;
+    margin:0;
+    margin-bottom:1rem;
+    padding-top:1rem;
+  }
+  span{
+    display:block;
+    color:white;
+    margin-left:25%;
+    font-size:2.5rem;
+    cursor:pointer;
+    transition:color .3s ease-in-out;
+    &:hover{
+      color:#FF3333;
+    }
+  }
+}
+.modal{
+  width: 85%;
+position: absolute;
+top: 24px;
+border: 2px solid black;
+margin-left: 8%;
+border-radius: 13px;
+background: rgba(0,0,0,.5);
+height:20rem;
+.fa-times{
+  position: absolute;
+    top: 2%;
+    left: 3%;
+    font-size: 1.5rem;
+    color: $icon-color;
+    cursor:pointer;
+    transition:color .3s ease-in-out;
+    &:hover{
+      color:red;
+    }
+  }
 }
 .food{
   background:url('../assets/images/food.jpg');
   background-size:cover;
+  background-position-y:-3rem;
+  height:23rem;
 }
 
 .random{
   background:url('../assets/images/random.jpg');
   background-size:cover;
+  width:103%;
 }

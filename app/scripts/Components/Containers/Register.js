@@ -24,16 +24,17 @@ componentWillUnMount(){
   render(){
     console.log(store);
     return(
-      <div className="register">
+      <div className="login">
         <h3> Lets get to know you a little better!</h3>
-        <form onSubmit={this.handleSubmit}>
+        <form className="form" onSubmit={this.handleSubmit}>
           <input type="text" ref="name" placeholder="Name"/>
           <input type="email" ref="email" placeholder="Email"/>
           <input type="password" ref="password" placeholder="password"/>
           <input type="password" ref="confirmPassword" placeholder="Confirm Your Password"/>
-          <input type="submit" value="Register"/>
+          <input className="submit" type="submit" value="Register"/>
+          <h5> <Link to="/login">Already Have an account?</Link></h5>
         </form>
-        <span> Already Have an account? <Link to="/login">Login</Link></span>
+
       </div>
     );
   },

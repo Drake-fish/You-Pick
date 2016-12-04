@@ -12,7 +12,6 @@ render(){
   return(
     <div id="app">
       <Header/>
-      <Home/>
         {this.props.children}
     </div>
   );

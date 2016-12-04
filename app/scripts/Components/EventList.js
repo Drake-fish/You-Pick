@@ -1,12 +1,12 @@
 import React from 'react';
 
-import SearchResult from './searchResult';
+import EventItem from './eventItem';
 
 export default React.createClass({
   render(){
   let resultItem=this.props.results.map((result,i,arr)=>{
-    return <SearchResult key={i} place={result}/>
-  });
+    return <EventItem key={i} event={result}/>
+});
 
     return(
       <div className="searchList">

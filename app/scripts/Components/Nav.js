@@ -8,11 +8,11 @@ export default React.createClass({
   render(){
     let nav=(
     <nav>
-      <Link to="/">Home</Link>
-      <Link to="/preferences">Preferences</Link>
-      <Link onClick={this.handleClick}>Logout</Link>
+      <Link to="/"><i className="fa fa-home" aria-hidden="true"></i>Home</Link>
+      <Link to="/preferences"><i className="fa fa-cog" aria-hidden="true"></i>Settings</Link>
+      <Link onClick={this.handleClick}><i className="fa fa-sign-in" aria-hidden="true"></i>Logout</Link>
     </nav>
-  );;
+  );
 
     if(!window.localStorage.getItem('user-token')){
       nav=(

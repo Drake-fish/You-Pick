@@ -1,14 +1,13 @@
 //weather icons
 .weather{
-  background:#69969C;
-  width:22%;
+  background:$icon-color;
+  width:20%;
   margin-top:2.4rem;
   margin-right:-21.7rem;
   text-align:center;
   display:inline-block;
   float:right;
   border-radius:67px;
-  box-shadow: 2px 4px 15px 0px rgba(0,0,0,0.75);
   span{
     display: block;
 color: white;
@@ -19,18 +18,19 @@ padding-bottom: .5rem;
     color: white;
   margin-bottom: 0;
   margin-top: 0;
-  padding-top: 1rem;
-  border-bottom: 1px solid white;
-  margin-left: 5rem;
-  margin-right: 5rem;
+  margin-left: 2rem;
   }
   h4{
     color:white;
     margin:0;
   }
 }
+.weather-info{
+  margin-top:1.7rem;
+}
 
 .icon {
+  float:right;
   position: relative;
 display: inline-block;
 width: 10em;
@@ -38,7 +38,6 @@ height: 9em;
 font-size: .5rem;
 border-radius: 50%;
 background: black;
-box-shadow: 2px 4px 15px 0px rgba(0,0,0,0.75);
 }
 
 .cloud {
