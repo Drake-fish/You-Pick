@@ -1,0 +1,60 @@
+.saved-searches {
+    padding: 0;
+    text-align: center;
+}
+
+.saved-search {
+    background: #A2ADB6;
+    width: 23rem;
+    position: relative;
+    margin-bottom: 1rem;
+    list-style: none;
+    display: inline-block;
+    vertical-align: top;
+
+    h3 {
+      width: 11rem;
+margin-left: 1rem;
+margin-top: 1rem;
+color: white;
+font-size: 1rem;
+margin-bottom:0;
+    }
+}
+.yelp-icon{
+  width:33%;
+}
+.picture {
+    display: inline-block;
+    img{
+      width:9rem;
+      margin-top:.5rem;
+    }
+}
+
+.info {
+    font-size: 0.7rem;
+    display: inline-block;
+    width: 60%;
+    vertical-align: top;
+}
+.no-saved{
+  color:white;
+}
+
+#trash {
+    position: absolute;
+    top: 7rem;
+    right:2rem;
+    font-size: 1.4rem;
+    transition:color .3s ease-in-out;
+    cursor:pointer;
+    &:hover{
+      color:white;
+    }
+}
+@media(min-width:768px){
+  .saved-search{
+  margin-right:1rem;
+}
+}

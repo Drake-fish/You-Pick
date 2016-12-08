@@ -18,7 +18,7 @@ updateSession(){
     session: store.session.toJSON()
   });
 },
-componentWillUnMount(){
+componentWillUnmount(){
   store.session.off('change update', this.updateSession);
 
 },
@@ -32,12 +32,16 @@ componentWillUnMount(){
         <i className="lock fa fa-lock" aria-hidden="true"></i>
           <input ref="email" type="email" placeholder="Email"/>
           <input ref="password" type="password" placeholder="password"/>
-          <span>Lost your password?</span>
+          <span onClick={this.handleForgotPassword}>Lost your password?</span>
           <input className="submit" type="submit" value="Login"/>
           <h5><Link to="/register">Dont have an account?</Link></h5>
         </form>
       </div>
     );
+  },
+  handleForgotPassword(){
+    let email=this.refs.email.value;
+    store.session.forgotPassword(email);
   },
   handleSubmit(e){
     console.log('login');
@@ -46,4 +50,4 @@ componentWillUnMount(){
     const password=this.refs.password.value;
     store.session.login(email,password);
   }
-})
+});

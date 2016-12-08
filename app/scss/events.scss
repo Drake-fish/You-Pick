@@ -1,8 +1,7 @@
 
 .overlay{
     background-image: repeating-linear-gradient(to top,rgb(0, 0, 0) 0%,rgba(0, 0, 0, 0) 100%);
-    display:inline-block;
-  width:33%;
+    display:block;
   height:23rem;
   cursor:pointer;
 }
@@ -29,7 +28,7 @@
 .food-clicked{
   vertical-align:top;
   display:inline-block;
-  width:33%;
+  width:100%;
   position:relative;
   .type{
     text-align:center;
@@ -83,5 +82,37 @@ height:20rem;
 .random{
   background:url('../assets/images/random.jpg');
   background-size:cover;
-  width:103%;
+}
+@media(min-width:800px){
+  .overlay{
+    width:33.33%;
+    display:inline-block;
+    height:18rem;
+  }
+  .title{
+    font-size:2.6rem;
+  }
+  .food{
+    background-position-y:0;
+    height:18rem;
+  }
+  .events{
+    height:18rem;
+  }
+  .random{
+    height:18rem;
+  }
+  .food-clicked{
+    width:33%;
+    height:18rem;
+  }
+  .modal{
+    height:16rem;
+    .type{
+      font-size:3rem;
+    }
+    span{
+      font-size:2rem;
+    }
+  }
 }

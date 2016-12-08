@@ -1,20 +1,52 @@
 .nav-container{
-  display:inline-block;
-  float:right;
-  margin-right:2rem;
+  display:block;
+  text-align:center;
+  padding-top:1rem;
 }
 
 nav{
   padding-top:.3rem;
   padding-left:2rem;
+  #nav-heart{
+    margin-right:0;
+  }
   a{
     cursor:pointer;
     text-decoration:none;
     margin-right:1rem;
     color:$text-color;
-    font-size:1.4rem;
+    font-size:2rem;
+    margin-right:2.3rem;
     &:hover{
-      color:$hover-color;
+      color:black;
     }
+  }
+  span{
+    display:none;
+  }
+}
+@media(min-width:600px){
+  .nav-container{
+    text-align:right;
+  margin-top:0;
+  padding-top:0;
+  margin-right:1rem;
+  .fa{
+    margin-right:0;
+  }
+  span{
+    margin-right:.5rem;
+  }
+  a{
+    margin-right:.3rem;
+    font-size:1rem;
+    span{
+      display:inline-block;
+      font-size:1rem;
+    }
+    }
+  }
+  .login-menu{
+    margin-right:3rem;
   }
 }

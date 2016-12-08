@@ -26,16 +26,19 @@ export default React.createClass({
                         });
                     });
             },
-            componentWillUnMount() {
+            componentWillUnmount() {
                 store.session.off('change update');
                 store.places.off('change update');
             },
 
             render() {
                 let searchDiv;
-                let login = ( <h4 className = "login"> Want to make this more personal?<Link to ='login'>Login</Link></h4>);
-                if (window.localStorage.getItem('user-token')) {
-                    login = ( <h4> Want to make this more personal?<Link to ='preferences'> Update Preferences </Link></h4>);
+                let login=(
+                  <Link to='login'><i className="fa fa-cog" aria-hidden="true"></i></Link>
+                );
+                if(window.localStorage.getItem('user-token')){
+                  login=(<Link to='preferences'><i className="fa fa-cog" aria-hidden="true"></i></Link>
+                );
                 }
                 if (this.state.places.length === 0) {
                     browserHistory.push('/');
@@ -43,8 +46,9 @@ export default React.createClass({
                     let searchTerm = this.state.places[0].searchTerm;
                     let results = this.state.places;
                     searchDiv = ( <div className = "search-results">
-                                    <h3 className = "search-title"> How about {this.state.places[0].searchTerm}<span onClick = {this.research}> (Try Again)</span></h3>
-                                    {login}
+                                    <h3 className = "search-title">{login} How about {this.state.places[0].searchTerm}</h3>
+                                    <span className="research" onClick = {this.research}> (Try Again)</span>
+
                                     <SearchList results = {results}/>
                                   </div>
                                 );

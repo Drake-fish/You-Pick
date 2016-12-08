@@ -51,7 +51,7 @@ render(){
           {weatherPic}
         </div>
         <div className="weather-info">
-          <h3>Weather Now</h3>
+          <h3 className="current">Current Weather</h3>
           <h3>{weather}</h3>
         </div>
       </div>

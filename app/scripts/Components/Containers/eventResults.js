@@ -22,7 +22,7 @@ export default React.createClass({
       this.setState({places:store.places.toJSON()});
     });
   },
-  componentWillUnMount(){
+  componentWillUnmount(){
     store.session.off('change update', ()=>{
       this.setState({session:store.session.toJSON()});
     });
@@ -33,10 +33,10 @@ export default React.createClass({
 
   render(){
     let login=(
-      <h4 className="login">Want to make this more personal? <Link to='login'>Login</Link></h4>
+      <Link to='login'><i className="fa fa-cog" aria-hidden="true"></i></Link>
     );
     if(window.localStorage.getItem('user-token')){
-      login=(<h4>Want to make this more personal?<Link to='preferences'>Update Preferences</Link></h4>
+      login=(<Link to='preferences'><i className="fa fa-cog" aria-hidden="true"></i></Link>
     );
     }
     let searchDiv;
@@ -61,8 +61,8 @@ export default React.createClass({
       }
       searchDiv=(
         <div className="search-results">
-          <h3 className="search-title">{searchTerm} Events going on This Week<span onClick={this.research}>(Nope)</span></h3>
-          {login}
+          <h3 className="search-title">{login} {searchTerm} Events Going on This Week</h3>
+          <span className="research" onClick={this.research}>(Try Again)</span>
           <EventList results={results}/>
         </div>
       );

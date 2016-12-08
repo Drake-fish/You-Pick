@@ -1,0 +1,47 @@
+.event-result{
+  background:$text-color;
+  width:24rem;
+  margin:0 auto;
+  display:inline-block;
+  margin-bottom:1rem;
+}
+.event-name{
+  margin-top:0;
+  font-size: 1.5rem;
+padding-top: 1.5rem;
+background:$hover-color;
+color:white;
+}
+.event-picture{
+    width: 46%;
+    margin-left: .4rem;
+}
+.event-details{
+  display:inline-block;
+  width:50%;
+  vertical-align:top;
+  h4{
+    margin:0;
+  }
+}
+.time-info{
+  text-align:left;
+  margin-top:2rem;
+  h4{
+    margin-bottom:1rem;
+    margin-left:.4rem;
+  }
+}
+.description{
+  height:9rem;
+  overflow:hidden;
+  p{
+    text-overflow:ellipsis;
+  }
+}
+@media(min-width:724px){
+  .event-result{
+    vertical-align:top;
+    margin-right:1rem;
+  }
+}

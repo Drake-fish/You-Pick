@@ -14,7 +14,7 @@ export default Backbone.Collection.extend({
         return new Promise((resolve, reject) => {
 
             let cll = `${coordinates[0]},${coordinates[1]}`;
-
+            console.log(term);
             this.reset();
             let auth = {
                 consumerKey: config.consumerKey,
@@ -64,7 +64,6 @@ export default Backbone.Collection.extend({
                     let placeList = places.businesses.map((place) => {
                         let distance;
                         if (place.distance) {
-                            console.log(place.distance);
                             distance = place.distance;
                         }
                         console.log(place);
@@ -154,10 +153,8 @@ export default Backbone.Collection.extend({
                     let placeList = places.businesses.map((place) => {
                         let distance;
                         if (place.distance) {
-                            console.log(place.distance);
                             distance = place.distance;
                         }
-                        console.log(place);
                         return {
                             searchTerm: term,
                             name: place.name,
@@ -220,7 +217,6 @@ export default Backbone.Collection.extend({
                     'dataType': 'jsonp',
                     'cache': true,
                 }).then((events) => {
-                    console.log(events);
                     let eventList = events.events.event.map((event) => {
                         let image;
                         if (event.image) {

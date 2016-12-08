@@ -27,6 +27,11 @@ export default React.createClass({
         store.places.on('change update', this.updatePlaces);
 
     },
+    componentWillUnmount(){
+      store.session.off('change update', this.updateSession);
+      store.places.off('change update', this.updatePlaces);
+
+    },
 
     updateSession() {
 

@@ -1,24 +1,29 @@
 //weather icons
 .weather{
-  background:$icon-color;
-  width:20%;
-  margin-top:2.4rem;
-  margin-right:-21.7rem;
+  background: radial-gradient(ellipse at left, rgba(181,189,200,1) 0%,rgba(130,140,149,1) 78%);
+  margin:0 auto;
+  width:16rem;
+  margin-top:1.4rem;
   text-align:center;
-  display:inline-block;
-  float:right;
+  display:block;
   border-radius:67px;
+  height:5rem;
   span{
     display: block;
 color: white;
 padding-top: .5rem;
 padding-bottom: .5rem;
   }
+  .current{
+    font-size:1rem;
+    border-bottom:1px solid white;
+  }
   h3{
+    font-size:1rem;
     color: white;
   margin-bottom: 0;
   margin-top: 0;
-  margin-left: 2rem;
+  margin-left: 1rem;
   }
   h4{
     color:white;
@@ -27,6 +32,7 @@ padding-bottom: .5rem;
 }
 .weather-info{
   margin-top:1.7rem;
+  padding-top:1.3rem;
 }
 
 .icon {
@@ -35,7 +41,7 @@ padding-bottom: .5rem;
 display: inline-block;
 width: 10em;
 height: 9em;
-font-size: .5rem;
+font-size: .1rem;
 border-radius: 50%;
 background: black;
 }
@@ -307,4 +313,17 @@ background: black;
     background: #fff;
     opacity: 0.2;
   }
+}
+@media(min-width:600px){
+  .weather{
+    display:inline-block;
+    float:right;
+    margin-right:3rem;
+    margin-top:.5rem;
+    margin-left:2rem;
+  }
+  .weather-info{
+    margin-top:0;
+  }
+
 }

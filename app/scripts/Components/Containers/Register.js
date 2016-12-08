@@ -17,7 +17,7 @@ updateSession(){
     session: store.session.toJSON()
   });
 },
-componentWillUnMount(){
+componentWillUnmount(){
   store.session.off('change update', this.updateSession);
 
 },
@@ -25,7 +25,7 @@ componentWillUnMount(){
     console.log(store);
     return(
       <div className="login">
-        <h3> Lets get to know you a little better!</h3>
+        <h3>Create an Account</h3>
         <form className="form" onSubmit={this.handleSubmit}>
           <input type="text" ref="name" placeholder="Name"/>
           <input type="email" ref="email" placeholder="Email"/>
