@@ -1,11 +1,11 @@
 import React from 'react';
 
-import SearchResult from './searchResult';
+import AdventureSearchResult from './adventureSearchResult';
 
 export default React.createClass({
   render(){
   let resultItem=this.props.results.map((result,i,arr)=>{
-    return <SearchResult key={i} place={result}/>
+    return <AdventureSearchResult key={i} place={result}/>
   });
 
     return(

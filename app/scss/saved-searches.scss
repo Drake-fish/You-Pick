@@ -13,22 +13,25 @@
     vertical-align: top;
 
     h3 {
-      width: 11rem;
-margin-left: 1rem;
-margin-top: 1rem;
-color: white;
-font-size: 1rem;
-margin-bottom:0;
+        width: 11rem;
+        margin-left: 1rem;
+        margin-top: 1rem;
+        color: white;
+        font-size: 1rem;
+        margin-bottom: 0;
     }
 }
-.yelp-icon{
-  width:33%;
+
+.yelp-icon {
+    width: 33%;
 }
+
 .picture {
     display: inline-block;
-    img{
-      width:9rem;
-      margin-top:.5rem;
+
+    img {
+        width: 9rem;
+        margin-top: 0.5rem;
     }
 }
 
@@ -38,23 +41,25 @@ margin-bottom:0;
     width: 60%;
     vertical-align: top;
 }
-.no-saved{
-  color:white;
+
+.no-saved {
+    color: white;
 }
 
 #trash {
     position: absolute;
     top: 7rem;
-    right:2rem;
+    right: 2rem;
     font-size: 1.4rem;
-    transition:color .3s ease-in-out;
-    cursor:pointer;
-    &:hover{
-      color:white;
+    transition: color 0.3s ease-in-out;
+    cursor: pointer;
+
+    &:hover {
+        color: white;
     }
 }
-@media(min-width:768px){
-  .saved-search{
-  margin-right:1rem;
-}
+@media(min-width:768px) {
+    .saved-search {
+        margin-right: 1rem;
+    }
 }

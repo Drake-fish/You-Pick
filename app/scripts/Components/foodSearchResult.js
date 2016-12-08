@@ -8,7 +8,6 @@ export default React.createClass({
     return{
       places:store.places.toJSON(),
       liked:false,
-      map:false
     }
   },
   componentWillMount(){
@@ -127,15 +126,11 @@ export default React.createClass({
     let address=this.props.place.address[0];
     let phone= this.props.place.phoneNumber;
     let moreInfo=this.props.place.moreInfo;
-    store.session.addSearch(picture,title,address,phone,moreInfo);
+    store.session.addSearch(picture,title,address,phone,moreInfo,'likedFood');
     this.setState({liked:true});
     // setTimeout(()=>{
     //   this.setState({liked:false});
     // },3000);
-
-  },
-  handleMap(){
-    this.setState({map:true});
 
   }
 });

@@ -1,246 +1,277 @@
-.searchList{
-  ul{
-    padding:0;
-    text-align:center;
-    list-style:none;
-  }
+.searchList {
+    ul {
+        padding: 0;
+        text-align: center;
+        list-style: none;
+    }
 }
-.search-results{
-  .fa{
-    color:$icon-color;
-  }
-  .research{
-    text-align:center;
-    color:white;
-    display:block;
-    font-size:1.5rem;
-    margin-bottom:3rem;
-    cursor:pointer;
-    &:hover{
-      color:$hover-color;
+
+.search-results {
+    .fa {
+        color: $icon-color;
     }
 
-  }
-}
-.yelp{
-  border:1px solid black;
-  background:$hover-color;
-  img{
-    width:8rem;
-    display:block;
-    margin:0 auto;
-    transition:transform .3s ease-in-out;
-    &:hover{
-      transform:scale(1.1);
+    .research {
+        text-align: center;
+        color: white;
+        display: block;
+        font-size: 1.5rem;
+        margin-bottom: 3rem;
+        cursor: pointer;
+
+        &:hover {
+            color: $hover-color;
+        }
     }
-  }
 }
-.business-info{
-  display:inline-block;
-  width:50%;
-}
-.business-name{
-  text-align: center;
-  font-size:1.5rem;
-  color:white;
-  margin-bottom:0;
-  margin-top:.8rem;
-}
-.results{
-text-align:left;
-width: 23rem;
-display:block;
-border: 2px solid black;
-margin:0 auto;
-margin-bottom: 2rem;
-background:$icon-color;
-position:relative;
-.picture{
-  width:9rem;
-  margin-left:1rem;
-  margin-top:1rem;
-  vertical-align:top;
-  margin-bottom:1rem;
-  }
-}
-#heart-icon{
-  position: absolute;
-  top: 1rem;
-  left: 16px;
-  color: white;
-  font-size: 2rem;
-  padding: .5rem;
-  background: rgba(0,0,0,.5);
-  transition:color .3s ease-in-out;
-  border-bottom-right-radius:10px;
-  &:hover{
-    color:red;
-  }
-}
-.ratings{
+#try-again-loading{
   display: block;
-    text-align: center;
-}
-
-.search-title{
-  text-align:center;
-  font-size:1.8rem;
-  color:white;
-  margin-bottom:0;
-}
-
-
-.stars{
-display: block;
-width: 7rem;
-margin: 0 auto;
-}
-.hours{
-  display:block;
-  margin-top:1rem;
-  color:green;
-  border:1px solid black;
-  padding:.5rem;
-  background:#D9DEE3;
-  text-align:center;
-  width:67%;
-  margin-left:1.7rem;
-}
-.hours-closed{
-  color:red;
-}
-.contact{
-  display: inline-block;
-      border: 2px solid black;
-      background: #D9DEE3;
-      width: 42%;
-      margin: 0 auto;
-      margin-left: .5rem;
-      margin-bottom: 1rem;
-      height:9.4rem;
-    .address{
-      margin-top:1rem;
-    }
-  h4{
-    text-align: center;
-    margin: 0;
-    margin-bottom: .5rem;
-  }
-}
-.map{
-  width: 50%;
-    float: right;
-    margin-right: .3rem;
-
-}
-
-.liked-heart{
-  color:red;
-}
-.links{
-  margin-top:.3rem;
-  img{
-    display:block;
-    margin:0 auto;
-    width:7rem;
-  }
-  .fa{
+    margin: 0 auto;
     color: white;
-    position: absolute;
-    top: 17%;
-    left: 29%;
-    font-size: 2.5rem;
-  }
-
+    font-size: 2rem;
 }
-.review-section{
-  .reviewer-pic{
-    margin-left:.3rem;
-    border-radius:50%;
-    width: 4rem;
-      margin-bottom:3rem;
-      margin-right:.2rem;
-  }
-  span{
+.yelp {
     border: 1px solid black;
-    width: 75%;
-    float:right;
-    padding: .3rem;
-    background: #D9DEE3;
-    border-radius: 10px;
-    margin-right:.3rem;
+    background: $hover-color;
 
-  }
+    img {
+        width: 8rem;
+        display: block;
+        margin: 0 auto;
+        transition: transform 0.3s ease-in-out;
+
+        &:hover {
+            transform: scale(1.1);
+        }
+    }
 }
 
-.liked-overlay{
-  position: absolute;
+.business-info {
+    display: inline-block;
+    width: 50%;
+}
+
+.business-name {
+    text-align: center;
+    font-size: 1.5rem;
+    color: white;
+    margin-bottom: 0;
+    margin-top: 0.8rem;
+}
+
+.results {
+    text-align: left;
+    width: 23rem;
+    display: block;
+    border: 2px solid black;
+    margin: 0 auto 2rem;
+    background: $icon-color;
+    position: relative;
+
+    .picture {
+        width: 9rem;
+        margin-left: 1rem;
+        margin-top: 1rem;
+        vertical-align: top;
+        margin-bottom: 1rem;
+    }
+}
+
+#heart-icon {
+    position: absolute;
+    top: 1rem;
+    left: 16px;
+    color: white;
+    font-size: 2rem;
+    padding: 0.5rem;
+    background: rgba(0,0,0,.5);
+    transition: color 0.3s ease-in-out;
+    border-bottom-right-radius: 10px;
+
+    &:hover {
+        color: red;
+    }
+}
+
+.ratings {
+    display: block;
+    text-align: center;
+}
+
+.search-title {
+    text-align: center;
+    font-size: 1.8rem;
+    color: white;
+    margin-bottom: 0;
+}
+
+.stars {
+    display: block;
+    width: 7rem;
+    margin: 0 auto;
+}
+
+.hours {
+    display: block;
+    margin-top: 1rem;
+    color: green;
+    border: 1px solid black;
+    padding: 0.5rem;
+    background: #D9DEE3;
+    text-align: center;
+    width: 67%;
+    margin-left: 1.7rem;
+}
+
+.hours-closed {
+    color: red;
+}
+
+.contact {
+    display: inline-block;
+    border: 2px solid black;
+    background: #D9DEE3;
+    width: 42%;
+    margin: 0 auto 1rem 0.5rem;
+    height: 9.4rem;
+
+    .address {
+        margin-top: 1rem;
+    }
+
+    h4 {
+        text-align: center;
+        margin: 0 0 0.5rem;
+    }
+}
+
+.map {
+    width: 50%;
+    float: right;
+    margin-right: 0.3rem;
+}
+
+.liked-heart {
+    color: red;
+}
+
+.links {
+    margin-top: 0.3rem;
+
+    img {
+        display: block;
+        margin: 0 auto;
+        width: 7rem;
+    }
+
+    .fa {
+        color: white;
+        position: absolute;
+        top: 17%;
+        left: 29%;
+        font-size: 2.5rem;
+    }
+}
+
+.review-section {
+    .reviewer-pic {
+        margin-left: 0.3rem;
+        border-radius: 50%;
+        width: 4rem;
+        margin-bottom: 3rem;
+        margin-right: 0.2rem;
+    }
+
+    span {
+        border: 1px solid black;
+        width: 75%;
+        float: right;
+        padding: 0.3rem;
+        background: #D9DEE3;
+        border-radius: 10px;
+        margin-right: 0.3rem;
+    }
+}
+
+.liked-overlay {
+    position: absolute;
     height: 9rem;
     width: 9.1rem;
     top: 1rem;
     left: 15px;
     background: rgba(0, 0, 0, 0.4);
     border-radius: 18px;
-    .liked{
-      font-size: 8rem;
-    color: #f40428;
-    display: block;
-    text-align: center;
-    margin-top: 0.6rem;
+
+    .liked {
+        font-size: 8rem;
+        color: #f40428;
+        display: block;
+        text-align: center;
+        margin-top: 0.6rem;
     }
-    h3{
-      display:none;
-      text-align:center;
-      font-size:2rem;
-      color:white;
+
+    h3 {
+        display: none;
+        text-align: center;
+        font-size: 2rem;
+        color: white;
     }
 }
-  @media(min-width:700px){
-    .results{
-      width:26rem;
-      display:inline-block;
-      vertical-align:top;
-      margin-right:0;
-      margin-left:1rem;
-      #heart-icon{
-        left:8px;
-      }
-      .picture{
-        margin-left:.5rem;
-        width:11rem;
-      }
-      .business-info{
-        margin-left:.5rem;
-      }
-    }
-    .address{
-      margin-top:1.5rem;
-    }
-    .liked-overlay{
-      height:11rem;
-      width:11rem;
-      left:8px;
-      .liked{
-        margin-top:1rem;
-      }
-    }
-  }
-  @media(min-width:1000px){
-      .business-name{
-        font-size:1.5rem;
-      }
-      .stars{
-        width:8rem;
-      }
-      .review-section{
-        span{
-          width:78%;
-          display:inline-block;
+@media(min-width:700px) {
+    .results {
+        width: 26rem;
+        display: inline-block;
+        vertical-align: top;
+        margin-right: 0;
+        margin-left: 1rem;
+
+        #heart-icon {
+            left: 8px;
         }
-        .reviewer-pic{
-          width:4rem;
-          display:inline-block;
-          margin-left:.3rem;
+
+        .picture {
+            margin-left: 0.5rem;
+            width: 11rem;
         }
-      }
+
+        .business-info {
+            margin-left: 0.5rem;
+        }
     }
+
+    .address {
+        margin-top: 1.5rem;
+    }
+
+    .liked-overlay {
+        height: 11rem;
+        width: 11rem;
+        left: 8px;
+
+        .liked {
+            margin-top: 1rem;
+        }
+    }
+}
+@media(min-width:1000px) {
+    .business-name {
+        font-size: 1.5rem;
+    }
+
+    .stars {
+        width: 8rem;
+    }
+
+    .review-section {
+        span {
+            width: 78%;
+            display: inline-block;
+        }
+
+        .reviewer-pic {
+            width: 4rem;
+            display: inline-block;
+            margin-left: 0.3rem;
+        }
+    }
+}

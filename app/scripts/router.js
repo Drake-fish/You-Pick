@@ -9,7 +9,10 @@ import Home from './components/containers/home';
 import Login from './components/containers/Login';
 import Register from './components/containers/Register';
 import Preferences from './components/containers/Preferences';
-import SavedSearches from './components/containers/savedSearches';
+import SaveTabs from './components/containers/SaveTabs';
+import SavedFoodSearches from './components/containers/SavedFoodSearches';
+import SavedEventSearches from './components/containers/SavedEventSearches';
+import SavedAdventureSearches from './components/containers/SavedAdventureSearches';
 
 
 const router=(
@@ -22,7 +25,7 @@ const router=(
         <Route path='/login' component={Login}/>
         <Route path='/register' component={Register}/>
         <Route path='/preferences' component={Preferences}/>
-        <Route path="/saved" component={SavedSearches}/>
+        <Route path="/saved" component={SaveTabs}/>
     </Route>
   </Router>
 );

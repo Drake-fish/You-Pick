@@ -2,8 +2,8 @@ import React from 'react';
 import {browserHistory,Link} from 'react-router';
 import _ from 'underscore';
 
-
-import SearchList from '../../components/SearchList';
+import Search from '../../components/search';
+import AdventureSearchList from '../../components/AdventureSearchList';
 import store from '../../store';
 
 
@@ -11,25 +11,33 @@ export default React.createClass({
             getInitialState() {
                 return {
                     places: store.places.toJSON(),
-                    session: store.session.toJSON()
+                    session: store.session.toJSON(),
+                    loading:false
                 }
             },
-            componentWillMount() {
-                store.session.on('change update', () => {
-                        this.setState({
-                            session: store.session.toJSON()
-                        });
-                    }),
-                    store.places.on('change update', () => {
-                        this.setState({
-                            places: store.places.toJSON()
-                        });
-                    });
-            },
-            componentWillUnmount() {
-                store.session.off('change update');
-                store.places.off('change update');
-            },
+        componentWillMount(){
+            store.session.on('change update', this.updateSession);
+            store.places.on('change update', this.updatePlaces);
+
+        },
+        componentWillUnmount(){
+          store.session.off('change update', this.updateSession);
+          store.places.off('change update', this.updatePlaces);
+
+        },
+
+        updateSession() {
+
+            this.setState({
+                session: store.session.toJSON()
+            });
+        },
+        updatePlaces() {
+            this.setState({
+                places: store.places.toJSON(),
+                loading:false
+            });
+        },
 
             render() {
                 let searchDiv;
@@ -42,16 +50,27 @@ export default React.createClass({
                 }
                 if (this.state.places.length === 0) {
                     browserHistory.push('/');
-                } else {
+                } else if(!this.state.loading){
                     let searchTerm = this.state.places[0].searchTerm;
                     let results = this.state.places;
-                    searchDiv = ( <div className = "search-results">
+                    searchDiv = (
+                                  <div className = "search-results">
+                                    <Search/>
                                     <h3 className = "search-title">{login} How about {this.state.places[0].searchTerm}</h3>
                                     <span className="research" onClick = {this.research}> (Try Again)</span>
 
-                                    <SearchList results = {results}/>
+                                    <AdventureSearchList results = {results}/>
                                   </div>
                                 );
+                      } else if(this.state.loading){
+                        searchDiv = (
+                                      <div className = "search-results">
+                                        <Search/>
+                                        <h3 className = "search-title">{login} How about {this.state.places[0].searchTerm}</h3>
+                                        <i id="try-again-loading" className="fa fa-spinner fa-pulse fa-3x fa-fw"></i>
+                                        <span className="sr-only">Loading...</span>
+                                      </div>
+                                    );
                       }
                 return (
                           <div>
@@ -61,7 +80,7 @@ export default React.createClass({
                     },
                     research() {
                         let prefs = this.state.session.adventure;
-
+                        this.setState({loading:true});
                         if (prefs) {
                             let weather = window.localStorage.getItem('description');
                             let coordinates = [window.localStorage.getItem('latitude'), window.localStorage.getItem('longitude')];

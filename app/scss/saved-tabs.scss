@@ -1,0 +1,54 @@
+.tabs{
+  list-style:none;
+  padding:0;
+  text-align:center;
+  margin-top:0;
+  li{
+    background:$icon-color;
+    padding-top:1rem;
+    padding-bottom:1rem;
+    display:inline-block;
+    width:33.33%;
+    color:white;
+    border:1px solid white;
+    box-sizing:border-box;
+    cursor:pointer;
+    transition:all .3s ease-in-out;
+    &:hover{
+      background:$background-color;
+      border-bottom:none;
+      border-left:2px solid white;
+      border-right:2px solid white;
+    }
+  }
+  .food-tab-open{
+    transform:scale(1.1);
+    border-left:2px solid white;
+    background:$background-color;
+    border-bottom:none;
+    border-right:2px solid white;
+    &:hover{
+      background:$background-color;
+    }
+  }
+  .event-tab-open{
+    transform:scale(1.1);
+    border-left:2px solid white;
+    background:$background-color;
+    border-bottom:none;
+    border-right:2px solid white;
+    &:hover{
+      background:$background-color;
+    }
+  }
+  .adventure-tab-open{
+    transform:scale(1.1);
+    border-left:2px solid white;
+    background:$background-color;
+    border-bottom:none;
+    border-right:2px solid white;
+    &:hover{
+      background:$background-color;
+    }
+  }
+}

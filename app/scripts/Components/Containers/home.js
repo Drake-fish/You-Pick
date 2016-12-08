@@ -11,6 +11,9 @@ import Weather from '../weather';
 export default React.createClass({
     getInitialState() {
         return {
+            foodLoading:false,
+            eventsLoading:false,
+            adventuresLoading:false,
             foodClicked:false,
             session: store.session.toJSON(),
             places: store.places.toJSON()
@@ -41,7 +44,10 @@ export default React.createClass({
     },
     updatePlaces() {
         this.setState({
-            places: store.places.toJSON()
+            places: store.places.toJSON(),
+            foodLoading:false,
+            eventsLoading:false,
+            adventuresLoading:false
         });
     },
 
@@ -53,7 +59,7 @@ export default React.createClass({
 
     render() {
       let FoodDiv;
-        if(!this.state.foodClicked){
+        if(!this.state.foodClicked && !this.state.loading){
           FoodDiv=(
             <div onClick = {this.handleFoodChoices} className = "overlay">
                 <div className = "food search">
@@ -62,7 +68,7 @@ export default React.createClass({
             </div>
           )
 
-        }else{
+        }else if(this.state.foodClicked && !this.state.loading){
           FoodDiv=(
             <div className = "food-clicked">
                 <div className = "food">
@@ -77,19 +83,65 @@ export default React.createClass({
                 </div>
             </div>
           );
+        }else if(!this.state.foodClicked && this.state.loading){
+          FoodDiv=(
+            <div className = "food-clicked">
+                <div className = "food">
+                    <div className="modal">
+
+                      <i id="loading" className="fa fa-spinner fa-pulse fa-3x fa-fw"></i>
+                      <span className="sr-only">Loading...</span>
+                    </div>
+                </div>
+            </div>
+
+          );
+        }
+        let AdventureDiv;
+        if(!this.state.adventuresLoading){
+          AdventureDiv=(
+                        <div onClick = {this.handleAdventure} className = "overlay">
+                          <div className = "random search" >
+                            <h3 className = "title" > ADVENTURE < /h3>
+                          </div>
+                        </div>
+
+                      );
+        }else{
+          AdventureDiv=(
+                        <div className = "overlay">
+                          <div className = "random search" >
+                          <i id="loading" className="fa fa-spinner fa-pulse fa-3x fa-fw"></i>
+                          <span className="sr-only">Loading...</span>
+                          </div>
+                        </div>
+
+                      );
+             }
+        let EventsDiv;
+        if(!this.state.eventsLoading){
+          EventsDiv=(
+                      <div onClick = {this.handleEvents} className = "overlay">
+                          <div className = "events search">
+                            <h3 className = "title"> EVENTS </h3>
+                          </div>
+                      </div>
+                    );
+
+        }else{
+          EventsDiv=(
+                      <div className = "overlay">
+                          <div className = "events search">
+                          <i id="loading" className="fa fa-spinner fa-pulse fa-3x fa-fw"></i>
+                          <span className="sr-only">Loading...</span>
+                          </div>
+                      </div>
+                    );
         }
         return ( <div className = "home">
-                    <div onClick = {this.handleEvents} className = "overlay">
-                        <div className = "events search">
-                          <h3 className = "title"> EVENTS </h3>
-                        </div>
-                    </div>
+                    {EventsDiv}
                     {FoodDiv}
-                    <div onClick = {this.handleAdventure} className = "overlay">
-                      <div className = "random search" >
-                        <h3 className = "title" > ADVENTURE < /h3>
-                      </div>
-                    </div>
+                    {AdventureDiv}
                 </div>
 
               );
@@ -99,6 +151,7 @@ export default React.createClass({
     },
     handleEvents() {
         console.log(this.state);
+        this.setState({eventsLoading:true});
         let prefs = this.state.session.events;
         if (prefs) {
             let trueEvents = [];
@@ -127,15 +180,18 @@ export default React.createClass({
     handleBreakfast(){
       let coordinates = [window.localStorage.getItem('latitude'), window.localStorage.getItem('longitude')];
       store.places.searchFood('breakfast', coordinates);
+      this.setState({loading:true,foodClicked:false});
 
     },
     handleLunch(){
       let coordinates = [window.localStorage.getItem('latitude'), window.localStorage.getItem('longitude')];
       store.places.searchFood('lunch', coordinates);
+      this.setState({loading:true,foodClicked:false});
     },
     handleDinner(){
       let coordinates = [window.localStorage.getItem('latitude'), window.localStorage.getItem('longitude')];
       store.places.searchFood('dinner', coordinates);
+      this.setState({loading:true, foodClicked:false});
     },
 
 
@@ -161,10 +217,12 @@ export default React.createClass({
             let selection = _.first(mixedFood);
             console.log(selection);
             store.places.searchFood(selection, coordinates);
+            this.setState({loading:true, foodClicked:false});
         }
     },
     handleAdventure() {
         let prefs = this.state.session.adventure;
+        this.setState({adventuresLoading:true});
 
         if (prefs) {
             let weather = window.localStorage.getItem('description');

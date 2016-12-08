@@ -1,16 +1,17 @@
 import React from 'react';
 
 import store from '../../store';
-import SavedItem from '../SavedItem';
+import SavedEventItem from '../SavedEventItem';
+import SaveTabs from './SaveTabs';
 
 export default React.createClass({
   getInitialState(){
     return{
-      session:store.session.toJSON()
+      session:store.session.toJSON(),
     };
   },
   componentWillMount(){
-    store.session.getSavedSearches();
+    store.session.getSavedSearches('likedEvents');
     store.session.on('update change',this.updateSession);
   },
   componentWillUnmount(){
@@ -24,20 +25,20 @@ export default React.createClass({
   render(){
     console.log(this.state);
     let savedSearches;
-    if(!this.state.session.savedSearches|| this.state.session.savedSearches.length===0){
-      console.log('returning div');
-      savedSearches=(<div>
-                      <h3 className="no-saved">No Searches Saved Yet!</h3>
-                     </div>);
+    if(!this.state.session.savedSearches || this.state.session.savedSearches.length===0){
+      savedSearches=<h3 className="no-saved">No Searches Saved Yet!</h3>;
+
     }else{
       console.log('mapping');
      savedSearches=this.state.session.savedSearches.map((search,i,arr)=>{
-      return <SavedItem key={i} search={search}/>;
+      return <SavedEventItem key={i} search={search}/>;
     });
+
   }
-    return(<ul className="saved-searches">
-            {savedSearches}
-           </ul>
+    return(
+          <div className="searches-container">
+              {savedSearches}
+          </div>
 
     );
   }

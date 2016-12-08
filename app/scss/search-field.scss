@@ -1,0 +1,30 @@
+.search-field{
+  height:1rem;
+  margin-top:1rem;
+  text-align:center;
+  position:relative;
+  .fa{
+    position: absolute;
+    top: 3px;
+    left: 16rem;
+  }
+  input{
+    ::-webkit-input-placeholder {
+        color: white;
+    }
+
+    :-moz-placeholder {
+        /* Firefox 18- */
+        color: white;
+    }
+
+    ::-moz-placeholder {
+        /* Firefox 19+ */
+        color: white;
+    }
+
+    :-ms-input-placeholder {
+        color: white;
+    }
+  }
+}

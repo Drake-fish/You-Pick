@@ -241,11 +241,12 @@ export default Backbone.Model.extend({
             }
         });
     },
-    addSearch(picture,title,address,phone,moreInfo){
+    addSearch(picture,title,address,phone,moreInfo,type){
+      console.log(type);
       $.ajax({
         type:'POST',
         contentType:'application/json',
-        url:'https://api.backendless.com/v1/data/likedSearches',
+        url:`https://api.backendless.com/v1/data/${type}`,
         data:JSON.stringify({
           picture,
           title,
@@ -255,9 +256,10 @@ export default Backbone.Model.extend({
         })
       });
     },
-    getSavedSearches(){
+    getSavedSearches(type){
+      console.log(type);
       $.ajax({
-        url:'https://api.backendless.com/v1/data/likedSearches',
+        url:`https://api.backendless.com/v1/data/${type}`,
         success:(response)=>{
           let searches=response.data.filter((search,i,arr)=>{
             if(search.ownerId===window.localStorage.getItem('user-objectId')){
@@ -271,12 +273,12 @@ export default Backbone.Model.extend({
         }
       });
     },
-    deleteSearches(objectId){
+    deleteSearches(objectId,type){
       $.ajax({
         type:'DELETE',
-        url:`https://api.backendless.com/v1/data/likedSearches/${objectId}`,
+        url:`https://api.backendless.com/v1/data/${type}/${objectId}`,
         success:()=>{
-          this.getSavedSearches();
+          this.getSavedSearches(type);
         }
     });
   }

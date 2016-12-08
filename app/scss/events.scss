@@ -1,118 +1,145 @@
-
-.overlay{
+.overlay {
     background-image: repeating-linear-gradient(to top,rgb(0, 0, 0) 0%,rgba(0, 0, 0, 0) 100%);
-    display:block;
-  height:23rem;
-  cursor:pointer;
-}
-.search{
-  opacity:.7;
-  width:100%;
-  height:23rem;
-  transition:opacity .6s;
-  display:inline-block;
-  &:hover{
-    opacity:1;
-  }
+    display: block;
+    height: 23rem;
+    cursor: pointer;
+    position:relative;
 }
 
-.events{
-  background:url('../assets/images/events.jpg');
-  background-size:cover;
-}
-.title{
-    text-align:center;
-    color:white;
-    font-size:4rem;
-}
-.food-clicked{
-  vertical-align:top;
-  display:inline-block;
-  width:100%;
-  position:relative;
-  .type{
-    text-align:center;
-    color:white;
-    font-size:4rem;
-    margin:0;
-    margin-bottom:1rem;
-    padding-top:1rem;
-  }
-  span{
-    display:block;
-    color:white;
-    margin-left:25%;
-    font-size:2.5rem;
-    cursor:pointer;
-    transition:color .3s ease-in-out;
-    &:hover{
-      color:#FF3333;
+.search {
+    opacity: 0.7;
+    width: 100%;
+    height: 23rem;
+    transition: opacity 0.6s;
+    display: inline-block;
+
+    &:hover {
+        opacity: 1;
     }
-  }
 }
-.modal{
-  width: 85%;
-position: absolute;
-top: 24px;
-border: 2px solid black;
-margin-left: 8%;
-border-radius: 13px;
-background: rgba(0,0,0,.5);
-height:20rem;
-.fa-times{
+
+.events {
+    background: url('../assets/images/events.jpg');
+    background-size: cover;
+}
+
+.title {
+    text-align: center;
+    color: white;
+    font-size: 4rem;
+}
+
+.food-clicked {
+    vertical-align: top;
+    display: inline-block;
+    width: 100%;
+    position: relative;
+
+    .type {
+        text-align: center;
+        color: white;
+        font-size: 4rem;
+        margin: 0 0 1rem;
+        padding-top: 1rem;
+    }
+
+    span {
+        display: block;
+        color: white;
+        margin-left: 25%;
+        font-size: 2.5rem;
+        cursor: pointer;
+        transition: color 0.3s ease-in-out;
+
+        &:hover {
+            color: #FF3333;
+        }
+    }
+}
+.fa-spinner{
+  color:white;
+}
+#loading{
   position: absolute;
-    top: 2%;
-    left: 3%;
-    font-size: 1.5rem;
-    color: $icon-color;
-    cursor:pointer;
-    transition:color .3s ease-in-out;
-    &:hover{
-      color:red;
-    }
-  }
+    top: 40%;
+    left: 33%;
+    font-size: 5rem;
 }
-.food{
-  background:url('../assets/images/food.jpg');
-  background-size:cover;
-  background-position-y:-3rem;
-  height:23rem;
+.modal {
+    width: 85%;
+    position: absolute;
+    top: 24px;
+    border: 2px solid black;
+    margin-left: 8%;
+    border-radius: 13px;
+    background: rgba(0,0,0,.5);
+    height: 20rem;
+
+    .fa-times {
+        position: absolute;
+        top: 2%;
+        left: 3%;
+        font-size: 1.5rem;
+        color: $icon-color;
+        cursor: pointer;
+        transition: color 0.3s ease-in-out;
+
+        &:hover {
+            color: red;
+        }
+    }
 }
 
-.random{
-  background:url('../assets/images/random.jpg');
-  background-size:cover;
+.food {
+    background: url('../assets/images/food.jpg');
+    background-size: cover;
+    background-position-y: -3rem;
+    height: 23rem;
 }
-@media(min-width:800px){
-  .overlay{
-    width:33.33%;
-    display:inline-block;
-    height:18rem;
-  }
-  .title{
-    font-size:2.6rem;
-  }
-  .food{
-    background-position-y:0;
-    height:18rem;
-  }
-  .events{
-    height:18rem;
-  }
-  .random{
-    height:18rem;
-  }
-  .food-clicked{
-    width:33%;
-    height:18rem;
-  }
-  .modal{
-    height:16rem;
-    .type{
-      font-size:3rem;
+
+.random {
+    background: url('../assets/images/random.jpg');
+    background-size: cover;
+}
+@media(min-width:700px) {
+    .overlay {
+        width: 33.33%;
+        display: inline-block;
+        height: 18rem;
+        vertical-align:top;
     }
-    span{
-      font-size:2rem;
+
+    .title {
+        font-size: 2.6rem;
     }
-  }
+
+    .food {
+        background-position-y: 0;
+        height: 18rem;
+    }
+
+    .events {
+        height: 18rem;
+    }
+
+    .random {
+        height: 18rem;
+    }
+
+    .food-clicked {
+        width: 33%;
+        height: 18rem;
+    }
+
+    .modal {
+        height: 16rem;
+
+        .type {
+            font-size: 3rem;
+        }
+
+        span {
+            font-size: 2rem;
+        }
+    }
 }

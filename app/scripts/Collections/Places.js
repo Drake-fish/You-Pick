@@ -10,7 +10,7 @@ import config from '../config';
 
 export default Backbone.Collection.extend({
     model: Place,
-    searchFood(term, coordinates) {
+    searchFood(term, coordinates,where) {
         return new Promise((resolve, reject) => {
 
             let cll = `${coordinates[0]},${coordinates[1]}`;
