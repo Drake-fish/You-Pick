@@ -10,9 +10,197 @@ import config from '../config';
 
 export default Backbone.Collection.extend({
     model: Place,
-    searchFood(term, coordinates,where) {
+    // searchBestAdventures(term, coordinates, limit) {
+    //     return new Promise((resolve, reject) => {
+    //         let numberOfResults;
+    //         if(limit){
+    //           numberOfResults=limit;
+    //         }else{
+    //           numberOfResults=20;
+    //         }
+    //         let sort=2;
+    //         let cll = `${coordinates[0]},${coordinates[1]}`;
+    //         console.log(term);
+    //         let auth = {
+    //             consumerKey: config.consumerKey,
+    //             consumerSecret: config.consumerSecret,
+    //             accessToken: config.accessToken,
+    //             accessTokenSecret: config.accessTokenSecret,
+    //             serviceProvider: {
+    //                 signatureMethod: "HMAC-SHA1",
+    //             },
+    //         };
+    //         let terms = term;
+    //         let accessor = {
+    //             consumerSecret: config.consumerSecret,
+    //             tokenSecret: config.accessTokenSecret,
+    //         };
+    //
+    //         let parameters = [];
+    //         parameters.push(['limit',numberOfResults]);
+    //         parameters.push(['ll', cll]);
+    //         parameters.push(['sort_by', 'distance']);
+    //         parameters.push(['categories', 'food']);
+    //         parameters.push(['term', terms]);
+    //         parameters.push(['sort', sort]);
+    //         parameters.push(['callback', 'cb']);
+    //         parameters.push(['oauth_consumer_key', config.consumerKey]);
+    //         parameters.push(['oauth_consumer_secret', config.consumerSecret]);
+    //         parameters.push(['oauth_token', config.accessToken]);
+    //         parameters.push(['oauth_signature_method', 'HMAC-SHA1']);
+    //
+    //
+    //         let message = {
+    //             'action': 'https://api.yelp.com/v2/search',
+    //             'method': 'GET',
+    //             'parameters': parameters,
+    //         };
+    //
+    //         OAuth.setTimestampAndNonce(message);
+    //         OAuth.SignatureMethod.sign(message, accessor);
+    //         let parameterMap = OAuth.getParameterMap(message.parameters);
+    //         $.ajax({
+    //                 'url': message.action,
+    //                 'data': parameterMap,
+    //                 'dataType': 'jsonp',
+    //                 'cache': true,
+    //             }).then((places) => {
+    //                 let placeList = places.businesses.map((place) => {
+    //                     let distance;
+    //                     if (place.distance) {
+    //                         distance = place.distance;
+    //                     }
+    //                     console.log(place);
+    //                     return {
+    //                         searchTerm: term,
+    //                         name: place.name,
+    //                         yelpRating: place.rating,
+    //                         yelpRatingStars: place.rating_img_url,
+    //                         yelpMobileUrl: place.mobile_url,
+    //                         yelpID: place.id,
+    //                         categories: place.categories,
+    //                         imageUrl: place.image_url,
+    //                         snippetImageUrl: place.snippet_image_url,
+    //                         snippetText: place.snippet_text,
+    //                         ll: place.location.coordinate,
+    //                         address: place.location.display_address,
+    //                         neighborhoods: place.location.neighborhoods,
+    //                         isClosed: place.is_closed,
+    //                         reviewCount: place.review_count,
+    //                         phoneNumber: place.display_phone,
+    //                         moreInfo: place.url,
+    //                         distance: distance
+    //
+    //                     }
+    //                 });
+    //                 this.set({bestAdventures:placeList});
+    //                 resolve();
+    //
+    //             })
+    //             .fail(function(e) {
+    //                 console.error('Yelp Data failed: ', e)
+    //                 reject();
+    //             });
+    //     });
+    // },
+    // searchBestFood(term, coordinates, limit) {
+    //     return new Promise((resolve, reject) => {
+    //         let numberOfResults;
+    //         if(limit){
+    //           numberOfResults=limit;
+    //         }else{
+    //           numberOfResults=20;
+    //         }
+    //         let sort=2;
+    //         let cll = `${coordinates[0]},${coordinates[1]}`;
+    //         console.log(term);
+    //         let auth = {
+    //             consumerKey: config.consumerKey,
+    //             consumerSecret: config.consumerSecret,
+    //             accessToken: config.accessToken,
+    //             accessTokenSecret: config.accessTokenSecret,
+    //             serviceProvider: {
+    //                 signatureMethod: "HMAC-SHA1",
+    //             },
+    //         };
+    //         let terms = term;
+    //         let accessor = {
+    //             consumerSecret: config.consumerSecret,
+    //             tokenSecret: config.accessTokenSecret,
+    //         };
+    //
+    //         let parameters = [];
+    //         parameters.push(['limit',numberOfResults]);
+    //         parameters.push(['ll', cll]);
+    //         parameters.push(['sort_by', 'distance']);
+    //         parameters.push(['categories', 'food']);
+    //         parameters.push(['term', terms]);
+    //         parameters.push(['sort', sort]);
+    //         parameters.push(['callback', 'cb']);
+    //         parameters.push(['oauth_consumer_key', config.consumerKey]);
+    //         parameters.push(['oauth_consumer_secret', config.consumerSecret]);
+    //         parameters.push(['oauth_token', config.accessToken]);
+    //         parameters.push(['oauth_signature_method', 'HMAC-SHA1']);
+    //
+    //
+    //         let message = {
+    //             'action': 'https://api.yelp.com/v2/search',
+    //             'method': 'GET',
+    //             'parameters': parameters,
+    //         };
+    //
+    //         OAuth.setTimestampAndNonce(message);
+    //         OAuth.SignatureMethod.sign(message, accessor);
+    //         let parameterMap = OAuth.getParameterMap(message.parameters);
+    //         $.ajax({
+    //                 'url': message.action,
+    //                 'data': parameterMap,
+    //                 'dataType': 'jsonp',
+    //                 'cache': true,
+    //             }).then((places) => {
+    //                 let placeList = places.businesses.map((place) => {
+    //                     let distance;
+    //                     if (place.distance) {
+    //                         distance = place.distance;
+    //                     }
+    //                     console.log(place);
+    //                     return {
+    //                         searchTerm: term,
+    //                         name: place.name,
+    //                         yelpRating: place.rating,
+    //                         yelpRatingStars: place.rating_img_url,
+    //                         yelpMobileUrl: place.mobile_url,
+    //                         yelpID: place.id,
+    //                         categories: place.categories,
+    //                         imageUrl: place.image_url,
+    //                         snippetImageUrl: place.snippet_image_url,
+    //                         snippetText: place.snippet_text,
+    //                         ll: place.location.coordinate,
+    //                         address: place.location.display_address,
+    //                         neighborhoods: place.location.neighborhoods,
+    //                         isClosed: place.is_closed,
+    //                         reviewCount: place.review_count,
+    //                         phoneNumber: place.display_phone,
+    //                         moreInfo: place.url,
+    //                         distance: distance
+    //
+    //                     }
+    //                 });
+    //                 this.set({bestFood:placeList});
+    //                 resolve();
+    //
+    //             })
+    //             .fail(function(e) {
+    //                 console.error('Yelp Data failed: ', e)
+    //                 reject();
+    //             });
+    //     });
+    // },
+    searchFood(term, coordinates, pushHistory) {
         return new Promise((resolve, reject) => {
+            let numberOfResults;
 
+            let sort=2;
             let cll = `${coordinates[0]},${coordinates[1]}`;
             console.log(term);
             this.reset();
@@ -26,14 +214,13 @@ export default Backbone.Collection.extend({
                 },
             };
             let terms = term;
-            let sort = 0;
             let accessor = {
                 consumerSecret: config.consumerSecret,
                 tokenSecret: config.accessTokenSecret,
             };
 
             let parameters = [];
-
+            parameters.push(['limit',20]);
             parameters.push(['ll', cll]);
             parameters.push(['sort_by', 'distance']);
             parameters.push(['categories', 'food']);
@@ -90,7 +277,9 @@ export default Backbone.Collection.extend({
                         }
                     });
                     this.add(placeList);
+                    if(!pushHistory){
                     browserHistory.push('foodresults');
+                  }
                     resolve();
 
                 })

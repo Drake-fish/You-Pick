@@ -1,11 +1,10 @@
 import React from 'react';
 import _ from 'underscore';
-import {
-    browserHistory
-} from 'react-router';
+import { browserHistory } from 'react-router';
 
 import store from '../../store';
 import Weather from '../weather';
+import BestFood from '../BestFood';
 
 
 export default React.createClass({
@@ -29,6 +28,10 @@ export default React.createClass({
         store.session.on('change update', this.updateSession);
         store.places.on('change update', this.updatePlaces);
 
+    },
+    componentDidMount(){
+      let coordinates = [window.localStorage.getItem('latitude'), window.localStorage.getItem('longitude')];
+      store.places.searchFood('restaurants',coordinates,'push');
     },
     componentWillUnmount(){
       store.session.off('change update', this.updateSession);
@@ -138,11 +141,16 @@ export default React.createClass({
                       </div>
                     );
         }
+        console.log(this.state);
         return ( <div className = "home">
                     {EventsDiv}
                     {FoodDiv}
                     {AdventureDiv}
-                </div>
+                    <div className="best">
+                      <h3>Our Favorite Restaurants</h3>
+                      <BestFood foods={this.state.places}/>
+                    </div>
+                 </div>
 
               );
     },
@@ -174,7 +182,6 @@ export default React.createClass({
         }
     },
     handleFoodChoices(){
-      console.log('food clicked');
       this.setState({foodClicked:true});
     },
     handleBreakfast(){

@@ -1,0 +1,25 @@
+.best{
+  display:none;
+}
+
+@media(min-width:700px){
+  .best{
+    position:relative;
+    display:block;
+    ul{
+      list-style:none;
+      padding:0;
+      text-align:center;
+    }
+    h3{
+      font-size:2rem;
+      text-align:center;
+      color:white;
+    }
+    #loading-home{
+      position:absolute;
+    left:78%;
+    margin-top:-73px;
+    }
+  }
+}

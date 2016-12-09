@@ -1,5 +1,5 @@
 import React from 'react';
-
+import {StickyContainer,Sticky} from 'react-sticky';
 import Header from '../header';
 import Nav from '../Nav';
 import store from '../../store';
@@ -10,10 +10,12 @@ export default React.createClass({
 
 render(){
   return(
+    <StickyContainer>
     <div id="app">
-      <Header/>
+          <Header/>
         {this.props.children}
     </div>
+    </StickyContainer>
   );
 
 }

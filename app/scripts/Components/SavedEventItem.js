@@ -22,7 +22,7 @@ export default React.createClass({
   delete(){
     console.log('deleting');
     let objectId=this.props.search.objectId;
-    store.session.deleteSearches(objectId);
+    store.session.deleteSearches(objectId,'likedEvents');
 
   }
 });

@@ -1,14 +1,27 @@
 .search-field{
-  height:1rem;
-  margin-top:1rem;
-  text-align:center;
-  position:relative;
+  display:none;
+}
+
+
+
+@media(min-width:830px){
+
+.search-field{
+    display: inline-block;
+    text-align: center;
+    position: relative;
+    margin-left: 4rem;
+    float:left;
+    padding-bottom:.5rem;
   .fa{
     position: absolute;
-    top: 3px;
-    left: 16rem;
+    left: 158px;
+    top:3px;
+    z-index:1;
   }
   input{
+    border-radius:9px;
+    padding-left:.5rem;
     ::-webkit-input-placeholder {
         color: white;
     }
@@ -27,4 +40,5 @@
         color: white;
     }
   }
+}
 }

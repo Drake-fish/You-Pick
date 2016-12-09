@@ -59,7 +59,6 @@ export default React.createClass({
       let results=this.state.places;
       searchDiv=(
         <div className="search-results">
-          <Search/>
           <h3 className="search-title">{login} How about {this.state.places[0].searchTerm} {food}</h3>
           <span className="research" onClick={this.search}>(Try Again)</span>
 
@@ -69,7 +68,6 @@ export default React.createClass({
     }else if(this.state.loading){
       searchDiv = (
                     <div className = "search-results">
-                      <Search/>
                       <h3 className = "search-title">{login} How about {this.state.places[0].searchTerm}</h3>
                       <i id="try-again-loading" className="fa fa-spinner fa-pulse fa-3x fa-fw"></i>
                       <span className="sr-only">Loading...</span>

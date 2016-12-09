@@ -1,7 +1,9 @@
 import React from 'react';
 import { Link } from 'react-router';
 import $ from 'jquery';
+import {StickyContainer,Sticky} from 'react-sticky';
 
+import Search from './search';
 import store from '../store';
 
 export default React.createClass({
@@ -25,9 +27,12 @@ export default React.createClass({
       );
     }
     return(
+    <Sticky topOffset={400}>
     <div className="nav-container">
+      <Search/>
       {nav}
     </div>
+    </Sticky>
     );
   },
   handleClick(){
