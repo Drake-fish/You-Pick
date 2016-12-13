@@ -137,35 +137,29 @@ export default React.createClass({
 
               );
     },
-    handleExit(e){
-      e.preventDefault();
+    handleExit(){
       this.setState({foodClicked:false});
     },
-    handleEvents(e) {
-      e.preventDefault();
+    handleEvents() {
         this.setState({eventsLoading:true});
         let prefs = this.state.session.events;
         store.places.getEvents(prefs);
     },
-    handleFoodChoices(e){
-      e.preventDefault();
+    handleFoodChoices(){
       this.setState({foodClicked:true});
     },
-    handleBreakfast(e){
-      e.preventDefault();
+    handleBreakfast(){
       store.places.searchBreakfast();
       this.setState({loading:true,foodClicked:false});
 
     },
-    handleFood(e) {
-      e.preventDefault();
+    handleFood() {
 
         let prefs = this.state.session.prefs;
         store.places.searchFood(prefs);
         this.setState({loading:true,foodClicked:false});
     },
-    handleAdventure(e) {
-      e.preventDefault();
+    handleAdventure() {
         let prefs = this.state.session.adventure;
         this.setState({adventuresLoading:true});
         store.places.searchAdventure(prefs);

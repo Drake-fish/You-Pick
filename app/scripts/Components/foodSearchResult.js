@@ -114,8 +114,7 @@ export default React.createClass({
         );
 
   },
-  save(e){
-    e.preventDefault();
+  save(){
     let picture=this.props.place.imageUrl;
     let title=this.props.place.name;
     let address=this.props.place.address[0];

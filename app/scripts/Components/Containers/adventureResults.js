@@ -78,8 +78,7 @@ export default React.createClass({
                           </div>
                         );
                     },
-                    research(e) {
-                        e.preventDefault();
+                    research() {
                         let prefs = this.state.session.adventure;
                         this.setState({loading:true});
                         let searchTerm=this.state.places[0].searchTerm;

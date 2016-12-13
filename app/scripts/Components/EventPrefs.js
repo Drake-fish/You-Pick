@@ -74,12 +74,10 @@ export default React.createClass({
 
     );
   },
-  handleExit(e){
-    e.preventDefault();
+  handleExit(){
     this.setState({addEvent:false,success:false});
   },
-  handleAddEvent(e){
-    e.preventDefault();
+  handleAddEvent(){
     this.setState({addEvent:true});
 
   },

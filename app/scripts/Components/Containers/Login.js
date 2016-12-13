@@ -39,8 +39,7 @@ componentWillUnmount(){
       </div>
     );
   },
-  handleForgotPassword(e){
-    e.preventDefault();
+  handleForgotPassword(){
     let email=this.refs.email.value;
     store.session.forgotPassword(email);
   },

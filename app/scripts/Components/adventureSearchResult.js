@@ -66,7 +66,7 @@ export default React.createClass({
          <div className="review-section">
              <span className="arrow_box">{this.props.place.snippetText}<a href={this.props.place.moreInfo} target="_blank"><img className="yelp" src="https://s3-media2.fl.yelpcdn.com/assets/srv0/developer_pages/ebeb7fcf7307/assets/img/yelp-2c-outline.png"/></a></span>
              <img className="reviewer-pic" src={this.props.place.snippetImageUrl}/>
-         </div>
+        </div>
       </li>
      );
    }else{
@@ -114,8 +114,7 @@ export default React.createClass({
         );
 
   },
-  save(e){
-    e.preventDefault();
+  save(){
     let picture=this.props.place.imageUrl;
     let title=this.props.place.name;
     let address=this.props.place.address[0];

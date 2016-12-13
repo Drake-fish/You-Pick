@@ -73,6 +73,7 @@ export default React.createClass({
     this.setState({addAdventures:false,success:false});
   },
   handleAddAdventure(){
+    console.log('adding-adventure');
     this.setState({addAdventures:true});
 
   },

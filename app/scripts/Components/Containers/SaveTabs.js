@@ -84,17 +84,14 @@ export default React.createClass({
             </div>
     );
   },
-  handleFood(e){
-    e.preventDefault();
+  handleFood(){
 
     this.setState({food:true,adventures:false,events:false});
   },
-  handleAdventures(e){
-    e.preventDefault();
+  handleAdventures(){
     this.setState({food:false,adventures:true,events:false});
   },
-  handleEvents(e){
-    e.preventDefault();
+  handleEvents(){
     this.setState({food:false,adventures:false,events:true});
   }
 });

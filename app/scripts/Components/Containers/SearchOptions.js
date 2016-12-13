@@ -156,8 +156,7 @@ export default React.createClass({
     },
 
 
-    handleFood(e) {
-      e.preventDefault();
+    handleFood() {
         let prefs;
         if(this.state.session.prefs){
           prefs=this.state.session.prefs;
@@ -165,8 +164,7 @@ export default React.createClass({
         store.places.searchFood(prefs);
         this.setState({foodLoading:true, foodClicked:false});
     },
-    handleAdventure(e) {
-      e.preventDefault();
+    handleAdventure() {
         let prefs = this.state.session.adventure;
         this.setState({adventuresLoading:true});
                 store.places.searchAdventure(prefs);

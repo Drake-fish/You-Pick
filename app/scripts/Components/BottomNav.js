@@ -111,20 +111,16 @@ export default React.createClass({
 
     );
   },
-  handleClose(e){
-    e.preventDefault();
+  handleClose(){
   this.setState({searchOpen:false, food:false});
   },
-  openFood(e){
-    e.preventDefault();
+  openFood(){
     this.setState({food:true});
   },
-  handleSearch(e){
-    e.preventDefault();
+  handleSearch(){
     this.setState({searchOpen:true});
   },
-  handleEvents(e) {
-    e.preventDefault();
+  handleEvents() {
       let prefs = this.state.session.events;
       this.setState({loading:true});
       store.places.getEvents(prefs);
@@ -138,22 +134,19 @@ export default React.createClass({
       this.setState({searchOpen:false, food:false, loading:true});
       window.scrollTo(0,0);
   },
-  handleBreakfast(e){
-    e.preventDefault();
+  handleBreakfast(){
     store.places.searchBreakfast();
     this.setState({searchOpen:false, food:false, loading:true});
     window.scrollTo(0,0);
 
   },
-  handleFood(e) {
-    e.preventDefault();
+  handleFood() {
       window.scrollTo(0,0);
       let prefs = this.state.session.prefs;
       store.places.searchFood(prefs);
       this.setState({searchOpen:false,food:false,loading:true});
   },
-  handleAdventure(e) {
-    e.preventDefault();
+  handleAdventure() {
       let prefs = this.state.session.adventure;
       this.setState({searchOpen:false, food:false,loading:true});
       store.places.searchAdventure(prefs);

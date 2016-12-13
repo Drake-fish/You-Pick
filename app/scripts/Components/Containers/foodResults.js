@@ -79,8 +79,7 @@ export default React.createClass({
                 {searchDiv}
              </div>);
     },
-    search(e){
-      e.preventDefault();
+    search(){
       this.setState({loading:true});
       let searchTerm=this.state.places[0].searchTerm;
       let prefs=this.state.session.prefs;

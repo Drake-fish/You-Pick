@@ -125,19 +125,16 @@ export default React.createClass({
 
               );
     },
-    searchEvents(e) {
-      e.preventDefault();
+    searchEvents() {
         let prefs = this.state.session.events;
         store.places.getEvents(prefs);
     },
-    searchFood(e) {
-      e.preventDefault();
+    searchFood() {
 
         let prefs = this.state.session.prefs;
         store.places.searchFood(prefs);
     },
-    searchAdventures(e) {
-      e.preventDefault();
+    searchAdventures() {
         let prefs = this.state.session.adventure;
 
         store.places.searchAdventure(prefs);
