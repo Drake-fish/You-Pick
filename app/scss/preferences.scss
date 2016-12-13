@@ -8,11 +8,19 @@
     -webkit-user-select: none;
     -moz-user-select: none;
     -ms-user-select: none;
+    margin-left:1rem;
 
     span {
         text-align: center;
         display: block;
     }
+}
+
+h4{
+  display:block;
+  margin:0;
+text-align:center;
+text-transform:uppercase;
 }
 
 .onoffswitch-checkbox {
@@ -85,6 +93,9 @@
     right: 0;
 }
 //preferences boxes
+#event-preferences{
+  margin-bottom:4rem;
+}
 .preferences {
     display: block;
     width: 85%;
@@ -92,27 +103,33 @@
     border: 2px solid black;
     margin-top: 3rem;
     background: $text-color;
-
     ul {
         padding: 0;
-        margin-left: 1.2rem;
     }
 
     h2 {
-        margin: 1rem auto 0;
-        display: inline-block;
-        font-size: 1.3rem;
+        display:block;
+        border-bottom:1px solid black;
+        padding-left:1rem;
+        font-size:1.3rem;
     }
-
-    input {
-        padding: 0.5rem;
-        border-radius: 10px;
-        background: $icon-color;
-        color: white;
-        outline: none;
-        margin-bottom: 0.2rem;
-        position: relative;
+    h3{
+      margin-left:1rem;
     }
+    .add-button{
+      margin-left:1rem;
+      cursor:pointer;
+      color:green;
+    }
+.add-input{
+  display:inline-block;
+  background: $icon-color;
+  color: white;
+  outline: none;
+  margin-bottom: 0.2rem;
+  position: relative;
+  width:10rem;
+}
 
     ::-webkit-input-placeholder {
         color: white;
@@ -133,32 +150,31 @@
     }
 
     .fa {
-        font-size: 1.5rem;
+        font-size: 1rem;
         cursor: pointer;
         display: block;
     }
-
     .fa-plus-circle {
-        margin-left: 0.5rem;
-        display: inline-block;
-
-        &:hover {
-            color: green;
-        }
+        display:inline-block;
     }
 }
-
+#submit-food{
+  position: absolute;
+  top: 5px;
+      left: 146px;
+}
+.add-term{
+  position:relative;
+}
 .fa-times {
-    position: absolute;
-    left: 16%;
-    top: 65%;
+  position: absolute;
+ left: -14px;
+ top: 18%;
 
     &:hover {
         color: red;
     }
 }
-
-.add-term {}
 
 .preference-header {
     text-align: center;
@@ -205,4 +221,13 @@
             font-size: 1.3rem;
         }
     }
+    .add-input{
+      width:10rem;
+    }
+}
+@media(min-width:600px){
+  .preferences{
+    width:49rem;
+
+  }
 }

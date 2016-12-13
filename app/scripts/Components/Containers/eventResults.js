@@ -5,6 +5,7 @@ import _ from 'underscore';
 
 import EventList from '../../components/EventList';
 import store from '../../store';
+import SearchOptions from './SearchOptions';
 
 
 export default React.createClass({
@@ -54,42 +55,25 @@ export default React.createClass({
     }else if(!this.state.loading){
       let results=this.state.places;
       let searchTerm=this.state.places[0].searchTerm;
-      if(searchTerm.includes('festivals')){
-        searchTerm='Festival';
-      }else if(searchTerm.includes('singles')){
-        searchTerm='Night Life';
-      }else if(searchTerm.includes('outdoors')){
-        searchTerm="Outdoor";
-      }else if(searchTerm.includes('movies')){
-        searchTerm="Film";
-      }
       searchDiv=(
         <div className="search-results">
-          <h3 className="search-title">{login} {searchTerm} Events Going on This Week</h3>
+          <h3 className="search-title">{login} How About {searchTerm} Events</h3>
           <span className="research" onClick={this.research}>(Try Again)</span>
           <EventList results={results}/>
         </div>
       );
     }else if(this.state.loading){
       let searchTerm=this.state.places[0].searchTerm;
-      if(searchTerm.includes('festivals')){
-        searchTerm='Festival';
-      }else if(searchTerm.includes('singles')){
-        searchTerm='Night Life';
-      }else if(searchTerm.includes('outdoors')){
-        searchTerm="Outdoor";
-      }else if(searchTerm.includes('movies')){
-        searchTerm="Film";
-      }
       searchDiv = (
                     <div className = "search-results">
-                      <h3 className="search-title">{login} {searchTerm} Events Going on This Week</h3>
+                      <h3 className="search-title">{login} How About {searchTerm} Events </h3>
                       <i id="try-again-loading" className="fa fa-spinner fa-pulse fa-3x fa-fw"></i>
                       <span className="sr-only">Loading...</span>
                     </div>
                   );
     }
       return (<div>
+                <SearchOptions/>
                 {searchDiv}
              </div>);
     },

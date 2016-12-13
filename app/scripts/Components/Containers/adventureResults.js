@@ -5,6 +5,7 @@ import _ from 'underscore';
 import Search from '../../components/search';
 import AdventureSearchList from '../../components/AdventureSearchList';
 import store from '../../store';
+import SearchOptions from './SearchOptions';
 
 
 export default React.createClass({
@@ -55,7 +56,7 @@ export default React.createClass({
                     let results = this.state.places;
                     searchDiv = (
                                   <div className = "search-results">
-                                    <h3 className = "search-title">{login} How about {this.state.places[0].searchTerm}</h3>
+                                    <h3 className = "search-title">{login} How About {this.state.places[0].searchTerm}</h3>
                                     <span className="research" onClick = {this.research}> (Try Again)</span>
 
                                     <AdventureSearchList results = {results}/>
@@ -72,6 +73,7 @@ export default React.createClass({
                       }
                 return (
                           <div>
+                            <SearchOptions/>
                             {searchDiv}
                           </div>
                         );
@@ -82,10 +84,9 @@ export default React.createClass({
                         if (prefs) {
                             let weather = window.localStorage.getItem('description');
                             let coordinates = [window.localStorage.getItem('latitude'), window.localStorage.getItem('longitude')];
-                            console.log('loggedin');
+                            let temp= window.localStorage.getItem('temp');
                             let trueAdventures = [];
-                            if (weather.includes('rain')) {
-                                console.log('its raining');
+                            if (weather.includes('rain')|| temp<60) {
                                 _.mapObject(prefs, function(val, key) {
                                     if (key.match(/^(arcades|Spas|Coffee|Bowling|escape|Aquariums|Lasertag|Movies|Bingo|shopping|Wineries|Breweries|Bookstores|Bars)$/) && val === true) {
                                         trueAdventures.push(key);
@@ -93,23 +94,21 @@ export default React.createClass({
                                 });
                                 let mixedAdventures = _.shuffle(trueAdventures);
                                 let selection = _.first(mixedAdventures);
-                                console.log('rain ' + selection);
                                 store.places.searchAdventure(selection, coordinates);
                             } else {
                                 _.mapObject(prefs, function(val, key) {
                                     if (val === true) {
                                         trueAdventures.push(key);
-                                        console.log(key);
                                     }
                                 });
                                 let mixedAdventures = _.shuffle(trueAdventures);
                                 let selection = _.first(mixedAdventures);
-                                console.log('not raining ' + selection);
                                 store.places.searchAdventure(selection, coordinates);
                             }
                         } else {
                             let weather = window.localStorage.getItem('description');
-                            if (weather.includes('rain')) {
+                            let temp= window.localStorage.getItem('temp');
+                            if (weather.includes('rain')|| temp<60) {
                                 let trueAdventures = ['Arcades', 'Bars', 'Bingo', 'Bookstores', 'Bowling', 'Coffee', 'Escape', 'LaserTag', 'Movies', 'Museums', 'Shopping', 'Spas', 'Trampolines', 'Aquariums', 'Breweries', 'GoKarts', 'Movies', 'Wineries'];
                                 let coordinates = [window.localStorage.getItem('latitude'), window.localStorage.getItem('longitude')];
                                 let mixedAdventures = _.shuffle(trueAdventures);

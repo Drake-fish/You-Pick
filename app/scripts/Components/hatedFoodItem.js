@@ -12,7 +12,7 @@ export default React.createClass({
   render(){
     return(
   <div className="onoffswitch">
-      <span>{this.props.food}</span>
+      <h4>{this.props.food}</h4>
       <input onChange={this.handleChange} type="checkbox" name="onoffswitch" className="onoffswitch-checkbox" id={this.props.food}/>
       <label className="onoffswitch-label" htmlFor={this.props.food}>
           <span className="onoffswitch-inner"></span>

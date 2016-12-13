@@ -9,7 +9,6 @@
     display: block;
     border-radius: 67px;
     height: 5rem;
-
     span {
         display: block;
         color: white;
@@ -321,12 +320,10 @@
 }
 @media(min-width:600px) {
     .weather {
-        display: inline-block;
         clear:both;
         float: right;
-        margin-right: 3rem;
+        margin-right:1rem;
         margin-top: 0.5rem;
-        margin-left: 2rem;
     }
 
     .weather-info {

@@ -1,19 +1,14 @@
 import React from 'react';
 import _ from 'underscore';
-import { browserHistory } from 'react-router';
-
+import { browserHistory, Link } from 'react-router';
 import store from '../../store';
-import Weather from '../weather';
-import BestFood from '../BestFood';
+import SearchOptions from './SearchOptions';
+import MobileHome from './MobileHome';
 
 
 export default React.createClass({
     getInitialState() {
         return {
-            foodLoading:false,
-            eventsLoading:false,
-            adventuresLoading:false,
-            foodClicked:false,
             session: store.session.toJSON(),
             places: store.places.toJSON()
         }
@@ -28,10 +23,6 @@ export default React.createClass({
         store.session.on('change update', this.updateSession);
         store.places.on('change update', this.updatePlaces);
 
-    },
-    componentDidMount(){
-      let coordinates = [window.localStorage.getItem('latitude'), window.localStorage.getItem('longitude')];
-      store.places.searchFood('restaurants',coordinates,'push');
     },
     componentWillUnmount(){
       store.session.off('change update', this.updateSession);
@@ -48,9 +39,6 @@ export default React.createClass({
     updatePlaces() {
         this.setState({
             places: store.places.toJSON(),
-            foodLoading:false,
-            eventsLoading:false,
-            adventuresLoading:false
         });
     },
 
@@ -61,105 +49,83 @@ export default React.createClass({
 
 
     render() {
-      let FoodDiv;
-        if(!this.state.foodClicked && !this.state.loading){
-          FoodDiv=(
-            <div onClick = {this.handleFoodChoices} className = "overlay">
-                <div className = "food search">
-                  <h3 className = "title"> FOOD </h3>
-                </div>
-            </div>
-          )
 
-        }else if(this.state.foodClicked && !this.state.loading){
-          FoodDiv=(
-            <div className = "food-clicked">
-                <div className = "food">
-                    <div className="modal">
-                      <i onClick={this.handleExit} className="fa fa-times" aria-hidden="true"></i>
-                      <h3 className = "type"> I Want.. </h3>
-                      <span onClick={this.handleBreakfast}>Breakfast</span>
-                      <span onClick={this.handleLunch}>Lunch</span>
-                      <span onClick={this.handleDinner}>Dinner</span>
-                      <span onClick={this.handleFood}>You Pick</span>
-                    </div>
-                </div>
-            </div>
-          );
-        }else if(!this.state.foodClicked && this.state.loading){
-          FoodDiv=(
-            <div className = "food-clicked">
-                <div className = "food">
-                    <div className="modal">
-
-                      <i id="loading" className="fa fa-spinner fa-pulse fa-3x fa-fw"></i>
-                      <span className="sr-only">Loading...</span>
-                    </div>
-                </div>
-            </div>
-
-          );
-        }
-        let AdventureDiv;
-        if(!this.state.adventuresLoading){
-          AdventureDiv=(
-                        <div onClick = {this.handleAdventure} className = "overlay">
-                          <div className = "random search" >
-                            <h3 className = "title" > ADVENTURE < /h3>
-                          </div>
-                        </div>
-
-                      );
-        }else{
-          AdventureDiv=(
-                        <div className = "overlay">
-                          <div className = "random search" >
-                          <i id="loading" className="fa fa-spinner fa-pulse fa-3x fa-fw"></i>
-                          <span className="sr-only">Loading...</span>
-                          </div>
-                        </div>
-
-                      );
-             }
-        let EventsDiv;
-        if(!this.state.eventsLoading){
-          EventsDiv=(
-                      <div onClick = {this.handleEvents} className = "overlay">
-                          <div className = "events search">
-                            <h3 className = "title"> EVENTS </h3>
-                          </div>
-                      </div>
-                    );
-
-        }else{
-          EventsDiv=(
-                      <div className = "overlay">
-                          <div className = "events search">
-                          <i id="loading" className="fa fa-spinner fa-pulse fa-3x fa-fw"></i>
-                          <span className="sr-only">Loading...</span>
-                          </div>
-                      </div>
-                    );
-        }
-        console.log(this.state);
         return ( <div className = "home">
-                    {EventsDiv}
-                    {FoodDiv}
-                    {AdventureDiv}
-                    <div className="best">
-                      <h3>Our Favorite Restaurants</h3>
-                      <BestFood foods={this.state.places}/>
+                  <SearchOptions/>
+                  <MobileHome/>
+                    <div className="top-pics">
+                      <h1>Todays Top Food Picks<span className="see-more" onClick={this.searchFood}>see more<i className="fa fa-arrow-right" aria-hidden="true"></i></span></h1>
+                      <ul>
+                      <li>
+                        <h2>BELLY UP</h2>
+                        <img src="https://s3-media1.fl.yelpcdn.com/assets/2/www/img/f1def11e4e79/ico/stars/v1/stars_5.png"/>
+                        <img src="https://s3-media3.fl.yelpcdn.com/bphoto/vASKkDuOjvBphgUpr4a_zQ/ls.jpg"/>
+                        <span><Link to="https://www.yelp.com/biz/belly-up-austin-2?osq=food" target="_blank">MORE INFO<i className="fa fa-arrow-right" aria-hidden="true"></i></Link></span>
+                      </li>
+                      <li>
+                        <h2>HOT MESS</h2>
+                        <img src="https://s3-media1.fl.yelpcdn.com/assets/2/www/img/f1def11e4e79/ico/stars/v1/stars_5.png"/>
+                        <img src="https://s3-media4.fl.yelpcdn.com/bphoto/3z0x1fC9mcsHzZ-aovchFA/ls.jpg"/>
+                        <span><Link to="https://www.yelp.com/biz/hot-mess-austin-3?osq=food" target="_blank">MORE INFO<i className="fa fa-arrow-right" aria-hidden="true"></i></Link></span>
+                      </li>
+                      <li className="more-best">
+                        <h2>LA BARBECUE</h2>
+                        <img src="https://s3-media1.fl.yelpcdn.com/assets/2/www/img/f1def11e4e79/ico/stars/v1/stars_5.png"/>
+                        <img src="https://s3-media4.fl.yelpcdn.com/bphoto/ikhh2SEBOhuVOcv6Zmlu5w/ls.jpg"/>
+                        <span><Link to="https://www.yelp.com/biz/la-barbecue-austin-3" target="_blank">MORE INFO<i className="fa fa-arrow-right" aria-hidden="true"></i></Link></span>
+                      </li>
+
+                      </ul>
+                      <h1>Todays Top Adventure Picks<span className="see-more" onClick={this.searchAdventures}>see more<i className="fa fa-arrow-right" aria-hidden="true"></i></span></h1>
+                      <ul>
+                      <li>
+                        <h2>AUSTIN BREWERY TOURS</h2>
+                        <img src="https://s3-media1.fl.yelpcdn.com/assets/2/www/img/f1def11e4e79/ico/stars/v1/stars_5.png"/>
+                        <img src="https://s3-media2.fl.yelpcdn.com/bphoto/hP1nIodzRnBKj2J9WqOKLg/ls.jpg"/>
+                        <span><Link to="https://www.yelp.com/biz/austin-brewery-tours-austin-4?osq=fun" target="_blank">MORE INFO<i className="fa fa-arrow-right" aria-hidden="true"></i></Link></span>
+                      </li>
+                      <li>
+                        <h2>Blazer Tag</h2>
+                        <img src="https://s3-media1.fl.yelpcdn.com/assets/2/www/img/f1def11e4e79/ico/stars/v1/stars_5.png"/>
+                        <img src="https://s3-media2.fl.yelpcdn.com/bphoto/gb3LnlMMxkc93s-PpRPs6A/ls.jpg"/>
+                        <span><Link to="https://www.yelp.com/biz/blazer-tag-adventure-center-austin" target="_blank">MORE INFO<i className="fa fa-arrow-right" aria-hidden="true"></i></Link></span>
+                      </li>
+                      <li className="more-best">
+                        <h2>ESTHERS FOLLIES</h2>
+                        <img src="https://s3-media1.fl.yelpcdn.com/assets/2/www/img/f1def11e4e79/ico/stars/v1/stars_5.png"/>
+                        <img src="https://s3-media4.fl.yelpcdn.com/bphoto/HFlLOOS-Z12XqU-Ot94oBw/ls.jpg"/>
+                        <span><Link to="https://www.yelp.com/biz/esthers-follies-austin-2" target="_blank">MORE INFO<i className="fa fa-arrow-right" aria-hidden="true"></i></Link></span>
+                      </li>
+
+                      </ul>
+                      <h1>Todays Top Event Picks<span className="see-more" onClick={this.searchEvents}>see more<i className="fa fa-arrow-right" aria-hidden="true"></i></span></h1>
+                      <ul>
+                      <li>
+                        <h2>THE MERRY MIX SHOW FT. TRAIN, FITZ AND THE TANTRUMS AND BLUE OCTOBER</h2>
+                        <img src="https://s3-media1.fl.yelpcdn.com/assets/2/www/img/f1def11e4e79/ico/stars/v1/stars_5.png"/>
+                        <img src="https://s3-media1.fl.yelpcdn.com/ephoto/8dS3RgaL_gbcy2_GPumK2w/120s.jpg"/>
+                        <span><Link to="https://www.yelp.com/events/cedar-park-mix-94-7-presents-the-merry-mix-show-2016-ft-train-fitz-and-the-tantrums-and-blue-october" target="_blank">MORE INFO<i className="fa fa-arrow-right" aria-hidden="true"></i></Link></span>
+                      </li>
+                      <li>
+                        <h2>AUSTINS CARNAVAL BRASILERIRO</h2>
+                        <img src="https://s3-media1.fl.yelpcdn.com/assets/2/www/img/f1def11e4e79/ico/stars/v1/stars_5.png"/>
+                        <img src="https://s3-media4.fl.yelpcdn.com/ephoto/1Rd0tzP80RC6iQM54FltzQ/300s.jpg"/>
+                        <span><Link to="https://www.yelp.com/events/austin-austins-carnaval-brasileiro" target="_blank">MORE INFO<i className="fa fa-arrow-right" aria-hidden="true"></i></Link></span>
+                      </li>
+                      <li className="more-best">
+                        <h2>BASKERVILLE, A SHERLOCK HOLMES MYSTERY</h2>
+                        <img src="https://s3-media1.fl.yelpcdn.com/assets/2/www/img/f1def11e4e79/ico/stars/v1/stars_5.png"/>
+                        <img src="https://s3-media4.fl.yelpcdn.com/ephoto/ZkSPfdFA9iRaVaf3oRczng/300s.jpg"/>
+                        <span><Link to="https://www.yelp.com/events/austin-baskerville-a-sherlock-holmes-mystery" target="_blank">MORE INFO<i className="fa fa-arrow-right" aria-hidden="true"></i></Link></span>
+                      </li>
+
+                      </ul>
                     </div>
                  </div>
 
               );
     },
-    handleExit(){
-      this.setState({foodClicked:false});
-    },
-    handleEvents() {
-        console.log(this.state);
-        this.setState({eventsLoading:true});
+    searchEvents() {
         let prefs = this.state.session.events;
         if (prefs) {
             let trueEvents = [];
@@ -171,38 +137,15 @@ export default React.createClass({
             let coordinates = [window.localStorage.getItem('latitude'), window.localStorage.getItem('longitude')];
             let mixedFood = _.shuffle(trueEvents);
             let selection = _.first(mixedFood);
-            console.log(selection);
             store.places.getEvents(selection);
         } else {
-            let trueEvents = ['Attraction', 'Comedy', 'Festival_Parades', 'Holiday', 'Film', 'Music', 'Singles_social', 'Sports'];
+            let trueEvents = ['Attraction', 'Comedy', 'Festival', 'Holiday', 'Film', 'Music', 'Social', 'Sports'];
             let mixedEvents = _.shuffle(trueEvents);
             let selection = _.first(mixedEvents);
-            console.log(selection);
             store.places.getEvents(selection);
         }
     },
-    handleFoodChoices(){
-      this.setState({foodClicked:true});
-    },
-    handleBreakfast(){
-      let coordinates = [window.localStorage.getItem('latitude'), window.localStorage.getItem('longitude')];
-      store.places.searchFood('breakfast', coordinates);
-      this.setState({loading:true,foodClicked:false});
-
-    },
-    handleLunch(){
-      let coordinates = [window.localStorage.getItem('latitude'), window.localStorage.getItem('longitude')];
-      store.places.searchFood('lunch', coordinates);
-      this.setState({loading:true,foodClicked:false});
-    },
-    handleDinner(){
-      let coordinates = [window.localStorage.getItem('latitude'), window.localStorage.getItem('longitude')];
-      store.places.searchFood('dinner', coordinates);
-      this.setState({loading:true, foodClicked:false});
-    },
-
-
-    handleFood() {
+    searchFood() {
 
         let prefs = this.state.session.prefs;
         if (prefs) {
@@ -215,65 +158,56 @@ export default React.createClass({
             let coordinates = [window.localStorage.getItem('latitude'), window.localStorage.getItem('longitude')];
             let mixedFood = _.shuffle(trueFoods);
             let selection = _.first(mixedFood);
-            console.log(selection);
             store.places.searchFood(selection, coordinates);
         } else {
-            let trueFoods = ['american', 'bbq', 'burgers', 'cafes', 'chicken', 'mexican', 'chinese', 'pizza', 'italian', 'comfortfood', 'deli', 'diners', 'french', 'german', 'greek', 'asian', 'indian', 'tacos', 'salad', 'soup', 'spanish', 'texmex', 'steakhouse', 'foodtrucks'];
+          let trueFoods = ['American', 'BBQ', 'Burgers', 'Cafes', 'Chicken', 'Mexican', 'Chinese', 'Pizza', 'Italian', 'Deli', 'Diners', 'French', 'German', 'Greek', 'Asian', 'Indian', 'Tacos', 'Salad', 'Soup', 'Spanish', 'Texmex', 'Steakhouse', 'Foodtrucks'];
             let coordinates = [window.localStorage.getItem('latitude'), window.localStorage.getItem('longitude')];
             let mixedFood = _.shuffle(trueFoods);
             let selection = _.first(mixedFood);
-            console.log(selection);
             store.places.searchFood(selection, coordinates);
-            this.setState({loading:true, foodClicked:false});
         }
     },
-    handleAdventure() {
+    searchAdventures() {
         let prefs = this.state.session.adventure;
-        this.setState({adventuresLoading:true});
 
         if (prefs) {
             let weather = window.localStorage.getItem('description');
+            let temp= window.localStorage.getItem('temp');
             let coordinates = [window.localStorage.getItem('latitude'), window.localStorage.getItem('longitude')];
-            console.log('loggedin');
             let trueAdventures = [];
-            if (weather.includes('rain')) {
-                console.log('its raining');
+            if (weather.includes('rain') || temp<60) {
                 _.mapObject(prefs, function(val, key) {
-                    if (key.match(/^(arcades|Spas|Coffee|Bowling|escape|Aquariums|Lasertag|Movies|Bingo|shopping|Wineries|Breweries|Bookstores|Bars)$/) && val === true) {
+                    if (key.match(/^(arcades|Spas|Coffee|Bowling|escape|Aquariums|Lasertag|Movies|Bingo|shopping|Wineries|Breweries|Bookstores|Bars)$/) && val === true || temp<60) {
                         trueAdventures.push(key);
                     }
                 });
                 let mixedAdventures = _.shuffle(trueAdventures);
                 let selection = _.first(mixedAdventures);
-                console.log('rain ' + selection);
                 store.places.searchAdventure(selection, coordinates);
             } else {
                 _.mapObject(prefs, function(val, key) {
                     if (val === true) {
                         trueAdventures.push(key);
-                        console.log(key);
                     }
                 });
                 let mixedAdventures = _.shuffle(trueAdventures);
                 let selection = _.first(mixedAdventures);
-                console.log('not raining ' + selection);
                 store.places.searchAdventure(selection, coordinates);
             }
         } else {
           let weather=window.localStorage.getItem('description');
-            if (weather.includes('rain')) {
+          let temp=window.localStorage.getItem('temp');
+            if (weather.includes('rain')|| temp<60) {
                 let trueAdventures = ['Arcades', 'Bars', 'Bingo', 'Bookstores', 'Bowling', 'Coffee', 'Escape', 'LaserTag', 'Movies', 'Museums', 'Shopping', 'Spas', 'Trampolines', 'Aquariums', 'Breweries', 'GoKarts', 'Movies', 'Wineries'];
                 let coordinates = [window.localStorage.getItem('latitude'), window.localStorage.getItem('longitude')];
                 let mixedAdventures = _.shuffle(trueAdventures);
                 let selection = _.first(mixedAdventures);
-                console.log(selection);
                 store.places.searchAdventure(selection, coordinates);
             } else {
                 let trueAdventures = ['Arcades', 'Bars', 'Bingo', 'BookStores', 'Bowling', 'Coffee', 'Escape', 'LaserTag', 'Movies', 'Museums', 'Shopping', 'Spas', 'Trampolines', 'Amusement', 'Aquariums', 'BikeRentals', 'Breweries', 'Canoeing', 'GoKarts', 'Kayaking', 'Hiking', 'Minigolf', 'Movies', 'PaddleBoarding', 'Paintball', 'Tours', 'Swimming', 'Tubing', 'Ziplining', 'Zoos', 'Wineries', ];
                 let coordinates = [window.localStorage.getItem('latitude'), window.localStorage.getItem('longitude')];
                 let mixedAdventures = _.shuffle(trueAdventures);
                 let selection = _.first(mixedAdventures);
-                console.log(selection);
                 store.places.searchAdventure(selection, coordinates);
             }
         }

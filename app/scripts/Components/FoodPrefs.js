@@ -31,37 +31,29 @@ export default React.createClass({
     let hatedFood=foodNotLiked.map((food,i,arr)=>{
       return<HatedFoodItem key={food} food={food}/>;
     });
-    let foodHeader;
+    let addFood;
     if(!this.state.addFood && !this.state.success){
-      foodHeader=(
-        <div className="preference-header">
-          <h2><i className="fa fa-plus-circle" onClick={this.handleAddFood} aria-hidden="true"></i>FOOD PREFERENCES</h2>
-
-    </div>
+      addFood=(
+          <span onClick={this.handleAddFood} className="add-button"><i className="fa fa-plus-circle"  aria-hidden="true"></i>ADD</span>
     );
   }else if(this.state.addFood && !this.state.success){
-    foodHeader=(
-      <div className="preference-header">
-        <h2>FOOD PREFERENCES</h2>
-
+    addFood=(
         <form onSubmit={this.addFood} className="add-term">
-          <input ref="add" type="text" placeholder="Add Food"/>
+          <input className="add-input" ref="add" type="text" placeholder="Add Food"/>
+          <i className="fa fa-plus-circle" id="submit-food" onClick={this.addFood} aria-hidden="true"></i>
           <i onClick={this.handleExit} className="fa fa-times" aria-hidden="true"></i>
         </form>
-  </div>
   );
 }else if(this.state.addFood && this.state.success===true){
-  foodHeader=(
+  addFood=(
     <div className="preference-header">
-      <h2>FOOD PREFERENCES</h2>
       <span className="success"><i className="fa fa-check-circle" aria-hidden="true"></i>SUCCESS!</span>
     </div>
 );
 
 }else if(this.state.addFood && this.state.success==='empty'){
-  foodHeader=(
+  addFood=(
     <div className="preference-header">
-      <h2>FOOD PREFERENCES</h2>
       <span className="error"><i className="fa fa-times-circle" aria-hidden="true"></i> Please Enter A Search Term!</span>
     </div>
 );
@@ -69,11 +61,11 @@ export default React.createClass({
 
     return(
     <div className="preferences">
-      {foodHeader}
       <ul>
-        <h3>Food I like</h3>
+        <h2>FOOD PREFERENCES</h2>
+        <h3>Food I Like {addFood}</h3>
           {likedFood}
-        <h3>Food I dont Like</h3>
+        <h3>Food I Dont Like</h3>
           {hatedFood}
       </ul>
     </div>

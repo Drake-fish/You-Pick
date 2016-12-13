@@ -1,22 +1,28 @@
-.event-result {
-    background: $text-color;
-    width: 24rem;
-    margin: 0 auto;
-    display: inline-block;
-    margin-bottom: 1rem;
+.event-picture-container{
+  position: relative;
+display: inline-block;
+vertical-align: top;
 }
-
+.event-contact{
+  display: inline-block;
+width: 51%;
+margin-top: 1rem;
+margin-left: .5rem;
+border-top: 1px solid black;
+h4{
+  margin-bottom:0;
+}
+h5{
+  margin-top: .5rem;
+font-size: 1rem;
+margin-bottom: .5rem;
+}
+}
 .event-name {
     margin-top: 0;
     font-size: 1.5rem;
-    padding-top: 1.5rem;
-    background: $hover-color;
-    color: white;
-}
-
-.event-picture {
-    width: 46%;
-    margin-left: 0.4rem;
+    color: $font-color;
+    border-bottom:1px solid black;
 }
 
 .event-details {
@@ -31,12 +37,19 @@
 
 .time-info {
     text-align: left;
-    margin-top: 2rem;
 
-    h4 {
-        margin-bottom: 1rem;
-        margin-left: 0.4rem;
+    h5 {
+      margin-top: .5rem;
+font-size: 1rem;
+margin-bottom: .5rem;
     }
+}
+.review-section{
+  p{
+    padding: 1.2rem;
+    height: 7rem;
+    overflow: scroll;
+  }
 }
 
 .description {
@@ -47,9 +60,47 @@
         text-overflow: ellipsis;
     }
 }
-@media(min-width:724px) {
-    .event-result {
-        vertical-align: top;
-        margin-right: 1rem;
+.event-address{
+  font-size:1.2rem;
+}
+.date-time{
+  margin-bottom:0;
+  text-align:left;
+}
+.event-liked-overlay{
+  position: absolute;
+height: 10rem;
+width: 10rem;
+top: 16px;
+left: 8px;
+background: rgba(0, 0, 0, 0.4);
+z-index: 1;
+  .fa{
+    color:red;
+    font-size:10rem;
+  }
+a{
+  text-decoration:none;
+}
+span{
+  position: absolute;
+top: 49px;
+left: 17px;
+color: white;
+text-align: center;
+font-size: 1.5rem;
+width: 80%;
+}
+}
+@media(min-width:700px) {
+    .event-liked-overlay{
+      height:11rem;
+      width:11rem;
+      .fa{
+        font-size:11rem;
+      }
+      span{
+        left:16px;
+      }
     }
 }

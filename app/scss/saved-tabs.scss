@@ -16,7 +16,6 @@
     transition:all .3s ease-in-out;
     &:hover{
       background:$background-color;
-      border-bottom:none;
       border-left:2px solid white;
       border-right:2px solid white;
     }

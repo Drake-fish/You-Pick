@@ -5,6 +5,7 @@ import _ from 'underscore';
 import Search from '../../components/search';
 import FoodSearchList from '../../components/FoodSearchList';
 import store from '../../store';
+import SearchOptions from './SearchOptions';
 
 
 export default React.createClass({
@@ -68,13 +69,14 @@ export default React.createClass({
     }else if(this.state.loading){
       searchDiv = (
                     <div className = "search-results">
-                      <h3 className = "search-title">{login} How about {this.state.places[0].searchTerm}</h3>
+                      <h3 className = "search-title">{login} How About {this.state.places[0].searchTerm}</h3>
                       <i id="try-again-loading" className="fa fa-spinner fa-pulse fa-3x fa-fw"></i>
                       <span className="sr-only">Loading...</span>
                     </div>
                   );
     }
       return (<div>
+                <SearchOptions/>
                 {searchDiv}
              </div>);
     },
@@ -96,7 +98,7 @@ export default React.createClass({
       store.places.searchFood(selection ,coordinates,'foodresults');
 
   }else{
-    let trueFoods=['american', 'bbq', 'burgers', 'cafes', 'chicken','mexican','chinese','pizza','italian','comfortfood','deli','diners','french','german','greek','asian','indian','tacos','salad','soup','spanish','texmex','steakhouse','foodtrucks'];
+    let trueFoods=['american', 'bbq', 'burgers', 'cafes', 'chicken','mexican','chinese','pizza','italian','deli','diners','french','german','greek','asian','indian','tacos','salad','soup','spanish','texmex','steakhouse','foodtrucks'];
     let newSearchArray=_.without(trueFoods,searchTerm);
     let mixedFood=_.shuffle(newSearchArray);
     let selection=_.first(mixedFood);

@@ -5,6 +5,7 @@ import EventPrefs from '../../components/EventPrefs';
 import AdventurePrefs from '../../components/AdventurePrefs';
 import store from '../../store';
 import SearchBar from './searchBar';
+import SearchOptions from './SearchOptions';
 
 export default React.createClass({
   getInitialState(){
@@ -27,7 +28,7 @@ export default React.createClass({
   render(){
     return(
     <div className="preferences-container">
-        <SearchBar/>
+        <SearchOptions/>
         <FoodPrefs prefs={this.state.session.prefs}/>
         <AdventurePrefs prefs={this.state.session.adventure}/>
         <EventPrefs prefs={this.state.session.events}/>

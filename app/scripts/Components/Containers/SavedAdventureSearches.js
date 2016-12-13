@@ -23,7 +23,6 @@ export default React.createClass({
     });
   },
   render(){
-    console.log('adventures mounted');
     let savedSearches;
     if(!this.state.session.savedSearches || this.state.session.savedSearches.length===0){
       savedSearches=<h3 className="no-saved">No Searches Saved Yet!</h3>;

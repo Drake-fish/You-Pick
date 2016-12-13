@@ -6,7 +6,7 @@ render(){
   return(
     <form onSubmit={this.handleSubmit} className="search-field">
       <i onClick={this.handleSubmit} className="fa fa-search" aria-hidden="true"></i>
-      <input ref="searchTerm" type="text" placeholder="Search Something"/>
+      <input ref="searchTerm" type="text" placeholder="Search"/>
     </form>
 
   );

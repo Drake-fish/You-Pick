@@ -17,7 +17,9 @@
         opacity: 1;
     }
 }
-
+.mobile-options{
+  background-color:black;
+}
 .events {
     background: url('../assets/images/events.jpg');
     background-size: cover;
@@ -26,7 +28,7 @@
 .title {
     text-align: center;
     color: white;
-    font-size: 4rem;
+    font-size: 3rem;
 }
 
 .food-clicked {
@@ -65,16 +67,7 @@
     left: 33%;
     font-size: 5rem;
 }
-.modal {
-    width: 85%;
-    position: absolute;
-    top: 24px;
-    border: 2px solid black;
-    margin-left: 8%;
-    border-radius: 13px;
-    background: rgba(0,0,0,.5);
-    height: 20rem;
-
+.modal{
     .fa-times {
         position: absolute;
         top: 2%;
@@ -88,7 +81,7 @@
             color: red;
         }
     }
-}
+  }
 
 .food {
     background: url('../assets/images/food.jpg');
@@ -107,6 +100,7 @@
         display: inline-block;
         height: 18rem;
         vertical-align:top;
+        background:black;
     }
 
     .title {
@@ -114,7 +108,6 @@
     }
 
     .food {
-        background-position-y: 0;
         height: 18rem;
     }
 
@@ -130,12 +123,24 @@
         width: 33%;
         height: 18rem;
     }
-
+.mobile-options{
+  display:none;
+}
     .modal {
-        height: 16rem;
+      width: 100%;
+      position: absolute;
+      top: 0px;
+      left: 0;
+      background: rgba(0, 0, 0, 0.5);
+      height: 18rem;
 
         .type {
             font-size: 3rem;
+            text-align: center;
+            color: white;
+            font-size: 4rem;
+            margin: 2rem 0 1rem;
+            padding-top: 0;
         }
 
         span {

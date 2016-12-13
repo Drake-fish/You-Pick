@@ -31,50 +31,42 @@ export default React.createClass({
     let hatedEvent=eventNotLiked.map((event,i,arr)=>{
       return<HatedEventItem key={event} event={event}/>;
     });
-    let eventHeader;
+    let addEvent;
     if(!this.state.addEvent && !this.state.success){
-      eventHeader=(
-        <div className="preference-header">
-          <h2><i className="fa fa-plus-circle" onClick={this.handleAddEvent} aria-hidden="true"></i>EVENT PREFERENCES</h2>
-
-    </div>
+      addEvent=(
+          <span onClick={this.handleAddEvent} className="add-button"><i className="fa fa-plus-circle"  aria-hidden="true"></i>ADD</span>
     );
-  }else if(this.state.addEvent && !this.state.success){
-    eventHeader=(
-      <div className="preference-header">
-        <h2>EVENT PREFERENCES</h2>
-
+    }else if(this.state.addEvent && !this.state.success){
+    addEvent=(
         <form onSubmit={this.addEvent} className="add-term">
-          <input ref="add" type="text" placeholder="Add Event"/>
+          <input className="add-input" ref="add" type="text" placeholder="Add Event"/>
+          <i className="fa fa-plus-circle" id="submit-food" onClick={this.addEvent} aria-hidden="true"></i>
           <i onClick={this.handleExit} className="fa fa-times" aria-hidden="true"></i>
         </form>
-  </div>
-  );
-}else if(this.state.addEvent && this.state.success===true){
-  eventHeader=(
+    );
+    }else if(this.state.addEvent && this.state.success===true){
+    addEvent=(
     <div className="preference-header">
-      <h2>EVENT PREFERENCES</h2>
       <span className="success"><i className="fa fa-check-circle" aria-hidden="true"></i>SUCCESS!</span>
     </div>
-);
+    );
 
-}else if(this.state.addEvent && this.state.success==='empty'){
-  eventHeader=(
+    }else if(this.state.addEvent && this.state.success==='empty'){
+    addEvent=(
     <div className="preference-header">
-      <h2>EVENT PREFERENCES</h2>
       <span className="error"><i className="fa fa-times-circle" aria-hidden="true"></i> Please Enter A Search Term!</span>
     </div>
-);
-}
+    );
+    }
 
 
     return(
-    <div className="preferences">
-      {eventHeader}
+    <div id="event-preferences" className="preferences">
       <ul>
-        <h3>Events I like</h3>
+        <h2>EVENT PREFERENCES</h2>
+        <h3>Events I Like {addEvent}</h3>
           {likedEvent}
-        <h3>Events I dont Like</h3>
+        <h3>Events I Dont Like</h3>
           {hatedEvent}
       </ul>
     </div>

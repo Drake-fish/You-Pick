@@ -1,3 +1,30 @@
+.event-result{
+  width: 85%;
+    margin: 0 auto;
+    background: $background;
+    list-style: none;
+    position: relative;
+    margin-bottom:3rem;
+    img{
+      padding-bottom:1rem;
+      vertical-align:top;
+      margin-top:1rem;
+    }
+    .yelp-icon{
+      width:45%;
+      margin-top:0;
+    }
+  .fa{
+  position: absolute;
+top: 0;
+left: 0;
+padding: .5rem;
+background: rgba(0,0,0,.5);
+color: white;
+font-size: 1.5rem;
+}
+}
+
 .saved-searches {
     padding: 0;
     text-align: center;
@@ -43,7 +70,7 @@
 }
 
 .no-saved {
-    color: white;
+    color: $font-color;
 }
 
 #trash {
@@ -58,7 +85,13 @@
         color: white;
     }
 }
-@media(min-width:768px) {
+@media(min-width:500px) {
+  .event-result{
+    width: 24rem;
+display: inline-block;
+margin-right: 2rem;
+vertical-align: top;
+  }
     .saved-search {
         margin-right: 1rem;
     }

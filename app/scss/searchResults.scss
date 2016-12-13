@@ -5,6 +5,15 @@
         list-style: none;
     }
 }
+.map-overlay{
+position: absolute;
+width: 100%;
+height: 9.7rem;
+background: transparent;
+&:hover{
+  display:none;
+}
+}
 
 .search-results {
     .fa {
@@ -13,7 +22,7 @@
 
     .research {
         text-align: center;
-        color: white;
+        color: $font-color;
         display: block;
         font-size: 1.5rem;
         margin-bottom: 3rem;
@@ -24,53 +33,53 @@
         }
     }
 }
+#liked-heart-icon{
+  position: absolute;
+    top: 0;
+    font-size: 2rem;
+    padding: .5rem;
+    background: rgba(0,0,0,.5);
+    color: red;
+    border-bottom-right-radius: 10px;
+}
 #try-again-loading{
   display: block;
     margin: 0 auto;
-    color: white;
+    color: $font-color;
     font-size: 2rem;
 }
 .yelp {
-    border: 1px solid black;
-    background: $hover-color;
-
-    img {
-        width: 8rem;
-        display: block;
-        margin: 0 auto;
-        transition: transform 0.3s ease-in-out;
-
-        &:hover {
-            transform: scale(1.1);
-        }
-    }
+  width:3rem;
+  vertical-align:middle;
 }
 
 .business-info {
     display: inline-block;
-    width: 50%;
+    width: 47%;
 }
 
 .business-name {
-    text-align: center;
+  text-align: center;
     font-size: 1.5rem;
     color: white;
-    margin-bottom: 0;
-    margin-top: 0.8rem;
+    margin: 0;
+    padding: 1rem;
+  background: #1B74B9;
+    padding-left: 3rem;
 }
 
 .results {
-    text-align: left;
-    width: 23rem;
-    display: block;
-    border: 2px solid black;
-    margin: 0 auto 2rem;
-    background: $icon-color;
-    position: relative;
+  text-align: left;
+  width: 90%;
+  display: block;
+  border: 2px solid black;
+  margin: 0 auto 2rem;
+  background: $background;
+  position: relative;
 
     .picture {
-        width: 9rem;
-        margin-left: 1rem;
+        width: 10rem;
+        margin-left: .5rem;
         margin-top: 1rem;
         vertical-align: top;
         margin-bottom: 1rem;
@@ -78,15 +87,15 @@
 }
 
 #heart-icon {
-    position: absolute;
-    top: 1rem;
-    left: 16px;
-    color: white;
-    font-size: 2rem;
-    padding: 0.5rem;
-    background: rgba(0,0,0,.5);
-    transition: color 0.3s ease-in-out;
-    border-bottom-right-radius: 10px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  color: white;
+  font-size: 2rem;
+  padding: 0.5rem;
+  background: rgba(0, 0, 0, 0.5);
+  transition: color 0.3s ease-in-out;
+  border-bottom-right-radius: 10px;
 
     &:hover {
         color: red;
@@ -101,7 +110,7 @@
 .search-title {
     text-align: center;
     font-size: 1.8rem;
-    color: white;
+    color: $font-color;
     margin-bottom: 0;
 }
 
@@ -111,32 +120,27 @@
     margin: 0 auto;
 }
 
-.hours {
-    display: block;
-    margin-top: 1rem;
-    color: green;
-    border: 1px solid black;
-    padding: 0.5rem;
-    background: #D9DEE3;
-    text-align: center;
-    width: 67%;
-    margin-left: 1.7rem;
-}
-
-.hours-closed {
-    color: red;
-}
-
 .contact {
-    display: inline-block;
-    border: 2px solid black;
-    background: #D9DEE3;
-    width: 42%;
-    margin: 0 auto 1rem 0.5rem;
-    height: 9.4rem;
+  color:$font-color;
+  display: inline-block;
+    width: 88%;
+    margin-left: .6rem;
+    border-bottom: 1px solid black;
+    border-top: 1px solid black;
+    padding-bottom: .3rem;
+    padding-top: .4rem;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+
 
     .address {
-        margin-top: 1rem;
+        margin-bottom:0;
+        margin-top:0;
+    }
+    h5{
+      margin-top:0;
+      margin-bottom:.2rem;
+      text-align:center;
     }
 
     h4 {
@@ -146,9 +150,9 @@
 }
 
 .map {
-    width: 50%;
-    float: right;
-    margin-right: 0.3rem;
+  width: 97%;
+display: block;
+margin: 0 auto;
 }
 
 .liked-heart {
@@ -174,40 +178,54 @@
 }
 
 .review-section {
+  margin-top:1rem;
+  margin-bottom:1rem;
     .reviewer-pic {
         margin-left: 0.3rem;
         border-radius: 50%;
         width: 4rem;
-        margin-bottom: 3rem;
+        margin-bottom: 5rem;
         margin-right: 0.2rem;
     }
 
     span {
         border: 1px solid black;
-        width: 75%;
+        width: 64%;
         float: right;
-        padding: 0.3rem;
+        padding: 1.2rem;
         background: #D9DEE3;
         border-radius: 10px;
         margin-right: 0.3rem;
     }
 }
-
+.result-picture{
+  display:inline-block;
+  position:relative;
+  width:53%;
+  vertical-align:top;
+}
 .liked-overlay {
-    position: absolute;
-    height: 9rem;
-    width: 9.1rem;
-    top: 1rem;
+  position: absolute;
+height: 10rem;
+width: 10rem;
+top: 1rem;
+left: 8px;
+background: rgba(0, 0, 0, 0.4);
+    a{
+      text-decoration:none;
+    }
+    span{
+      position: absolute;
+    top: 42px;
     left: 15px;
-    background: rgba(0, 0, 0, 0.4);
-    border-radius: 18px;
-
+    color: white;
+    text-align: center;
+    font-size: 1.5rem;
+    width: 80%;
+    }
     .liked {
-        font-size: 8rem;
+        font-size: 10rem;
         color: #f40428;
-        display: block;
-        text-align: center;
-        margin-top: 0.6rem;
     }
 
     h3 {
@@ -217,17 +235,45 @@
         color: white;
     }
 }
+.arrow_box {
+	position: relative;
+	background: #D9DEE3;
+	border: 1px solid black;
+}
+.arrow_box:after, .arrow_box:before {
+  right: 100%;
+  top: 31%;
+  border: solid transparent;
+  content: " ";
+  height: 0;
+  width: 0;
+  position: absolute;
+  pointer-events: none;
+}
+
+.arrow_box:after {
+  border-color: rgba(136, 183, 213, 0);
+    border-right-color: #D9DEE3;
+    border-width: 15px;
+    margin-top: -25px;
+}
+.arrow_box:before {
+  border-color: rgba(194, 225, 245, 0);
+  border-right-color: black;
+  border-width: 15px;
+  margin-top: -24px;
+}
+@media(min-width:450px){
+  .results{
+    width:24rem;
+  }
+}
 @media(min-width:700px) {
     .results {
-        width: 26rem;
         display: inline-block;
         vertical-align: top;
         margin-right: 0;
         margin-left: 1rem;
-
-        #heart-icon {
-            left: 8px;
-        }
 
         .picture {
             margin-left: 0.5rem;
@@ -242,15 +288,18 @@
     .address {
         margin-top: 1.5rem;
     }
+    .result-picture{
+      width:47%;
+    }
 
     .liked-overlay {
         height: 11rem;
         width: 11rem;
         left: 8px;
-
-        .liked {
-            margin-top: 1rem;
+        .liked{
+          font-size:11rem;
         }
+
     }
 }
 @media(min-width:1000px) {
@@ -264,7 +313,7 @@
 
     .review-section {
         span {
-            width: 78%;
+            width: 67%;
             display: inline-block;
         }
 

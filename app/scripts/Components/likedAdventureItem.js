@@ -13,7 +13,7 @@ export default React.createClass({
     console.log(this.props);
     return(
       <div className="onoffswitch">
-          <span>{this.props.adventure}</span>
+          <h4>{this.props.adventure}</h4>
           <input checked={this.state.isChecked} onChange={this.handleChange} type="checkbox" name="onoffswitch" className="onoffswitch-checkbox" id={this.props.adventure}/>
           <label className="onoffswitch-label" htmlFor={this.props.adventure}>
               <span className="onoffswitch-inner"></span>

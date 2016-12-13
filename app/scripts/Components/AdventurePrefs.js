@@ -32,36 +32,29 @@ export default React.createClass({
       return<HatedAdventureItem key={adventure} adventure={adventure}/>;
     });
 
-    let adventureHeader;
+    let addAdventure;
     if(!this.state.addAdventures && !this.state.success){
-      adventureHeader=(
-        <div className="preference-header">
-          <h2><i className="fa fa-plus-circle" onClick={this.handleAddAdventure} aria-hidden="true"></i>ADVENTURE PREFERENCES</h2>
-
-    </div>
+      addAdventure=(
+          <span onClick={this.handleAddAdventure} className="add-button"><i className="fa fa-plus-circle"  aria-hidden="true"></i>ADD</span>
     );
   }else if(this.state.addAdventures && !this.state.success){
-    adventureHeader=(
-      <div className="preference-header">
-        <h2>ADVENTURE PREFERENCES</h2>
+    addAdventure=(
         <form onSubmit={this.addAdventure} className="add-term">
-          <input ref="add" type="text" placeholder="Add Adventure"/>
+          <input className="add-input" ref="add" type="text" placeholder="Add Adventure"/>
+          <i className="fa fa-plus-circle" id="submit-food" onClick={this.addAdventure} aria-hidden="true"></i>
           <i onClick={this.handleExit} className="fa fa-times" aria-hidden="true"></i>
         </form>
-  </div>
   );
 }else if(this.state.addAdventures && this.state.success===true){
-  adventureHeader=(
+  addAdventure=(
     <div className="preference-header">
-      <h2>ADVENTURE PREFERENCES</h2>
       <span className="success"><i className="fa fa-check-circle" aria-hidden="true"></i>SUCCESS!</span>
     </div>
 );
 
 }else if(this.state.addAdventures && this.state.success==='empty'){
-  adventureHeader=(
+  addAdventure=(
     <div className="preference-header">
-      <h2>ADVENTURE PREFERENCES</h2>
       <span className="error"><i className="fa fa-times-circle" aria-hidden="true"></i> Please Enter A Search Term!</span>
     </div>
 );
@@ -69,13 +62,11 @@ export default React.createClass({
 
     return(
     <div className="preferences">
-      {adventureHeader}
-      <ul>
-        <h3>Adventures I like</h3>
+      <h2>ADVENTURE PREFERENCES</h2>
+        <h3>Adventures I Like {addAdventure}</h3>
           {likedAdventure}
-        <h3>Adventures I dont Like</h3>
+        <h3>Adventures I Dont Like</h3>
           {hatedAdventure}
-      </ul>
     </div>
     );
   },
@@ -83,6 +74,7 @@ export default React.createClass({
     this.setState({addAdventures:false,success:false});
   },
   handleAddAdventure(){
+    console.log('adding-adventure');
     this.setState({addAdventures:true});
 
   },

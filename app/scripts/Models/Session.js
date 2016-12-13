@@ -1,8 +1,7 @@
 import $ from 'jquery'
 import Backbone from 'backbone';
-import {
-    browserHistory
-} from 'react-router';
+import {browserHistory} from 'react-router';
+import config from '../config';
 import store from '../store';
 
 
@@ -93,7 +92,6 @@ export default Backbone.Model.extend({
       $.ajax({
         url:`https://api.backendless.com/v1/users/restorepassword/${email}`,
         success:(response)=>{
-          console.log(response);
         }
       });
     },
@@ -101,11 +99,13 @@ export default Backbone.Model.extend({
     getWeather(latitude, longitude) {
         $.ajax({
             contentType: 'application/json',
-            url: `http://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&APPID=3c8ee52f0049cbe14298f23d5ff9b7be&units=imperial`,
+            url: `https://api.darksky.net/forecast/${config.weatherKey}/${latitude},${longitude}`,
             success: (response) => {
-                window.localStorage.setItem('temp', response.main.temp);
-                window.localStorage.setItem('description', response.weather[0].description);
-                window.localStorage.setItem('location', response.name);
+              console.log(response);
+              let weather=response.currently.summary.toLowerCase();
+              console.log(weather);
+                window.localStorage.setItem('temp', response.currently.temperature);
+                window.localStorage.setItem('description', weather);
             },
             dataType: 'jsonp'
         });

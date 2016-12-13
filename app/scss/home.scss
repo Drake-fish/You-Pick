@@ -1,25 +1,43 @@
 .best{
   display:none;
 }
+.search-options{
+  display:none;
+}
+.top-picks{
+  display:none;
+}
+footer{
+display:none;
+a{
+  color:white;
+}
+.fa{
+  margin-left:1rem;
+  margin-right:1rem;
+}
+}
 
 @media(min-width:700px){
-  .best{
-    position:relative;
+  footer{
+    text-align:center;
+    display: block;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+  border-top: 1px solid black;
+  background: black;
+  color: white;
+  position:fixed;
+  bottom:0;
+  width:100%;
+  }
+  .search-options{
+    display:inline-block;
+  }
+  .top-picks{
     display:block;
-    ul{
-      list-style:none;
-      padding:0;
-      text-align:center;
-    }
-    h3{
-      font-size:2rem;
-      text-align:center;
-      color:white;
-    }
-    #loading-home{
-      position:absolute;
-    left:78%;
-    margin-top:-73px;
-    }
+  }
+  .mobile-nav{
+    display:none;
   }
 }

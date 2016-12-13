@@ -26,7 +26,7 @@ render(){
                         <div className="rain"></div>
                     </div>
                     );
-      }else if(weather.includes('cloud') || weather.includes('haze')){
+      }else if(weather.includes('cloud') || weather.includes('haze') || weather.includes('overcast')){
         weatherPic=(
                     <div className="icon cloudy">
                           <div className="cloud"></div>
@@ -52,7 +52,7 @@ render(){
         </div>
         <div className="weather-info">
           <h3 className="current">Current Weather</h3>
-          <h3>{weather}</h3>
+          <h3>{weather} {Math.round(window.localStorage.getItem('temp'))}°</h3>
         </div>
       </div>
     );

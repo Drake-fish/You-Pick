@@ -1,5 +1,5 @@
 html {
-    background: $background-color;
+    background:white;
     margin: 0;
     font-family: 'Rubik', sans-serif;
 }
@@ -9,42 +9,42 @@ body {
 }
 
 .header {
-    height: 21rem;
-    background-image: repeating-linear-gradient(to bottom right,rgb(34, 129, 210) 0%,rgb(3, 96, 120) 100%);
-
     .fa {
+        font-size:1.8rem;
         margin-right: 0.3rem;
     }
 }
 
 .bubble {
-    display: block;
-    margin: 2rem auto 0;
-    position: relative;
-    width: 16rem;
-    height: 85px;
-    padding: 5px;
-    background: linear-gradient(to bottom, rgba(76,76,76,1) 0%,rgba(89,89,89,1) 12%,rgba(102,102,102,1) 25%,rgba(71,71,71,1) 39%,rgba(44,44,44,1) 50%,rgba(0,0,0,1) 51%,rgba(17,17,17,1) 60%,rgba(43,43,43,1) 76%,rgba(28,28,28,1) 91%,rgba(19,19,19,1) 100%);
-    -webkit-border-radius: 10px;
-    border-radius: 10px;
-    border: #7F7F7F solid 3px;
+  display: block;
+      margin: 0rem auto 0;
+      position: relative;
+      width: 7rem;
+      height: 51px;
+      padding: 5px;
+      background: black;
+      border-radius: 50%;
+      border: #7F7F7F solid 3px;
 
     h1 {
-        color: $text-color;
+      color: #D9DEE3;
         text-align: center;
         margin: 0;
+        margin-top: 10px;
+        font-size: .8rem;
     }
 
     h2 {
-        color: #0cf;
-        text-align: center;
-        margin: 0;
-        font-size: 2.6rem;
+
+      color: #0cf;
+  text-align: center;
+  margin: 0;
+  font-size: 1.1rem;
     }
 }
 
 .bubble:after {
-    content: '';
+  content: '';
     position: absolute;
     border-style: solid;
     border-width: 14px 8px 0;
@@ -52,13 +52,14 @@ body {
     display: block;
     width: 0;
     z-index: 1;
-    margin-left: -8px;
-    bottom: -14px;
+    margin-left: -7px;
+    bottom: -4px;
     left: 13%;
+    transform: rotateZ(18deg);
 }
 
 .bubble:before {
-    content: '';
+  content: '';
     position: absolute;
     border-style: solid;
     border-width: 16px 10px 0;
@@ -68,18 +69,24 @@ body {
     width: 0;
     z-index: 0;
     margin-left: -10px;
-    bottom: -19px;
+    bottom: -7px;
     left: 13%;
+    transform: rotateZ(18deg);
 }
 @media(min-width:624px) {
     .bubble {
-        display: inline-block;
-        float: left;
-        margin-left: 1rem;
-        margin-top: 0.5rem;
+      display: inline-block;
+    position: absolute;
+    left: 0;
+    margin-left: 1rem;
+    margin-top: -0.5rem;
+    z-index: 25;
+    margin-top:1rem;
     }
 
     .header {
-        height: 11rem;
+    .fa{
+      font-size:1rem;
+    }
     }
 }

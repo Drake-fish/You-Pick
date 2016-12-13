@@ -4,24 +4,28 @@
 
 
 
-@media(min-width:830px){
+@media(min-width:700px){
 
 .search-field{
-    display: inline-block;
+  display: inline-block;
     text-align: center;
     position: relative;
-    margin-left: 4rem;
-    float:left;
-    padding-bottom:.5rem;
+    margin-left: 1rem;
+    float: left;
+    padding-bottom: .5rem;
   .fa{
     position: absolute;
-    left: 158px;
-    top:3px;
-    z-index:1;
+left: 155px;
+top: 36px;
+z-index: 1;
   }
   input{
-    border-radius:9px;
-    padding-left:.5rem;
+    border-radius: 9px;
+padding-left: 0.5rem;
+width: 10rem;
+margin-top: 2rem;
+margin-left: 9.3rem;
+text-indent: 20px;
     ::-webkit-input-placeholder {
         color: white;
     }

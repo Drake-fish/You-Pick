@@ -3,11 +3,46 @@
     text-align: center;
     padding-top: .5rem;
     padding-bottom:.5rem;
+    height:5rem;
+    .fa-bars, .fa-times{
+      float: left;
+    margin-left: 2rem;
+    font-size: 2rem;
+    color: white;
+    padding-bottom: .5rem;
+    margin-top: 1rem;
+    }
+}
+.menu{
+  .menu-items{
+    position: absolute;
+top: 6rem;
+background: $background;
+width: 50%
+  }
+  a{
+    color:$font-color;
+    text-decoration:none;
+  }
+  span{
+    display: block;
+  margin-bottom: 0rem;
+  margin-top: 2rem;
+  border-bottom: 1px solid black;
+  padding-bottom: 2rem;
+  }
+}
+.menu-overlay{
+  height: 35rem;
+width: 100%;
+background: transparent;
+position: absolute;
+z-index: -1;
 }
 
 nav {
-    padding-top: 0.3rem;
-    padding-left: 2rem;
+  padding-top: 2.3rem;
+  padding-left: 2rem;
 
     #nav-heart {
         margin-right: 0;
@@ -17,6 +52,7 @@ nav {
     }
 
     a {
+        display:none;
         cursor: pointer;
         text-decoration: none;
         margin-right: 1rem;
@@ -33,23 +69,76 @@ nav {
   z-index:10;
   background:#1B74B9;
 }
+.mobile-nav{
+    position:fixed;
+    bottom:0%;
+    width:100%;
+    z-index:20;
+  ul{
+    margin:0;
+    padding:0;
+    list-style:none;
+  }
+  .fa-times{
+    position:absolute;
+    top:3px;
+    left:3px;
+    font-size:1rem;
+  }
+  .search-nav{
+    width:100%;
+
+    input{
+      position:relative;
+    }
+    .fa-search{
+      position: absolute;
+      top: 19px;
+      left: 15rem;
+      color: black;
+    }
+
+
+  }
+  li{
+    text-align:center;
+    color:white;
+    display:inline-block;
+    width:25%;
+    background:#1B74B9;
+    padding-top:1rem;
+    padding-bottom:1rem;
+    font-size:.7rem;
+    border-right:1px solid black;
+    box-sizing:border-box;
+    .fa{
+      padding-right:.3rem;
+    }
+
+  }
+
+}
 @media(min-width:600px) {
     .nav-container {
-        display:block;
-        margin-top: 0;
-        padding-top: .5rem;
-        margin-right: 1rem;
-        padding-bottom:.5rem;
-
-        .fa {
-            margin-right: 0;
-        }
+      display: block;
+      margin-top: 0;
+      padding-top: .5rem;
+      margin-right: 1rem;
+      padding-bottom: .5rem;
+      height: 6rem;
+      .fa{
+        margin-right:.2rem;
+      }
+      .fa-bars{
+        display:none;
+      }
 
         span {
             margin-right: 0.5rem;
         }
 
         a {
+            display:inline-block;
             margin-right: 0.3rem;
             font-size: 1rem;
 
@@ -62,8 +151,5 @@ nav {
     nav{
       display:block;
       float:right;
-    }
-    .login-menu {
-        margin-right: 3rem;
     }
 }
