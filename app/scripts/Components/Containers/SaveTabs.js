@@ -22,16 +22,15 @@ export default React.createClass({
       savedSearches=(<div className="saved-searches">
                       <div className="tab-container">
                         <ul className="tabs">
-                        <li onClick={this.handleEvents} className="event-tab">
-                          <span>EVENTS</span>
-                        </li>
+                          <li onClick={this.handleEvents} className="event-tab">
+                            <span>EVENTS</span>
+                          </li>
                           <li className="food-tab-open">
-                            <span>FOOD</span>
+                              <span>FOOD</span>
                           </li>
                           <li onClick={this.handleAdventures} className="adventure-tab">
-                            <span>ADVENTURES</span>
+                              <span>ADVENTURES</span>
                           </li>
-
                         </ul>
                       </div>
                       <h2>Your Food Favorites</h2>
@@ -43,16 +42,15 @@ export default React.createClass({
       savedSearches=(<div className="saved-searches">
                       <div className="tab-container">
                         <ul className="tabs">
-                        <li onClick={this.handleEvents} className="event-tab">
-                          <span>EVENTS</span>
-                        </li>
+                          <li onClick={this.handleEvents} className="event-tab">
+                            <span>EVENTS</span>
+                          </li>
                           <li onClick={this.handleFood} className="food-tab">
-                            <span>FOOD</span>
+                              <span>FOOD</span>
                           </li>
                           <li className="adventure-tab-open">
-                            <span>ADVENTURES</span>
+                              <span>ADVENTURES</span>
                           </li>
-
                         </ul>
                       </div>
                       <h2>Your Adventure Favorites</h2>
@@ -63,16 +61,15 @@ export default React.createClass({
       savedSearches=(<div className="saved-searches">
                       <div className="tab-container">
                         <ul className="tabs">
-                        <li className="event-tab-open">
-                          <span>EVENTS</span>
-                        </li>
+                          <li className="event-tab-open">
+                            <span>EVENTS</span>
+                          </li>
                           <li onClick={this.handleFood} className="food-tab">
-                            <span>FOOD</span>
+                              <span>FOOD</span>
                           </li>
                           <li onClick={this.handleAdventures} className="adventure-tab">
-                            <span>ADVENTURES</span>
+                              <span>ADVENTURES</span>
                           </li>
-
                         </ul>
                       </div>
                       <h2>Your Event Favorites</h2>
@@ -87,14 +84,17 @@ export default React.createClass({
             </div>
     );
   },
-  handleFood(){
+  handleFood(e){
+    e.preventDefault();
 
     this.setState({food:true,adventures:false,events:false});
   },
-  handleAdventures(){
+  handleAdventures(e){
+    e.preventDefault();
     this.setState({food:false,adventures:true,events:false});
   },
-  handleEvents(){
+  handleEvents(e){
+    e.preventDefault();
     this.setState({food:false,adventures:false,events:true});
   }
 });

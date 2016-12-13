@@ -8,7 +8,7 @@ import store from '../../store';
 export default React.createClass({
     getInitialState() {
         return {
-            foodLoading:false,
+            loading:false,
             eventsLoading:false,
             adventuresLoading:false,
             foodClicked:false,
@@ -37,7 +37,7 @@ export default React.createClass({
     updatePlaces() {
         this.setState({
             places: store.places.toJSON(),
-            foodLoading:false,
+            loading:false,
             eventsLoading:false,
             adventuresLoading:false
         });
@@ -68,8 +68,8 @@ export default React.createClass({
                       <i onClick={this.handleExit} className="fa fa-times" aria-hidden="true"></i>
                       <h3 className = "type"> I Want.. </h3>
                       <span onClick={this.handleBreakfast}>Breakfast</span>
-                      <span onClick={this.handleLunch}>Lunch</span>
-                      <span onClick={this.handleDinner}>Dinner</span>
+                      <span onClick={this.handleFood}>Lunch</span>
+                      <span onClick={this.handleFood}>Dinner</span>
                       <span onClick={this.handleFood}>You Pick</span>
                     </div>
                 </div>
@@ -80,7 +80,6 @@ export default React.createClass({
             <div className = "food-clicked">
                 <div className = "food">
                     <div className="modal">
-
                       <i id="loading" className="fa fa-spinner fa-pulse fa-3x fa-fw"></i>
                       <span className="sr-only">Loading...</span>
                     </div>
@@ -138,124 +137,39 @@ export default React.createClass({
 
               );
     },
-    handleExit(){
+    handleExit(e){
+      e.preventDefault();
       this.setState({foodClicked:false});
     },
-    handleEvents() {
-        console.log(this.state);
+    handleEvents(e) {
+      e.preventDefault();
         this.setState({eventsLoading:true});
         let prefs = this.state.session.events;
-        if (prefs) {
-            let trueEvents = [];
-            _.mapObject(prefs, function(val, key) {
-                if (val === true) {
-                    trueEvents.push(key);
-                }
-            });
-            let coordinates = [window.localStorage.getItem('latitude'), window.localStorage.getItem('longitude')];
-            let mixedFood = _.shuffle(trueEvents);
-            let selection = _.first(mixedFood);
-            console.log(selection);
-            store.places.getEvents(selection);
-        } else {
-            let trueEvents = ['Attraction', 'Comedy', 'Festival', 'Holiday', 'Film', 'Music', 'Social', 'Sports'];
-            let mixedEvents = _.shuffle(trueEvents);
-            let selection = _.first(mixedEvents);
-            console.log(selection);
-            store.places.getEvents(selection);
-        }
+        store.places.getEvents(prefs);
     },
-    handleFoodChoices(){
+    handleFoodChoices(e){
+      e.preventDefault();
       this.setState({foodClicked:true});
     },
-    handleBreakfast(){
-      let coordinates = [window.localStorage.getItem('latitude'), window.localStorage.getItem('longitude')];
-      store.places.searchFood('breakfast', coordinates);
+    handleBreakfast(e){
+      e.preventDefault();
+      store.places.searchBreakfast();
       this.setState({loading:true,foodClicked:false});
 
     },
-    handleLunch(){
-      let coordinates = [window.localStorage.getItem('latitude'), window.localStorage.getItem('longitude')];
-      store.places.searchFood('lunch', coordinates);
-      this.setState({loading:true,foodClicked:false});
-    },
-    handleDinner(){
-      let coordinates = [window.localStorage.getItem('latitude'), window.localStorage.getItem('longitude')];
-      store.places.searchFood('dinner', coordinates);
-      this.setState({loading:true, foodClicked:false});
-    },
-
-
-    handleFood() {
+    handleFood(e) {
+      e.preventDefault();
 
         let prefs = this.state.session.prefs;
-        if (prefs) {
-            let trueFoods = [];
-            _.mapObject(prefs, function(val, key) {
-                if (val === true) {
-                    trueFoods.push(key);
-                }
-            });
-            let coordinates = [window.localStorage.getItem('latitude'), window.localStorage.getItem('longitude')];
-            let mixedFood = _.shuffle(trueFoods);
-            let selection = _.first(mixedFood);
-            console.log(selection);
-            store.places.searchFood(selection, coordinates);
-        } else {
-          let trueFoods = ['American', 'BBQ', 'Burgers', 'Cafes', 'Chicken', 'Mexican', 'Chinese', 'Pizza', 'Italian', 'Deli', 'Diners', 'French', 'German', 'Greek', 'Asian', 'Indian', 'Tacos', 'Salad', 'Soup', 'Spanish', 'Texmex', 'Steakhouse', 'Foodtrucks'];
-            let coordinates = [window.localStorage.getItem('latitude'), window.localStorage.getItem('longitude')];
-            let mixedFood = _.shuffle(trueFoods);
-            let selection = _.first(mixedFood);
-            console.log(selection);
-            store.places.searchFood(selection, coordinates);
-            this.setState({loading:true, foodClicked:false});
-        }
+        store.places.searchFood(prefs);
+        this.setState({loading:true,foodClicked:false});
     },
-    handleAdventure() {
+    handleAdventure(e) {
+      e.preventDefault();
         let prefs = this.state.session.adventure;
         this.setState({adventuresLoading:true});
+        store.places.searchAdventure(prefs);
 
-        if (prefs) {
-            let weather = window.localStorage.getItem('description');
-            let temp= window.localStorage.getItem('temp');
-            let coordinates = [window.localStorage.getItem('latitude'), window.localStorage.getItem('longitude')];
-            let trueAdventures = [];
-            if (weather.includes('rain') || temp<60) {
-                _.mapObject(prefs, function(val, key) {
-                    if (key.match(/^(arcades|Spas|Coffee|Bowling|escape|Aquariums|Lasertag|Movies|Bingo|shopping|Wineries|Breweries|Bookstores|Bars)$/) && val === true || temp<60) {
-                        trueAdventures.push(key);
-                    }
-                });
-                let mixedAdventures = _.shuffle(trueAdventures);
-                let selection = _.first(mixedAdventures);
-                store.places.searchAdventure(selection, coordinates);
-            } else {
-                _.mapObject(prefs, function(val, key) {
-                    if (val === true) {
-                        trueAdventures.push(key);
-                    }
-                });
-                let mixedAdventures = _.shuffle(trueAdventures);
-                let selection = _.first(mixedAdventures);
-                store.places.searchAdventure(selection, coordinates);
-            }
-        } else {
-          let weather=window.localStorage.getItem('description');
-          let temp=window.localStorage.getItem('temp');
-            if (weather.includes('rain')|| temp<60) {
-                let trueAdventures = ['Arcades', 'Bars', 'Bingo', 'Bookstores', 'Bowling', 'Coffee', 'Escape', 'LaserTag', 'Movies', 'Museums', 'Shopping', 'Spas', 'Trampolines', 'Aquariums', 'Breweries', 'GoKarts', 'Movies', 'Wineries'];
-                let coordinates = [window.localStorage.getItem('latitude'), window.localStorage.getItem('longitude')];
-                let mixedAdventures = _.shuffle(trueAdventures);
-                let selection = _.first(mixedAdventures);
-                store.places.searchAdventure(selection, coordinates);
-            } else {
-                let trueAdventures = ['Arcades', 'Bars', 'Bingo', 'BookStores', 'Bowling', 'Coffee', 'Escape', 'LaserTag', 'Movies', 'Museums', 'Shopping', 'Spas', 'Trampolines', 'Amusement', 'Aquariums', 'BikeRentals', 'Breweries', 'Canoeing', 'GoKarts', 'Kayaking', 'Hiking', 'Minigolf', 'Movies', 'PaddleBoarding', 'Paintball', 'Tours', 'Swimming', 'Tubing', 'Ziplining', 'Zoos', 'Wineries', ];
-                let coordinates = [window.localStorage.getItem('latitude'), window.localStorage.getItem('longitude')];
-                let mixedAdventures = _.shuffle(trueAdventures);
-                let selection = _.first(mixedAdventures);
-                store.places.searchAdventure(selection, coordinates);
-            }
-        }
     }
 
 });

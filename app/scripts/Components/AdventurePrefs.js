@@ -14,7 +14,6 @@ export default React.createClass({
     }
   },
   render(){
-    console.log(this.props);
     let list=this.props.prefs;
     let likedAdventureList=[];
     let adventureNotLiked=[];
@@ -74,7 +73,6 @@ export default React.createClass({
     this.setState({addAdventures:false,success:false});
   },
   handleAddAdventure(){
-    console.log('adding-adventure');
     this.setState({addAdventures:true});
 
   },
@@ -85,14 +83,14 @@ export default React.createClass({
       this.setState({success:'empty'});
       setTimeout(()=>{
         this.setState({success:false});
-      },2000);
+      },1000);
     }else{
     store.session.addAdventure(adventure);
     this.setState({success:true});
 
     setTimeout(()=>{
       this.setState({success:false, addAdventures:false});
-    },2000);
+    },1000);
     }
   }
 });

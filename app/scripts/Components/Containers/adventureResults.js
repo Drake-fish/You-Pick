@@ -78,52 +78,12 @@ export default React.createClass({
                           </div>
                         );
                     },
-                    research() {
+                    research(e) {
+                        e.preventDefault();
                         let prefs = this.state.session.adventure;
                         this.setState({loading:true});
-                        if (prefs) {
-                            let weather = window.localStorage.getItem('description');
-                            let coordinates = [window.localStorage.getItem('latitude'), window.localStorage.getItem('longitude')];
-                            let temp= window.localStorage.getItem('temp');
-                            let trueAdventures = [];
-                            if (weather.includes('rain')|| temp<60) {
-                                _.mapObject(prefs, function(val, key) {
-                                    if (key.match(/^(arcades|Spas|Coffee|Bowling|escape|Aquariums|Lasertag|Movies|Bingo|shopping|Wineries|Breweries|Bookstores|Bars)$/) && val === true) {
-                                        trueAdventures.push(key);
-                                    }
-                                });
-                                let mixedAdventures = _.shuffle(trueAdventures);
-                                let selection = _.first(mixedAdventures);
-                                store.places.searchAdventure(selection, coordinates);
-                            } else {
-                                _.mapObject(prefs, function(val, key) {
-                                    if (val === true) {
-                                        trueAdventures.push(key);
-                                    }
-                                });
-                                let mixedAdventures = _.shuffle(trueAdventures);
-                                let selection = _.first(mixedAdventures);
-                                store.places.searchAdventure(selection, coordinates);
-                            }
-                        } else {
-                            let weather = window.localStorage.getItem('description');
-                            let temp= window.localStorage.getItem('temp');
-                            if (weather.includes('rain')|| temp<60) {
-                                let trueAdventures = ['Arcades', 'Bars', 'Bingo', 'Bookstores', 'Bowling', 'Coffee', 'Escape', 'LaserTag', 'Movies', 'Museums', 'Shopping', 'Spas', 'Trampolines', 'Aquariums', 'Breweries', 'GoKarts', 'Movies', 'Wineries'];
-                                let coordinates = [window.localStorage.getItem('latitude'), window.localStorage.getItem('longitude')];
-                                let mixedAdventures = _.shuffle(trueAdventures);
-                                let selection = _.first(mixedAdventures);
-                                console.log(selection);
-                                store.places.searchAdventure(selection, coordinates);
-                            } else {
-                                let trueAdventures = ['Arcades', 'Bars', 'Bingo', 'BookStores', 'Bowling', 'Coffee', 'Escape', 'LaserTag', 'Movies', 'Museums', 'Shopping', 'Spas', 'Trampolines', 'Amusement', 'Aquariums', 'BikeRentals', 'Breweries', 'Canoeing', 'GoKarts', 'Kayaking', 'Hiking', 'Minigolf', 'Movies', 'PaddleBoarding', 'Paintball', 'Tours', 'Swimming', 'Tubing', 'Ziplining', 'Zoos', 'Wineries', ];
-                                let coordinates = [window.localStorage.getItem('latitude'), window.localStorage.getItem('longitude')];
-                                let mixedAdventures = _.shuffle(trueAdventures);
-                                let selection = _.first(mixedAdventures);
-                                console.log(selection);
-                                store.places.searchAdventure(selection, coordinates);
-                            }
-                        }
-                    }
+                        let searchTerm=this.state.places[0].searchTerm;
+                        store.places.searchAdventure(prefs,searchTerm);
+                      }
 
             });

@@ -20,7 +20,8 @@ export default React.createClass({
         </li>
     );
   },
-  delete(){
+  delete(e){
+    e.preventDefault();
     console.log('deleting');
     let objectId=this.props.search.objectId;
     store.session.deleteSearches(objectId,'likedAdventures');

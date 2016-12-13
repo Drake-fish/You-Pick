@@ -22,7 +22,6 @@ export default React.createClass({
  },
   render(){
     let distance;
-   console.log(this.props);
 
     if(this.props.place.distance){
      distance=Math.round(this.props.place.distance/1609);
@@ -115,7 +114,8 @@ export default React.createClass({
         );
 
   },
-  save(){
+  save(e){
+    e.preventDefault();
     let picture=this.props.place.imageUrl;
     let title=this.props.place.name;
     let address=this.props.place.address[0];

@@ -22,7 +22,6 @@ componentWillUnmount(){
 
 },
   render(){
-    console.log(store);
     return(
       <div className="login">
         <h3>Create an Account</h3>
@@ -39,7 +38,6 @@ componentWillUnmount(){
     );
   },
   handleSubmit(e){
-    console.log('registering');
     e.preventDefault();
     const name= this.refs.name.value;
     const email= this.refs.email.value;

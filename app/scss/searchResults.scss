@@ -78,7 +78,7 @@ background: transparent;
   position: relative;
 
     .picture {
-        width: 10rem;
+        width: 9rem;
         margin-left: .5rem;
         margin-top: 1rem;
         vertical-align: top;
@@ -179,7 +179,7 @@ margin: 0 auto;
 
 .review-section {
   margin-top:1rem;
-  margin-bottom:1rem;
+  margin-bottom:3rem;
     .reviewer-pic {
         margin-left: 0.3rem;
         border-radius: 50%;
@@ -190,7 +190,7 @@ margin: 0 auto;
 
     span {
         border: 1px solid black;
-        width: 64%;
+        width: 61%;
         float: right;
         padding: 1.2rem;
         background: #D9DEE3;
@@ -206,8 +206,8 @@ margin: 0 auto;
 }
 .liked-overlay {
   position: absolute;
-height: 10rem;
-width: 10rem;
+height: 9rem;
+width: 9rem;
 top: 1rem;
 left: 8px;
 background: rgba(0, 0, 0, 0.4);
@@ -216,7 +216,7 @@ background: rgba(0, 0, 0, 0.4);
     }
     span{
       position: absolute;
-    top: 42px;
+    top: 33px;
     left: 15px;
     color: white;
     text-align: center;
@@ -224,7 +224,7 @@ background: rgba(0, 0, 0, 0.4);
     width: 80%;
     }
     .liked {
-        font-size: 10rem;
+        font-size: 9rem;
         color: #f40428;
     }
 

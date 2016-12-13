@@ -114,7 +114,8 @@ export default React.createClass({
           );
 
     },
-    save(){
+    save(e){
+      e.preventDefault();
       let picture;
       if(this.props.event.image){
        picture=this.props.event.image

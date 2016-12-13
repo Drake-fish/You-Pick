@@ -22,7 +22,8 @@ export default React.createClass({
       </div>
     );
   },
-  handleChange(){
+  handleChange(e){
+    e.preventDefault();
           this.setState({isChecked:!this.state.isChecked});
           if(this.state.isChecked===false){
             setTimeout(()=>{

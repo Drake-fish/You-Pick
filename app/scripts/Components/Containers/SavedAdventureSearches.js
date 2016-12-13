@@ -28,7 +28,6 @@ export default React.createClass({
       savedSearches=<h3 className="no-saved">No Searches Saved Yet!</h3>;
 
     }else{
-      console.log('mapping');
      savedSearches=this.state.session.savedSearches.map((search,i,arr)=>{
       return <SavedAdventureItem key={i} search={search}/>;
     });

@@ -15,7 +15,8 @@ export default React.createClass({
       </div>
     );
   },
-  takeHome(){
+  takeHome(e){
+    e.preventDefault();
     browserHistory.push('/');
   }
 });

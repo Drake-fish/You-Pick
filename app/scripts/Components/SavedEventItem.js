@@ -17,12 +17,15 @@ export default React.createClass({
                     <div className="saved-time-info">
                         <h5 className="date-time">Date:{Moment(this.props.search.phone).format('LL')}</h5>
                         <h5 className="date-time">Time:{Moment(this.props.search.phone).format('LT')}</h5>
+                        <a href={this.props.search.moreInfo} target="_blank"><img className="yelp-icon" src="https://s3-media2.fl.yelpcdn.com/assets/srv0/developer_pages/ebeb7fcf7307/assets/img/yelp-2c-outline.png"/></a>
+
                     </div>
                 </div>
         </li>
     );
   },
-  delete(){
+  delete(e){
+    e.preventDefault();
     console.log('deleting');
     let objectId=this.props.search.objectId;
     store.session.deleteSearches(objectId,'likedEvents');

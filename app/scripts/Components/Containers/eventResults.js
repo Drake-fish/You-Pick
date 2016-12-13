@@ -49,7 +49,6 @@ export default React.createClass({
     );
     }
     let searchDiv;
-    console.log(this.state);
     if(this.state.places.length===0){
       browserHistory.push('/');
     }else if(!this.state.loading){
@@ -77,27 +76,11 @@ export default React.createClass({
                 {searchDiv}
              </div>);
     },
-    research(){
+    research(e){
+      e.preventDefault();
       this.setState({loading:true});
+      let searchTerm=this.state.places[0].searchTerm;
       let prefs=this.state.session.events;
-      if(prefs){
-                let trueEvents=[];
-              _.mapObject(prefs,function(val,key){
-                if(val===true){
-                  trueEvents.push(key);
-                }
-              });
-              let coordinates=[window.localStorage.getItem('latitude'),window.localStorage.getItem('longitude')];
-              let mixedFood=_.shuffle(trueEvents);
-              let selection=_.first(mixedFood);
-              console.log(selection);
-              store.places.getEvents (selection);
-      }else{
-            let trueEvents=['Attraction','Comedy','Festival','Holiday','Film','Music','Social','Sports'];
-            let mixedEvents=_.shuffle(trueEvents);
-            let selection=_.first(mixedEvents);
-            console.log(selection);
-            store.places.getEvents(selection);
-          }
-  }
+      store.places.getEvents(prefs,searchTerm);
+    }
 });

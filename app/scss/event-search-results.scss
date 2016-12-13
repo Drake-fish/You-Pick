@@ -5,7 +5,7 @@ vertical-align: top;
 }
 .event-contact{
   display: inline-block;
-width: 51%;
+width: 48%;
 margin-top: 1rem;
 margin-left: .5rem;
 border-top: 1px solid black;
@@ -69,23 +69,23 @@ margin-bottom: .5rem;
 }
 .event-liked-overlay{
   position: absolute;
-height: 10rem;
-width: 10rem;
+height: 9rem;
+width: 9rem;
 top: 16px;
 left: 8px;
 background: rgba(0, 0, 0, 0.4);
 z-index: 1;
   .fa{
     color:red;
-    font-size:10rem;
+    font-size:9rem;
   }
 a{
   text-decoration:none;
 }
 span{
   position: absolute;
-top: 49px;
-left: 17px;
+top: 32px;
+left: 14px;
 color: white;
 text-align: center;
 font-size: 1.5rem;

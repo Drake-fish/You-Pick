@@ -21,7 +21,8 @@ export default React.createClass({
     );
   },
 
-  delete(){
+  delete(e){
+    e.preventDefault();
     let objectId=this.props.search.objectId;
     store.session.deleteSearches(objectId,'likedFood');
 

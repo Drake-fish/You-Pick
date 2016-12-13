@@ -28,8 +28,8 @@ componentWillUnmount(){
       <div className="login">
         <h3>Welcome Back!</h3>
         <form onSubmit={this.handleSubmit} className="form">
-        <i className="user fa fa-user" aria-hidden="true"></i>
-        <i className="lock fa fa-lock" aria-hidden="true"></i>
+          <i className="user fa fa-user" aria-hidden="true"></i>
+          <i className="lock fa fa-lock" aria-hidden="true"></i>
           <input ref="email" type="email" placeholder="Email"/>
           <input ref="password" type="password" placeholder="password"/>
           <span onClick={this.handleForgotPassword}>Lost your password?</span>
@@ -39,12 +39,12 @@ componentWillUnmount(){
       </div>
     );
   },
-  handleForgotPassword(){
+  handleForgotPassword(e){
+    e.preventDefault();
     let email=this.refs.email.value;
     store.session.forgotPassword(email);
   },
   handleSubmit(e){
-    console.log('login');
     e.preventDefault();
     const email=this.refs.email.value;
     const password=this.refs.password.value;

@@ -83,10 +83,10 @@ export default React.createClass({
         <li onClick={this.handleBreakfast} className="options">
          <span> BREAKFAST</span>
         </li>
-        <li onClick={this.handleLunch} className="options">
+        <li onClick={this.handleFood} className="options">
          <span>LUNCH</span>
         </li>
-        <li onClick={this.handleDinner} className="options">
+        <li onClick={this.handleFood} className="options">
          <span>DINNER</span>
         </li>
         <li onClick={this.handleFood} className="options">
@@ -111,144 +111,52 @@ export default React.createClass({
 
     );
   },
-  handleClose(){
+  handleClose(e){
+    e.preventDefault();
   this.setState({searchOpen:false, food:false});
   },
-  openFood(){
+  openFood(e){
+    e.preventDefault();
     this.setState({food:true});
   },
-  handleSearch(){
+  handleSearch(e){
+    e.preventDefault();
     this.setState({searchOpen:true});
   },
-  handleEvents() {
+  handleEvents(e) {
+    e.preventDefault();
       let prefs = this.state.session.events;
       this.setState({loading:true});
+      store.places.getEvents(prefs);
         window.scrollTo(0,0);
-      if (prefs) {
-          let trueEvents = [];
-          _.mapObject(prefs, function(val, key) {
-              if (val === true) {
-                  trueEvents.push(key);
-              }
-          });
-          let coordinates = [window.localStorage.getItem('latitude'), window.localStorage.getItem('longitude')];
-          let mixedFood = _.shuffle(trueEvents);
-          let selection = _.first(mixedFood);
-          console.log(selection);
-          store.places.getEvents(selection);
-
-      } else {
-          let trueEvents = ['Attraction', 'Comedy', 'Festival', 'Holiday', 'Film', 'Music', 'Social', 'Sports'];
-          let mixedEvents = _.shuffle(trueEvents);
-          let selection = _.first(mixedEvents);
-          console.log(selection);
-          store.places.getEvents(selection);
-
-      }
     },
   handleSubmit(e){
       e.preventDefault();
-      let coordinates = [window.localStorage.getItem('latitude'), window.localStorage.getItem('longitude')];
       let searchTerm=this.refs.searchTerm.value;
-      store.places.searchFood(searchTerm,coordinates);
+      store.places.searchAnything(searchTerm);
       this.refs.searchTerm.value='';
       this.setState({searchOpen:false, food:false, loading:true});
       window.scrollTo(0,0);
   },
-  handleBreakfast(){
-    let coordinates = [window.localStorage.getItem('latitude'), window.localStorage.getItem('longitude')];
-    store.places.searchFood('breakfast', coordinates);
+  handleBreakfast(e){
+    e.preventDefault();
+    store.places.searchBreakfast();
     this.setState({searchOpen:false, food:false, loading:true});
     window.scrollTo(0,0);
 
   },
-  handleLunch(){
-    let coordinates = [window.localStorage.getItem('latitude'), window.localStorage.getItem('longitude')];
-    store.places.searchFood('lunch', coordinates);
-    this.setState({searchOpen:false, food:false, loading:true});
-    window.scrollTo(0,0);
-
-  },
-  handleDinner(){
-    let coordinates = [window.localStorage.getItem('latitude'), window.localStorage.getItem('longitude')];
-    store.places.searchFood('dinner', coordinates);
-    this.setState({searchOpen:false, food:false, loading:true});
-    window.scrollTo(0,0);
-  },
-
-
-  handleFood() {
+  handleFood(e) {
+    e.preventDefault();
       window.scrollTo(0,0);
       let prefs = this.state.session.prefs;
-      if (prefs) {
-          let trueFoods = [];
-          _.mapObject(prefs, function(val, key) {
-              if (val === true) {
-                  trueFoods.push(key);
-              }
-          });
-          let coordinates = [window.localStorage.getItem('latitude'), window.localStorage.getItem('longitude')];
-          let mixedFood = _.shuffle(trueFoods);
-          let selection = _.first(mixedFood);
-          console.log(selection);
-          store.places.searchFood(selection, coordinates);
-
-      } else {
-          let trueFoods = ['American', 'BBQ', 'Burgers', 'Cafes', 'Chicken', 'Mexican', 'Chinese', 'Pizza', 'Italian', 'Comfortfood', 'Deli', 'Diners', 'French', 'German', 'Greek', 'Asian', 'Indian', 'Tacos', 'Salad', 'Soup', 'Spanish', 'Texmex', 'Steakhouse', 'Foodtrucks'];
-          let coordinates = [window.localStorage.getItem('latitude'), window.localStorage.getItem('longitude')];
-          let mixedFood = _.shuffle(trueFoods);
-          let selection = _.first(mixedFood);
-          console.log(selection);
-          store.places.searchFood(selection, coordinates);
-          this.setState({searchOpen:false, food:false, loading:true});
-
-      }
+      store.places.searchFood(prefs);
+      this.setState({searchOpen:false,food:false,loading:true});
   },
-  handleAdventure() {
+  handleAdventure(e) {
+    e.preventDefault();
       let prefs = this.state.session.adventure;
       this.setState({searchOpen:false, food:false,loading:true});
+      store.places.searchAdventure(prefs);
       window.scrollTo(0,0);
-
-      if (prefs) {
-          let weather = window.localStorage.getItem('description');
-          let temp= window.localStorage.getItem('temp');
-          let coordinates = [window.localStorage.getItem('latitude'), window.localStorage.getItem('longitude')];
-          let trueAdventures = [];
-          if (weather.includes('rain') || temp<60) {
-              _.mapObject(prefs, function(val, key) {
-                  if (key.match(/^(arcades|Spas|Coffee|Bowling|escape|Aquariums|Lasertag|Movies|Bingo|shopping|Wineries|Breweries|Bookstores|Bars)$/) && val === true || temp<60) {
-                      trueAdventures.push(key);
-                  }
-              });
-              let mixedAdventures = _.shuffle(trueAdventures);
-              let selection = _.first(mixedAdventures);
-              store.places.searchAdventure(selection, coordinates);
-          } else {
-              _.mapObject(prefs, function(val, key) {
-                  if (val === true) {
-                      trueAdventures.push(key);
-                  }
-              });
-              let mixedAdventures = _.shuffle(trueAdventures);
-              let selection = _.first(mixedAdventures);
-              store.places.searchAdventure(selection, coordinates);
-          }
-      } else {
-        let weather=window.localStorage.getItem('description');
-        let temp=window.localStorage.getItem('temp');
-          if (weather.includes('rain')|| temp<60) {
-              let trueAdventures = ['Arcades', 'Bars', 'Bingo', 'Bookstores', 'Bowling', 'Coffee', 'Escape', 'LaserTag', 'Movies', 'Museums', 'Shopping', 'Spas', 'Trampolines', 'Aquariums', 'Breweries', 'GoKarts', 'Movies', 'Wineries'];
-              let coordinates = [window.localStorage.getItem('latitude'), window.localStorage.getItem('longitude')];
-              let mixedAdventures = _.shuffle(trueAdventures);
-              let selection = _.first(mixedAdventures);
-              store.places.searchAdventure(selection, coordinates);
-          } else {
-              let trueAdventures = ['Arcades', 'Bars', 'Bingo', 'BookStores', 'Bowling', 'Coffee', 'Escape', 'LaserTag', 'Movies', 'Museums', 'Shopping', 'Spas', 'Trampolines', 'Amusement', 'Aquariums', 'BikeRentals', 'Breweries', 'Canoeing', 'GoKarts', 'Kayaking', 'Hiking', 'Minigolf', 'Movies', 'PaddleBoarding', 'Paintball', 'Tours', 'Swimming', 'Tubing', 'Ziplining', 'Zoos', 'Wineries', ];
-              let coordinates = [window.localStorage.getItem('latitude'), window.localStorage.getItem('longitude')];
-              let mixedAdventures = _.shuffle(trueAdventures);
-              let selection = _.first(mixedAdventures);
-              store.places.searchAdventure(selection, coordinates);
-          }
-      }
   }
 });

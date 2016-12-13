@@ -23,13 +23,11 @@ export default React.createClass({
     });
   },
   render(){
-    console.log(this.state);
     let savedSearches;
     if(!this.state.session.savedSearches || this.state.session.savedSearches.length===0){
       savedSearches=<h3 className="no-saved">No Searches Saved Yet!</h3>;
 
     }else{
-      console.log('mapping');
      savedSearches=this.state.session.savedSearches.map((search,i,arr)=>{
       return <SavedEventItem key={i} search={search}/>;
     });

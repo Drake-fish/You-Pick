@@ -70,15 +70,18 @@ export default React.createClass({
     </Sticky>
     );
   },
-  handleClick(){
+  handleClick(e){
+    e.preventDefault();
     this.setState({menuOpen:false});
     store.session.logout();
 
   },
-  openMenu(){
+  openMenu(e){
+    e.preventDefault();
     this.setState({menuOpen:true});
   },
-  closeMenu(){
+  closeMenu(e){
+    e.preventDefault();
     this.setState({menuOpen:false});
   }
 });

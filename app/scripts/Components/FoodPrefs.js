@@ -73,10 +73,12 @@ export default React.createClass({
 
     );
   },
-  handleExit(){
+  handleExit(e){
+    e.preventDefault();
     this.setState({addFood:false,success:false});
   },
-  handleAddFood(){
+  handleAddFood(e){
+    e.preventDefault();
     this.setState({addFood:true});
 
   },

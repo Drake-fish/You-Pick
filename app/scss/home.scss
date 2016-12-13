@@ -9,6 +9,9 @@
 }
 footer{
 display:none;
+span{
+  display:none;
+}
 a{
   color:white;
 }
@@ -36,6 +39,7 @@ a{
   }
   .top-picks{
     display:block;
+    margin-bottom:2rem;
   }
   .mobile-nav{
     display:none;

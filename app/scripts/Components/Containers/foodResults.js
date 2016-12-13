@@ -62,7 +62,6 @@ export default React.createClass({
         <div className="search-results">
           <h3 className="search-title">{login} How about {this.state.places[0].searchTerm} {food}</h3>
           <span className="research" onClick={this.search}>(Try Again)</span>
-
           <FoodSearchList results={results}/>
         </div>
       );
@@ -80,30 +79,11 @@ export default React.createClass({
                 {searchDiv}
              </div>);
     },
-    search(){
+    search(e){
+      e.preventDefault();
       this.setState({loading:true});
       let searchTerm=this.state.places[0].searchTerm;
-      let coordinates=[window.localStorage.getItem('latitude'),window.localStorage.getItem('longitude')];
       let prefs=this.state.session.prefs;
-      if(prefs){
-      let trueFoods=[];
-        _.mapObject(prefs,function(val,key){
-          if(val===true){
-            trueFoods.push(key);
-          }
-      });
-      let newSearchArray=_.without(trueFoods,searchTerm);
-      let mixedFood=_.shuffle(newSearchArray);
-      let selection=_.first(mixedFood);
-      store.places.searchFood(selection ,coordinates,'foodresults');
-
-  }else{
-    let trueFoods=['american', 'bbq', 'burgers', 'cafes', 'chicken','mexican','chinese','pizza','italian','deli','diners','french','german','greek','asian','indian','tacos','salad','soup','spanish','texmex','steakhouse','foodtrucks'];
-    let newSearchArray=_.without(trueFoods,searchTerm);
-    let mixedFood=_.shuffle(newSearchArray);
-    let selection=_.first(mixedFood);
-    console.log(selection);
-    store.places.searchFood(selection,coordinates);
-      }
+      store.places.searchFood(prefs,searchTerm);
     }
   });

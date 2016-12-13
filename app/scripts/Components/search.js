@@ -13,9 +13,8 @@ render(){
 },
 handleSubmit(e){
   e.preventDefault();
-  let coordinates = [window.localStorage.getItem('latitude'), window.localStorage.getItem('longitude')];
   let searchTerm=this.refs.searchTerm.value;
-  store.places.searchFood(searchTerm,coordinates);
+  store.places.searchAnything(searchTerm);
   this.refs.searchTerm.value='';
 }
 });
