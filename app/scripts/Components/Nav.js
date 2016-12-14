@@ -22,7 +22,7 @@ export default React.createClass({
                   <div className="menu-items">
                     <Link to="/"><span onClick={this.closeMenu}><i className="fa fa-home" aria-hidden="true"></i>HOME</span></Link>
                     <Link to="/preferences"><span onClick={this.closeMenu}><i className="fa fa-cog" aria-hidden="true"></i>SETTINGS</span></Link>
-                    <Link to="saved"><span onClick={this.closeMenu}><i id="heart" className="fa fa-heart" aria-hidden="true"></i>SAVED</span></Link>
+                    <Link to="saved"><span onClick={this.closeMenu}><i id="heart" className="fa fa-heart" aria-hidden="true"></i>FAVORITES</span></Link>
                     <span onClick={this.handleClick}><i className="fa fa-sign-in" aria-hidden="true"></i>LOG OUT</span>
                   </div>
                 </div>
@@ -45,7 +45,7 @@ export default React.createClass({
     <nav>
       <Link to="/"><i className="fa fa-home" aria-hidden="true"></i><span>Home</span></Link>
       <Link to="/preferences"><i className="fa fa-cog" aria-hidden="true"></i><span>Settings</span></Link>
-      <Link to="/saved"><i id="heart" className="fa fa-heart" aria-hidden="true"></i> <span>Saved</span></Link>
+      <Link to="/saved"><i id="heart" className="fa fa-heart" aria-hidden="true"></i> <span>Favorites</span></Link>
       <Link onClick={this.handleClick}><i className="fa fa-sign-in" aria-hidden="true"></i><span>Logout</span></Link>
     </nav>
   );

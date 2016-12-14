@@ -4,7 +4,6 @@ import FoodPrefs from '../../components/FoodPrefs';
 import EventPrefs from '../../components/EventPrefs';
 import AdventurePrefs from '../../components/AdventurePrefs';
 import store from '../../store';
-import SearchBar from './searchBar';
 import SearchOptions from './SearchOptions';
 
 export default React.createClass({

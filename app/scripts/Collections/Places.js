@@ -315,9 +315,10 @@ export default Backbone.Collection.extend({
                 let weather = window.localStorage.getItem('description');
                 let temp= window.localStorage.getItem('temp');
                 let trueAdventures = [];
-                if (weather.includes('rain') || temp<60) {
+                if (weather.includes('rain')  || temp<60) {
+                  console.log('prefs cold or rainy',temp,prefs);
                     _.mapObject(prefs, function(val, key) {
-                        if (key.match(/^(arcades|Spas|Coffee|Bowling|escape|Aquariums|Lasertag|Movies|Bingo|shopping|Wineries|Breweries|Bookstores|Bars)$/) && val === true || temp<60) {
+                        if (key.match(/^(arcades|Spas|Coffee|Bowling|escape|Aquariums|Lasertag|Movies|Bingo|shopping|Wineries|Breweries|Bookstores|Bars)$/) && val === true) {
                             trueAdventures.push(key);
                         }
                     });
@@ -337,7 +338,7 @@ export default Backbone.Collection.extend({
             } else {
               let weather=window.localStorage.getItem('description');
               let temp=window.localStorage.getItem('temp');
-                if (weather.includes('rain')|| temp<60) {
+                if (weather.includes('rain')|| temp < 60) {
 
                     let trueAdventures = ['Arcades', 'Bars', 'Bingo', 'Bookstores', 'Bowling', 'Coffee', 'Escape', 'LaserTag', 'Movies', 'Museums', 'Shopping', 'Spas', 'Trampolines', 'Aquariums', 'Breweries', 'GoKarts', 'Movies', 'Wineries'];
                     let newArray=_.without(trueAdventures,searchTerm);

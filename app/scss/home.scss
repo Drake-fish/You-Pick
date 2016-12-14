@@ -25,14 +25,18 @@ a{
   footer{
     text-align:center;
     display: block;
-  padding-top: 1rem;
-  padding-bottom: 1rem;
+  padding-top: .5rem;
+  padding-bottom: .5rem;
   border-top: 1px solid black;
   background: black;
   color: white;
   position:fixed;
   bottom:0;
   width:100%;
+  z-index:10;
+  span{
+    display:inline-block;
+  }
   }
   .search-options{
     display:inline-block;
