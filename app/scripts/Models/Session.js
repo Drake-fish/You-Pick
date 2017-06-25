@@ -71,6 +71,14 @@ export default Backbone.Model.extend({
                 window.localStorage.setItem('name', response.name);
                 browserHistory.push('/preferences');
             },
+            error: (response)=>{
+              this.set({error:response.responseJSON});
+              window.setTimeout(()=>{
+                this.set({error:''});
+              },3000);
+
+
+            }
         });
     },
     logout() {

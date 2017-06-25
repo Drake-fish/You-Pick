@@ -27,7 +27,7 @@ render(){
 
      return(
       <div className="weather">
-          <span>{weather} {Math.round(window.localStorage.getItem('temp'))}°</span>{weatherPic}
+          <span>{Math.round(window.localStorage.getItem('temp'))}°</span>{weatherPic}
 
       </div>
     );

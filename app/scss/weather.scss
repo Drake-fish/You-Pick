@@ -1,12 +1,18 @@
-.weather-icon{
-  width: 20%;
-  vertical-align: middle;
-}
+
 .weather{
-  width:15%;
-  display:inline-block;
-}
-.rain-icon{
-  width:31%;
-  vertical-align: middle;
+  position: absolute;
+    top: -6px;
+    right: 19px;
+    z-index: 2;
+    span{
+      display: block;
+      font-size: 20px;
+      margin-left: 5px;
+      margin-top: 7px;
+      color: white;
+    }
+    .weather-icon{
+      width: 36px;
+    margin-top: -5px;
+    }
 }

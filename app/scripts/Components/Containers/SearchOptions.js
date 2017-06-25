@@ -54,36 +54,17 @@ export default React.createClass({
         if(!this.state.foodClicked && !this.state.foodLoading){
           FoodDiv=(
             <div onClick = {this.handleFoodChoices} className = "overlay search-options">
-                <div className = "food search">
-                  <h3 className = "title"> FOOD </h3>
+                <div className = "food search-option">
+                  <h3 className = "title-food"> FOOD </h3>
                 </div>
             </div>
           )
 
-        }else if(this.state.foodClicked && !this.state.foodLoading){
-          FoodDiv=(
-            <div className = "food-clicked">
-                <div className = "food">
-                    <div className="modal">
-                      <i onClick={this.handleExit} className="fa fa-times" aria-hidden="true"></i>
-                      <h3 className = "type"> I Want.. </h3>
-                      <span onClick={this.handleBreakfast}>Breakfast</span>
-                      <span onClick={this.handleFood}>Lunch</span>
-                      <span onClick={this.handleFood}>Dinner</span>
-                      <span onClick={this.handleFood}>You Pick</span>
-                    </div>
-                </div>
-            </div>
-          );
         }else if(!this.state.foodClicked && this.state.foodLoading){
           FoodDiv=(
-            <div className = "food-clicked">
-                <div className = "food">
-                    <div className="modal">
+                <div className = "food search-option">
                       <i id="loading" className="fa fa-spinner fa-pulse fa-3x fa-fw"></i>
                       <span className="sr-only">Loading...</span>
-                    </div>
-                </div>
             </div>
 
           );
@@ -93,7 +74,7 @@ export default React.createClass({
           AdventureDiv=(
                         <div onClick = {this.handleAdventure} className = "overlay search-options">
                           <div className = "random search" >
-                            <h3 className = "title" > ADVENTURE < /h3>
+                            <h3 className = "title-adventure" > ADVENTURE < /h3>
                           </div>
                         </div>
 
@@ -114,7 +95,7 @@ export default React.createClass({
           EventsDiv=(
                       <div onClick = {this.handleEvents} className = "overlay search-options">
                           <div className = "events search">
-                            <h3 className = "title"> EVENTS </h3>
+                            <h3 className = "title-events"> EVENTS </h3>
                           </div>
                       </div>
                     );

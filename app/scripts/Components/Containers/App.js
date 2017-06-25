@@ -1,7 +1,6 @@
 import React from 'react';
-import {StickyContainer,Sticky} from 'react-sticky';
 
-import Nav from '../Nav';
+import Header from '../header';
 import BottomNav from '../BottomNav';
 import Footer from '../footer';
 
@@ -9,14 +8,11 @@ export default React.createClass({
 
 render(){
   return(
-    <StickyContainer>
     <div id="app">
-        <Nav/>
+        <Header/>
         {this.props.children}
-        <BottomNav/>
         <Footer/>
     </div>
-    </StickyContainer>
   );
 
 }

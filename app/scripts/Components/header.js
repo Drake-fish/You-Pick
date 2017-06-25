@@ -1,21 +1,19 @@
 import React from 'react';
-import {browserHistory} from 'react-router'
-import Weather from './weather';
-import Nav from './Nav';
+import { Link } from 'react-router';
+import $ from 'jquery';
 
+import Search from './search';
+import store from '../store';
+import Bubble from './bubble';
+import Nav from './Nav';
+import Weather from './weather';
 
 export default React.createClass({
   render(){
     return(
       <div className="header">
-        <div onClick={this.takeHome} className="bubble">
-          <h1>I DONT CARE</h1>
-          <h2>YOU PICK</h2>
-        </div>
+      <Nav/>
       </div>
     );
-  },
-  takeHome(){
-    browserHistory.push('/');
   }
 });

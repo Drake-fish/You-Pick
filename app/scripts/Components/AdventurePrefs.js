@@ -9,7 +9,7 @@ import store from '../store';
 export default React.createClass({
   getInitialState(){
     return{
-      addAdventures:false,
+      addAdventure:false,
       success:false
     }
   },
@@ -24,6 +24,8 @@ export default React.createClass({
         adventureNotLiked.push(key);
       }
     });
+    likedAdventureList.sort();
+    adventureNotLiked.sort();
     let likedAdventure=likedAdventureList.map((adventure,i,arr)=>{
      return <LikedAdventureItem key={adventure} adventure={adventure}/>;
     });
@@ -31,50 +33,61 @@ export default React.createClass({
       return<HatedAdventureItem key={adventure} adventure={adventure}/>;
     });
 
-    let addAdventure;
-    if(!this.state.addAdventures && !this.state.success){
-      addAdventure=(
-          <span onClick={this.handleAddAdventure} className="add-button"><i className="fa fa-plus-circle"  aria-hidden="true"></i>ADD</span>
-    );
-  }else if(this.state.addAdventures && !this.state.success){
-    addAdventure=(
+    let addAdventure=(
+      <div className="menu-top">
+      <i onClick={this.handleExit} className="fa fa-times" aria-hidden="true"></i>
+
+        <h3>Active Adventure Options</h3>
+        <span onClick={this.handleAddAdventure} className="add-button"><i className="fa fa-plus-circle"  aria-hidden="true"></i>ADD</span>
         <form onSubmit={this.addAdventure} className="add-term">
-          <input className="add-input" ref="add" type="text" placeholder="Add Adventure"/>
-          <i className="fa fa-plus-circle" id="submit-food" onClick={this.addAdventure} aria-hidden="true"></i>
-          <i onClick={this.handleExit} className="fa fa-times" aria-hidden="true"></i>
-        </form>
+        <input className="add-input" ref="add" type="text" placeholder="Add Adventure"/>
+      </form>
+      </div>
+    );
+   if(this.state.addAdventure && !this.state.success){
+    addAdventure=(
+      <div className="menu-top">
+      <i onClick={this.handleExit} className="fa fa-times fa-times-open" aria-hidden="true"></i>
+        <h3 className="open-add">Active Adventure Options</h3>
+        <span onClick={this.addAdventure} className="add-button"><i className="fa fa-plus-circle"  aria-hidden="true"></i>ADD</span>
+        <form onSubmit={this.addAdventure} className="add-term">
+        <input className="add-input add-input-open" ref="add" type="text" placeholder="Add Adventure"/>
+      </form>
+      </div>
   );
-}else if(this.state.addAdventures && this.state.success===true){
+}else if(this.state.addAdventure && this.state.success===true){
   addAdventure=(
     <div className="preference-header">
       <span className="success"><i className="fa fa-check-circle" aria-hidden="true"></i>SUCCESS!</span>
     </div>
-);
+  );
 
-}else if(this.state.addAdventures && this.state.success==='empty'){
+}else if(this.state.addAdventure && this.state.success==='empty'){
   addAdventure=(
     <div className="preference-header">
-      <span className="error"><i className="fa fa-times-circle" aria-hidden="true"></i> Please Enter A Search Term!</span>
+      <span className="error"><i className="fa fa-times-circle" aria-hidden="true"></i>Enter a search term</span>
     </div>
-);
-}
+  );
+  }
 
     return(
-    <div className="preferences">
-      <h2>ADVENTURE PREFERENCES</h2>
-        <h3>Adventures I Like {addAdventure}</h3>
+    <div id="adventure" className="preferences">
+      <ul>
+        <h2>ADVENTURE PREFERENCES</h2>
+          {addAdventure}
           {likedAdventure}
-        <h3>Adventures I Dont Like</h3>
+        <h3>Disabled Adventure Options</h3>
           {hatedAdventure}
+      </ul>
     </div>
-    );
-  },
+  );
+},
   handleExit(){
-    this.setState({addAdventures:false,success:false});
+    this.setState({addAdventure:false,success:false});
   },
   handleAddAdventure(){
     console.log('adding-adventure');
-    this.setState({addAdventures:true});
+    this.setState({addAdventure:true});
 
   },
   addAdventure(e){
@@ -90,7 +103,7 @@ export default React.createClass({
     this.setState({success:true});
 
     setTimeout(()=>{
-      this.setState({success:false, addAdventures:false});
+      this.setState({success:false, addAdventure:false});
     },1000);
     }
   }

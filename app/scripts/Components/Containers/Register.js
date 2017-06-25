@@ -37,7 +37,7 @@ componentWillUnmount(){
       </div>
     );
   },
-  handleSubmit(e){
+  handleRegisterSubmit(e){
     e.preventDefault();
     const name= this.refs.name.value;
     const email= this.refs.email.value;

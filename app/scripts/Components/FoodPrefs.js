@@ -18,6 +18,7 @@ export default React.createClass({
     let list=this.props.prefs;
     let likedFoodList=[];
     let foodNotLiked=[];
+
      _.mapObject(list,function(val,key){
       if(val===true){
         likedFoodList.push(key);
@@ -25,24 +26,36 @@ export default React.createClass({
         foodNotLiked.push(key);
       }
     });
+    likedFoodList.sort();
+    foodNotLiked.sort();
+
     let likedFood=likedFoodList.map((food,i,arr)=>{
      return <LikedFoodItem key={food} food={food}/>;
     });
     let hatedFood=foodNotLiked.map((food,i,arr)=>{
       return<HatedFoodItem key={food} food={food}/>;
     });
-    let addFood;
-    if(!this.state.addFood && !this.state.success){
-      addFood=(
-          <span onClick={this.handleAddFood} className="add-button"><i className="fa fa-plus-circle"  aria-hidden="true"></i>ADD</span>
-    );
-  }else if(this.state.addFood && !this.state.success){
-    addFood=(
+    let addFood=(
+      <div className="menu-top">
+      <i onClick={this.handleExit} className="fa fa-times" aria-hidden="true"></i>
+
+        <h3>Active Food Options</h3>
+        <span onClick={this.handleAddFood} className="add-button"><i className="fa fa-plus-circle"  aria-hidden="true"></i>ADD</span>
         <form onSubmit={this.addFood} className="add-term">
-          <input className="add-input" ref="add" type="text" placeholder="Add Food"/>
-          <i className="fa fa-plus-circle" id="submit-food" onClick={this.addFood} aria-hidden="true"></i>
-          <i onClick={this.handleExit} className="fa fa-times" aria-hidden="true"></i>
-        </form>
+        <input className="add-input" ref="add" type="text" placeholder="Add Food"/>
+      </form>
+      </div>
+    );
+   if(this.state.addFood && !this.state.success){
+    addFood=(
+      <div className="menu-top">
+      <i onClick={this.handleExit} className="fa fa-times fa-times-open" aria-hidden="true"></i>
+        <h3 className="open-add">Active Food Options</h3>
+        <span onClick={this.addFood} className="add-button"><i className="fa fa-plus-circle"  aria-hidden="true"></i>ADD</span>
+        <form onSubmit={this.addFood} className="add-term">
+        <input className="add-input add-input-open" ref="add" type="text" placeholder="Add Food"/>
+      </form>
+      </div>
   );
 }else if(this.state.addFood && this.state.success===true){
   addFood=(
@@ -54,18 +67,18 @@ export default React.createClass({
 }else if(this.state.addFood && this.state.success==='empty'){
   addFood=(
     <div className="preference-header">
-      <span className="error"><i className="fa fa-times-circle" aria-hidden="true"></i> Please Enter A Search Term!</span>
+      <span className="error"><i className="fa fa-times-circle" aria-hidden="true"></i>Enter a search term</span>
     </div>
 );
 }
 
     return(
-    <div className="preferences">
+    <div id="food" className="preferences">
       <ul>
         <h2>FOOD PREFERENCES</h2>
-        <h3>Food I Like {addFood}</h3>
+          {addFood}
           {likedFood}
-        <h3>Food I Dont Like</h3>
+        <h3>Disabled Food Options</h3>
           {hatedFood}
       </ul>
     </div>
@@ -91,6 +104,7 @@ export default React.createClass({
     }else{
     store.session.addFood(food);
     this.setState({success:true});
+
 
     setTimeout(()=>{
       this.setState({success:false, addFood:false});

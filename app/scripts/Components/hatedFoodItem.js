@@ -11,13 +11,13 @@ export default React.createClass({
   },
   render(){
     return(
-  <div className="onoffswitch">
+  <div className="liked-item">
       <h4>{this.props.food}</h4>
-      <input onChange={this.handleChange} type="checkbox" name="onoffswitch" className="onoffswitch-checkbox" id={this.props.food}/>
-      <label className="onoffswitch-label" htmlFor={this.props.food}>
-          <span className="onoffswitch-inner"></span>
-          <span className="onoffswitch-switch"></span>
-      </label>
+      <label className="switch">
+  <input onChange={this.handleChange}
+type="checkbox"/>
+  <div className="slider round"></div>
+</label>
   </div>
     );
   },

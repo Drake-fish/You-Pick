@@ -10,28 +10,27 @@ export default React.createClass({
     }
   },
   render(){
-    console.log(this.props);
     return(
-      <div className="onoffswitch">
-          <h4>{this.props.adventure}</h4>
-          <input checked={this.state.isChecked} onChange={this.handleChange} type="checkbox" name="onoffswitch" className="onoffswitch-checkbox" id={this.props.adventure}/>
-          <label className="onoffswitch-label" htmlFor={this.props.adventure}>
-              <span className="onoffswitch-inner"></span>
-              <span className="onoffswitch-switch"></span>
-          </label>
-      </div>
+  <div className="liked-item">
+      <h4>{this.props.adventure}</h4>
+      <label className="switch">
+  <input onChange={this.handleChange}
+type="checkbox"/>
+  <div className="slider round"></div>
+</label>
+  </div>
     );
   },
   handleChange(){
-          this.setState({isChecked:!this.state.isChecked});
-          if(this.state.isChecked===false){
-            setTimeout(()=>{
-            store.session.addAdventure(this.props.adventure);
-          },1000);
-          }else{
-            setTimeout(()=>{
-          store.session.removeAdventure(this.props.adventure);
-        },1000);
-        }
+    this.setState({isChecked:!this.state.isChecked});
+    if(this.state.isChecked===false){
+      setTimeout(()=>{
+      store.session.addAdventure(this.props.adventure);
+    },1000);
+    }else{
+      setTimeout(()=>{
+    store.session.removeAdventure(this.props.adventure);
+  },1000);
+  }
   }
 });

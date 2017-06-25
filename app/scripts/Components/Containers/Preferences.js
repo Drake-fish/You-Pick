@@ -27,11 +27,15 @@ export default React.createClass({
   render(){
     return(
     <div className="preferences-container">
-        <SearchOptions/>
+          <ul className="preference-nav">
+            <a href="#food"><li className="nav-option">Food Options</li></a>
+            <a href="#adventure"><li className="nav-option">Adventure Options</li></a>
+            <a href="#event"><li className="nav-option">Event Options</li></a>
+          </ul>
         <FoodPrefs prefs={this.state.session.prefs}/>
         <AdventurePrefs prefs={this.state.session.adventure}/>
         <EventPrefs prefs={this.state.session.events}/>
-   </div>
+      </div>
     );
   }
 });

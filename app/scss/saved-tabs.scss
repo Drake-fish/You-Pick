@@ -2,22 +2,20 @@
   list-style:none;
   padding:0;
   text-align:center;
-  margin-top:0;
+  margin-top:3rem;
   li{
+    font-size:.5rem;
     background:$icon-color;
     padding-top:1rem;
     padding-bottom:1rem;
     display:inline-block;
     width:33.33%;
     color:white;
-    border:1px solid white;
     box-sizing:border-box;
     cursor:pointer;
     transition:all .3s ease-in-out;
     &:hover{
       background:$background-color;
-      border-left:2px solid white;
-      border-right:2px solid white;
     }
   }
   .food-tab-open{
@@ -25,7 +23,7 @@
     border-left:2px solid white;
     background:$background-color;
     border-bottom:none;
-    border-right:2px solid white;
+    box-sizing:border-box;
     &:hover{
       background:$background-color;
     }
@@ -35,7 +33,7 @@
     border-left:2px solid white;
     background:$background-color;
     border-bottom:none;
-    border-right:2px solid white;
+    box-sizing:border-box;
     &:hover{
       background:$background-color;
     }
@@ -45,7 +43,7 @@
     border-left:2px solid white;
     background:$background-color;
     border-bottom:none;
-    border-right:2px solid white;
+    box-sizing:border-box;
     &:hover{
       background:$background-color;
     }

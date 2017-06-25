@@ -10,7 +10,6 @@ export default React.createClass({
         <Link to="https://twitter.com/DrakeATX" target="_blank"><i className="fa fa-twitter" aria-hidden="true"></i></Link>
         <Link to="https://www.linkedin.com/in/drake-fish-94a46694" target="_blank"><i className="fa fa-linkedin" aria-hidden="true"></i></Link>
         <Link to="https://www.github.com/drake-fish" target="_blank"><i className="fa fa-github" aria-hidden="true"></i></Link>
-        <Weather/>
       </footer>
     );
   }

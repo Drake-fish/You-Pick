@@ -20,7 +20,47 @@ a{
   margin-right:1rem;
 }
 }
+.home{
+      margin-top: 50px;
+}
 
+
+// .events{
+//   transform: rotateZ(-22deg);
+// position: absolute;
+// top: -241px;
+// left: -233px;
+// width: 143%;
+// z-index: 3;
+// opacity: 1;
+// .title{
+//   text-align: center;
+//     color: white;
+//     font-size: 3rem;
+//     position: absolute;
+//     top: 237px;
+//     left: 36%;
+// }
+//
+// }
+// .food{
+//   position: absolute;
+//     transform: rotateZ(-24deg);
+//     top: -469px;
+//     left: -103px;
+//     opacity: 1;
+//     width: 605px;
+//     z-index: 2;
+// }
+// .random{
+//   position: absolute;
+//     top: -168%;
+//     left: -330px;
+//     opacity: 1;
+//     z-index: 1;
+//     transform: rotateZ(-25deg);
+//     width: 242%;
+// }
 @media(min-width:700px){
   footer{
     text-align:center;
