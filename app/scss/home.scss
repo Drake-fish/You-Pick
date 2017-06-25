@@ -23,44 +23,89 @@ a{
 .home{
       margin-top: 50px;
 }
+.search{
+  background: url(../../../assets/images/searchimage.jpg);
+  background-size: cover;
+  background-repeat: no-repeat;
+  width: 95%;
+  box-sizing: border-box;
+  margin: 0 auto;
+  margin-left: 2.5%;
+  margin-top: .5rem;
+  padding-bottom: 7.5rem;
+  overflow:hidden;
+  h3{
+    color:white;
+    font-size:1.5rem;
+  }
+}
+.search-main-form{
+  display: block;
+text-align: center;
+margin-top: .5rem;
 
+.fa-search{
+  background: #797979;
+padding: 4px;
+vertical-align: middle;
+color: white;
+padding-right: .3rem;
+border-top-right-radius: 5px;
+opacity:0;
+transiton:.4s ease-in-out;
+vertical-align:top;
+border:.5px solid black;
+box-sizing:border-box;
+position:relative;
+z-index:2;
+}
+.search-icon-open{
+  opacity:1;
+  transition:.4s ease-in-out;
+}
+.search-box{
+  width:0;
+  opacity:0;
+  transition:.4s ease-in-out;
+  border:1px solid black;
+  border-right:none;
+  text-indent:1rem;
+  height:22px;
+}
+.search-box-open{
+  width:65%;
+  opacity:1;
+  transition:.4s ease-in-out;
+  position:relative;
+  z-index:2;
+}
+.search-modal{
+  position:absolute;
+  top:0;
+  width:100%;
+  height:10rem;
+  opacity:0;
+  transition:.4s ease-in-out;
+  background:rgba(0,0,0,.3);
+}
+.search-modal-open{
+opacity:1;
+z-index:1;
+}
+.search-loading{
+  display:block;
+}
 
-// .events{
-//   transform: rotateZ(-22deg);
-// position: absolute;
-// top: -241px;
-// left: -233px;
-// width: 143%;
-// z-index: 3;
-// opacity: 1;
-// .title{
-//   text-align: center;
-//     color: white;
-//     font-size: 3rem;
-//     position: absolute;
-//     top: 237px;
-//     left: 36%;
-// }
-//
-// }
-// .food{
-//   position: absolute;
-//     transform: rotateZ(-24deg);
-//     top: -469px;
-//     left: -103px;
-//     opacity: 1;
-//     width: 605px;
-//     z-index: 2;
-// }
-// .random{
-//   position: absolute;
-//     top: -168%;
-//     left: -330px;
-//     opacity: 1;
-//     z-index: 1;
-//     transform: rotateZ(-25deg);
-//     width: 242%;
-// }
+}
+.pets{
+  background:url('../../../assets/images/pets.jpg');
+  background-size:cover;
+  background-repeat:no-repeat;
+  h3{
+    margin-left:48px;
+  }
+}
+
 @media(min-width:700px){
   footer{
     text-align:center;

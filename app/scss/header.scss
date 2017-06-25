@@ -17,7 +17,7 @@ body {
 .search-option{
   height: 6rem;
       display: inline-block;
-      width: 45%;
+      width: 46%;
       border-radius: 10px;
       box-sizing:border-box;
       position:relative;
@@ -48,11 +48,11 @@ body {
   background:url('../../../assets/images/random.jpg');
   background-size:cover;
   background-repeat:no-repeat;
-  width:95%;
   box-sizing:border-box;
 
   margin:0 auto;
   margin-left:2.5%;
+  margin-right:2.5%;
   margin-top:.5rem;
 }
 #loading{

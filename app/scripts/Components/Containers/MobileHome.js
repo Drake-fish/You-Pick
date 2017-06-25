@@ -11,7 +11,8 @@ export default React.createClass({
             loading:false,
             eventsLoading:false,
             adventuresLoading:false,
-            foodClicked:false,
+            searchLoading:false,
+            searchClicked:false,
             session: store.session.toJSON(),
             places: store.places.toJSON()
         }
@@ -50,6 +51,45 @@ export default React.createClass({
 
 
     render() {
+      let Search=(
+        <div onClick={this.handleSearch} className="search search-option">
+          <h3 className="search-title">SEARCH</h3>
+          <form className="search-main-form">
+            <input ref="searchTerm" type="text" placeholder="Search" className="search-box"/>
+            <i className="fa fa-search" aria-hidden="true"></i>
+            <div onClick={this.handleSearch} className="search-modal">
+            </div>
+            </form>
+          <i id="loading" className="fa fa-spinner fa-pulse fa-3x fa-fw not-loading"></i>
+          <span className="sr-only">Loading...</span>
+    </div>
+
+  );
+  if(this.state.searchClicked && !this.state.searchLoading){
+    Search=(
+      <div className="search search-option">
+        <h3 className="search-title">SEARCH</h3>
+        <form className="search-main-form">
+        <input ref="searchTerm" type="text" placeholder="Search" className=" search-box search-box-open"/>
+        <i onClick={this.handleSubmit} className="fa fa-search search-icon-open" aria-hidden="true"></i>
+        <div onClick={this.handleSearch} className="search-modal search-modal-open">
+        </div>
+        </form>
+        <i id="loading" className="fa fa-spinner fa-pulse fa-3x fa-fw not-loading"></i>
+        <span className="sr-only">Loading...</span>
+  </div>
+);
+  }else if(this.state.searchClicked && this.state.loading){
+    Search=(
+      <div className="search search-option">
+        <h3 className="search-title">SEARCH</h3>
+        <input ref="searchTerm" type="text" placeholder="Search" className="search-box"/>
+        <i onClick={this.handleSubmit} className="fa fa-search" aria-hidden="true"></i>
+        <i id="loading" className="fa fa-spinner fa-pulse fa-3x fa-fw search-loading"></i>
+        <span className="sr-only">Loading...</span>
+  </div>
+);
+  }
       let FoodDiv;
         if(!this.state.foodClicked && !this.state.loading){
           FoodDiv=(
@@ -111,10 +151,20 @@ export default React.createClass({
                       </div>
                     );
         }
+        let PetDiv=(
+          <div className = "pets search-option">
+          <h3 className = "events-title"> PETS </h3>
+              <i id="loading" className="fa fa-spinner fa-pulse fa-3x fa-fw not-loading"></i>
+              <span className="sr-only">Loading...</span>
+          </div>
+
+        );
         return ( <div className = "home">
                     {EventsDiv}
                     {FoodDiv}
+                    {Search}
                     {AdventureDiv}
+                    {PetDiv}
                  </div>
 
               );
@@ -127,18 +177,13 @@ export default React.createClass({
         let prefs = this.state.session.events;
         store.places.getEvents(prefs);
     },
-    handleFoodChoices(){
-      this.setState({foodClicked:true});
-    },
-    handleBreakfast(){
-      store.places.searchBreakfast();
-      this.setState({loading:true,foodClicked:false});
-
-    },
+handleSearch(){
+    this.setState({searchClicked:!this.state.searchClicked});
+},
     handleFood() {
 
-        // let prefs = this.state.session.prefs;
-        // store.places.searchFood(prefs);
+        let prefs = this.state.session.prefs;
+        store.places.searchFood(prefs);
         this.setState({loading:true,foodClicked:false});
     },
     handleAdventure() {
@@ -146,6 +191,14 @@ export default React.createClass({
         this.setState({adventuresLoading:true});
         store.places.searchAdventure(prefs);
 
+    },
+    handleSubmit(e){
+      e.preventDefault();
+      let coordinates = [window.localStorage.getItem('latitude'), window.localStorage.getItem('longitude')];
+      let searchTerm=this.refs.searchTerm.value;
+      store.places.searchAnything(searchTerm);
+      this.refs.searchTerm.value='';
+      this.setState({searchLoading:true});
     }
 
 });

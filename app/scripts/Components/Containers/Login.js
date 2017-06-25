@@ -134,7 +134,7 @@ handleLoginSubmit(e){
   this.setState({menuOpen:false, loginLoading:true});
   window.setTimeout(()=>{
     this.setState({loginLoading:false});
-  },3000);
+  },5000);
 
 }
 });
